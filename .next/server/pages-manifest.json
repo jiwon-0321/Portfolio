@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/contact": "pages/contact.js",
+  "/": "pages/index.js",
+  "/about/self": "pages/about/self.js",
+  "/about/certificate": "pages/about/certificate.js",
+  "/about/career": "pages/about/career.js",
+  "/about/hobbies": "pages/about/hobbies.js",
   "/projects": "pages/projects.js",
-  "/project/[id]": "pages/project/[id].js",
-  "/contact": "pages/contact.js"
+  "/project/[id]": "pages/project/[id].js"
 }
