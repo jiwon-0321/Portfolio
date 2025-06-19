@@ -43,6 +43,18 @@ const DropdownButton = styled.button`
   &:hover:after {
     width: 80%;
   }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+    gap: 0.4rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    gap: 0.3rem;
+  }
 `;
 
 const ArrowIcon = styled.span<{ open: boolean }>`
@@ -73,6 +85,18 @@ const DropdownContent = styled.div<{ open: boolean }>`
   transform: ${({ open }) => open ? 'translateY(0) scale(1)' : 'translateY(-10px) scale(0.95)'};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: top center;
+  
+  @media (max-width: 768px) {
+    min-width: 180px;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    min-width: 160px;
+    border-radius: 10px;
+    left: 50%;
+    transform: ${({ open }) => open ? 'translateX(-50%) translateY(0) scale(1)' : 'translateX(-50%) translateY(-10px) scale(0.95)'};
+  }
 `;
 
 const DropdownItem = styled.div`
@@ -111,6 +135,20 @@ const DropdownItem = styled.div`
   
   &:hover:before {
     width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.8rem 0;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.7rem 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.8rem;
   }
 `;
 

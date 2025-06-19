@@ -23,7 +23,7 @@ const GLASSMORPHISM = css`
 `;
 
 const TRANSITION = 'all 0.3s ease';
-const CAROUSEL_TRANSITION = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+const CAROUSEL_TRANSITION = 'transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)';
 
 // 타입 정의
 interface CarouselState {
@@ -90,7 +90,7 @@ const projectData: Record<string, ProjectData> = {
     sections: [
       {
         title: '외관 및 입구 디자인',
-        images: ['/images/1.jpg', '/images/1.jpg', '/images/1.jpg', '/images/1.jpg'],
+        images: ['/images/1.jpg', '/main images/1.jpg', '/main images/1-1.jpg'],
         description: '자연스러운 목재와 유리를 활용하여 개방감을 조성했습니다. 특히 자연 요소의 도입은 고객의 심리적 안정감을 높이는 효과가 있습니다.',
         materials: ['천연 목재 (오크)', '강화유리', '자연석 타일'],
         details: '입구부터 자연 친화적인 분위기를 연출하여 고객들의 시선을 사로잡고, 내부 공간에 대한 기대감을 높였습니다. 색채 계획에서는 따뜻한 톤의 색상을 사용하여 고객 만족도 향상을 도모했습니다.',
@@ -179,11 +179,27 @@ const projectData: Record<string, ProjectData> = {
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 const Content = styled.div`
   max-width: 1200px;
   margin: 8rem auto 4rem auto;
+  
+  @media (max-width: 768px) {
+    margin: 6rem auto 3rem auto;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 5rem auto 2rem auto;
+  }
 `;
 
 const GlassCard = styled.div`
@@ -194,6 +210,14 @@ const GlassCard = styled.div`
   
   @media (max-width: 768px) {
     padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -216,6 +240,18 @@ const BackButton = styled.button`
   &:before {
     content: '← ';
     margin-right: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -300,10 +336,25 @@ const OverviewCard = styled.div`
 
 const CarouselContainer = styled.div`
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+  border: 2px solid rgba(196, 215, 155, 0.4);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(196, 215, 155, 0.05));
+  backdrop-filter: blur(10px);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, rgba(196, 215, 155, 0.6), rgba(74, 20, 140, 0.3), rgba(196, 215, 155, 0.6));
+    border-radius: 22px;
+    z-index: -1;
+  }
 `;
 
 const CarouselWrapper = styled.div`
@@ -323,14 +374,23 @@ const CarouselTrack = styled.div<{ translateX: number; isTransitioning: boolean 
   display: flex;
   height: 100%;
   transform: translateX(${props => props.translateX}px);
-  transition: ${props => props.isTransitioning ? CAROUSEL_TRANSITION : 'none'};
+  transition: ${props => props.isTransitioning ? CAROUSEL_TRANSITION : 'transform 0.1s ease-out'};
   will-change: transform;
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
 `;
 
 const CarouselSlide = styled.div`
   flex: 0 0 100%;
   height: 100%;
   position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   
   img {
     width: 100%;
@@ -338,6 +398,12 @@ const CarouselSlide = styled.div`
     object-fit: cover;
     cursor: pointer;
     transition: ${TRANSITION};
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: auto;
     
     &:hover {
       transform: scale(1.02);
@@ -388,22 +454,59 @@ const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
   padding: 0 1rem;
+  position: relative;
+  z-index: 10;
 `;
 
 const Dot = styled.button<{ active: boolean }>`
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: none;
-  background: ${props => props.active ? GRADIENTS.primary : 'rgba(196, 215, 155, 0.3)'};
+  border: 2px solid ${props => props.active ? 'rgba(74, 20, 140, 0.8)' : 'rgba(196, 215, 155, 0.4)'};
+  background: ${props => props.active ? GRADIENTS.primary : 'rgba(255, 255, 255, 0.8)'};
   cursor: pointer;
   transition: ${TRANSITION};
+  box-shadow: 0 2px 8px rgba(74, 20, 140, 0.2);
+  backdrop-filter: blur(10px);
   
   &:hover {
-    transform: scale(1.2);
-    background: ${props => props.active ? GRADIENTS.primary : 'rgba(196, 215, 155, 0.5)'};
+    transform: scale(1.3);
+    background: ${props => props.active ? GRADIENTS.primary : 'rgba(196, 215, 155, 0.6)'};
+    border-color: ${props => props.active ? 'rgba(74, 20, 140, 1)' : 'rgba(196, 215, 155, 0.8)'};
+    box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3);
+  }
+`;
+
+// 새로운 섹션 레이아웃 컴포넌트
+const SectionLayout = styled.div`
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+`;
+
+const ImageSection = styled.div`
+  flex: 1;
+  max-width: 50%;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+const ContentSection = styled.div`
+  flex: 1;
+  max-width: 50%;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 
@@ -578,13 +681,58 @@ const Modal = styled.div<{ show: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
+`;
+
+const ModalImageContainer = styled.div<{ 
+  isTransitioning: boolean; 
+  direction: 'left' | 'right' | null;
+}>`
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  transition: ${props => props.isTransitioning ? 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s ease' : 'none'};
+  transform: ${props => {
+    if (!props.isTransitioning) return 'translateX(0) scale(1)';
+    if (props.direction === 'right') return 'translateX(50px) scale(0.95)';
+    if (props.direction === 'left') return 'translateX(-50px) scale(0.95)';
+    return 'translateX(0) scale(1)';
+  }};
+  opacity: ${props => props.isTransitioning ? 0.7 : 1};
   
   img {
-    max-width: 90%;
-    max-height: 90%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 95%;
+    max-height: 95%;
+    
+    img {
+      border-radius: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 98%;
+    max-height: 98%;
+    
+    img {
+      border-radius: 6px;
+    }
   }
 `;
 
@@ -607,25 +755,95 @@ const ModalButton = styled.button`
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
   }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
 `;
 
 const CloseButton = styled(ModalButton)`
   top: 2rem;
   right: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  &:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.1);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+    background: rgba(255, 0, 0, 0.3);
+  }
+  
+  &:before {
+    content: '×';
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    top: 1.5rem;
+    right: 1.5rem;
+    
+    &:before {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    top: 1rem;
+    right: 1rem;
+    
+    &:before {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 const ModalNavButton = styled(ModalButton)<{ direction: 'left' | 'right' }>`
   top: 50%;
   ${props => props.direction}: 2rem;
   transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   
   &:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+  }
+  
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+    background: rgba(255, 255, 255, 0.35);
   }
   
   &:before {
     content: '${props => props.direction === 'left' ? '‹' : '›'}';
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    ${props => props.direction}: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    ${props => props.direction}: 1rem;
   }
 `;
 
@@ -685,12 +903,25 @@ const useCarousel = (project: ProjectData | undefined) => {
     });
   }, [carouselStates, updateCarouselState]);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent, sectionIndex: number) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent, sectionIndex: number, totalImages: number) => {
     const state = carouselStates[sectionIndex];
     if (!state || !state.isDragging) return;
     
     const deltaX = e.clientX - state.startX;
-    const newTranslateX = state.translateX + deltaX;
+    const slideWidth = state.slideWidth || 400;
+    const currentBaseTranslateX = -state.currentIndex * slideWidth;
+    
+    // 드래그 저항 효과 추가 (경계에서 저항감)
+    let resistanceMultiplier = 1;
+    const maxDrag = slideWidth * 0.8;
+    
+    if (state.currentIndex === 0 && deltaX > 0) {
+      resistanceMultiplier = Math.max(0.2, 1 - (deltaX / maxDrag));
+    } else if (state.currentIndex === totalImages - 1 && deltaX < 0) {
+      resistanceMultiplier = Math.max(0.2, 1 - (Math.abs(deltaX) / maxDrag));
+    }
+    
+    const newTranslateX = currentBaseTranslateX + (deltaX * resistanceMultiplier);
     
     updateCarouselState(sectionIndex, {
       currentX: e.clientX,
@@ -704,14 +935,25 @@ const useCarousel = (project: ProjectData | undefined) => {
     
     const deltaX = state.currentX - state.startX;
     const slideWidth = state.slideWidth || 400;
-    const threshold = slideWidth * 0.3;
+    const threshold = slideWidth * 0.25; // 더 민감하게 조정
+    const velocity = Math.abs(deltaX) / slideWidth;
     
     let newIndex = state.currentIndex;
     
-    if (deltaX > threshold && state.currentIndex > 0) {
-      newIndex = state.currentIndex - 1;
-    } else if (deltaX < -threshold && state.currentIndex < totalImages - 1) {
-      newIndex = state.currentIndex + 1;
+    // 속도 기반 판정 추가
+    if (velocity > 0.3) {
+      if (deltaX > 50 && state.currentIndex > 0) {
+        newIndex = state.currentIndex - 1;
+      } else if (deltaX < -50 && state.currentIndex < totalImages - 1) {
+        newIndex = state.currentIndex + 1;
+      }
+    } else {
+      // 기존 threshold 기반 판정
+      if (deltaX > threshold && state.currentIndex > 0) {
+        newIndex = state.currentIndex - 1;
+      } else if (deltaX < -threshold && state.currentIndex < totalImages - 1) {
+        newIndex = state.currentIndex + 1;
+      }
     }
     
     const newTranslateX = -newIndex * slideWidth;
@@ -732,6 +974,84 @@ const useCarousel = (project: ProjectData | undefined) => {
     updateCarouselState(sectionIndex, { slideWidth: width });
   }, [updateCarouselState]);
 
+  // 터치 이벤트 핸들러 추가
+  const handleTouchStart = useCallback((e: React.TouchEvent, sectionIndex: number) => {
+    const state = carouselStates[sectionIndex];
+    if (!state) return;
+    
+    updateCarouselState(sectionIndex, {
+      isDragging: true,
+      startX: e.touches[0].clientX,
+      currentX: e.touches[0].clientX,
+      isTransitioning: false
+    });
+  }, [carouselStates, updateCarouselState]);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent, sectionIndex: number, totalImages: number) => {
+    const state = carouselStates[sectionIndex];
+    if (!state || !state.isDragging) return;
+    
+    e.preventDefault(); // 스크롤 방지
+    
+    const deltaX = e.touches[0].clientX - state.startX;
+    const slideWidth = state.slideWidth || 400;
+    const currentBaseTranslateX = -state.currentIndex * slideWidth;
+    
+    // 드래그 저항 효과 추가 (경계에서 저항감)
+    let resistanceMultiplier = 1;
+    const maxDrag = slideWidth * 0.8;
+    
+    if (state.currentIndex === 0 && deltaX > 0) {
+      resistanceMultiplier = Math.max(0.2, 1 - (deltaX / maxDrag));
+    } else if (state.currentIndex === totalImages - 1 && deltaX < 0) {
+      resistanceMultiplier = Math.max(0.2, 1 - (Math.abs(deltaX) / maxDrag));
+    }
+    
+    const newTranslateX = currentBaseTranslateX + (deltaX * resistanceMultiplier);
+    
+    updateCarouselState(sectionIndex, {
+      currentX: e.touches[0].clientX,
+      translateX: newTranslateX
+    });
+  }, [carouselStates, updateCarouselState]);
+
+  const handleTouchEnd = useCallback((sectionIndex: number, totalImages: number) => {
+    const state = carouselStates[sectionIndex];
+    if (!state || !state.isDragging) return;
+    
+    const deltaX = state.currentX - state.startX;
+    const slideWidth = state.slideWidth || 400;
+    const threshold = slideWidth * 0.25;
+    const velocity = Math.abs(deltaX) / slideWidth;
+    
+    let newIndex = state.currentIndex;
+    
+    // 속도 기반 판정
+    if (velocity > 0.3) {
+      if (deltaX > 50 && state.currentIndex > 0) {
+        newIndex = state.currentIndex - 1;
+      } else if (deltaX < -50 && state.currentIndex < totalImages - 1) {
+        newIndex = state.currentIndex + 1;
+      }
+    } else {
+      // threshold 기반 판정
+      if (deltaX > threshold && state.currentIndex > 0) {
+        newIndex = state.currentIndex - 1;
+      } else if (deltaX < -threshold && state.currentIndex < totalImages - 1) {
+        newIndex = state.currentIndex + 1;
+      }
+    }
+    
+    const newTranslateX = -newIndex * slideWidth;
+    
+    updateCarouselState(sectionIndex, {
+      currentIndex: newIndex,
+      translateX: newTranslateX,
+      isDragging: false,
+      isTransitioning: true
+    });
+  }, [carouselStates, updateCarouselState]);
+
   return {
     carouselStates,
     hoveredCarousel,
@@ -740,6 +1060,9 @@ const useCarousel = (project: ProjectData | undefined) => {
     handleMouseDown,
     handleMouseMove,
     handleMouseUp,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
     handleTransitionEnd,
     setSlideWidth
   };
@@ -789,6 +1112,8 @@ export default function ProjectDetail() {
   const [modalImageIndex, setModalImageIndex] = useState<ModalImageIndex | null>(null);
   const [openReferences, setOpenReferences] = useState<Record<number, boolean>>({});
   const [highlightedReference, setHighlightedReference] = useState<number | null>(null);
+  const [isModalTransitioning, setIsModalTransitioning] = useState(false);
+  const [modalTransitionDirection, setModalTransitionDirection] = useState<'left' | 'right' | null>(null);
   
   const referencesRef = useRef<HTMLDivElement>(null);
   const carousel = useCarousel(project);
@@ -804,7 +1129,7 @@ export default function ProjectDetail() {
   }, []);
 
   const navigateModalImage = useCallback((direction: 'prev' | 'next') => {
-    if (!modalImageIndex || !project) return;
+    if (!modalImageIndex || !project || isModalTransitioning) return;
     
     const { sectionIndex, imageIndex } = modalImageIndex;
     const currentSection = project.sections[sectionIndex];
@@ -819,6 +1144,8 @@ export default function ProjectDetail() {
       } else if (sectionIndex < project.sections.length - 1) {
         newSectionIndex = sectionIndex + 1;
         newImageIndex = 0;
+      } else {
+        return; // 마지막 이미지에서 더 이상 진행할 수 없음
       }
     } else {
       if (imageIndex > 0) {
@@ -826,13 +1153,28 @@ export default function ProjectDetail() {
       } else if (sectionIndex > 0) {
         newSectionIndex = sectionIndex - 1;
         newImageIndex = project.sections[newSectionIndex].images.length - 1;
+      } else {
+        return; // 첫 번째 이미지에서 더 이상 뒤로 갈 수 없음
       }
     }
     
-    const newImage = project.sections[newSectionIndex].images[newImageIndex];
-    setModalImage(newImage);
-    setModalImageIndex({ sectionIndex: newSectionIndex, imageIndex: newImageIndex });
-  }, [modalImageIndex, project]);
+    // 트랜지션 시작
+    setIsModalTransitioning(true);
+    setModalTransitionDirection(direction === 'next' ? 'right' : 'left');
+    
+    // 짧은 지연 후 이미지 변경
+    setTimeout(() => {
+      const newImage = project.sections[newSectionIndex].images[newImageIndex];
+      setModalImage(newImage);
+      setModalImageIndex({ sectionIndex: newSectionIndex, imageIndex: newImageIndex });
+      
+      // 트랜지션 완료
+      setTimeout(() => {
+        setIsModalTransitioning(false);
+        setModalTransitionDirection(null);
+      }, 150);
+    }, 150);
+  }, [modalImageIndex, project, isModalTransitioning]);
 
   const toggleReference = useCallback((index: number) => {
     setOpenReferences(prev => ({ ...prev, [index]: !prev[index] }));
@@ -977,71 +1319,80 @@ export default function ProjectDetail() {
               
               return (
                 <GlassCard key={sectionIndex} className="slide-up" style={{ animationDelay: `${sectionIndex * 0.1}s` }}>
-                  <CarouselContainer>
-                    <CarouselWrapper
-                      onMouseEnter={() => carousel.setHoveredCarousel(sectionIndex)}
-                      onMouseLeave={() => {
-                        carousel.setHoveredCarousel(null);
-                        carousel.handleMouseUp(sectionIndex, section.images.length);
-                      }}
-                      onMouseDown={(e) => carousel.handleMouseDown(e, sectionIndex)}
-                      onMouseMove={(e) => carousel.handleMouseMove(e, sectionIndex)}
-                      onMouseUp={() => carousel.handleMouseUp(sectionIndex, section.images.length)}
-                      ref={(ref) => {
-                        if (ref && state.slideWidth === 0) {
-                          carousel.setSlideWidth(sectionIndex, ref.offsetWidth);
-                        }
-                      }}
-                    >
-                      <CarouselTrack
-                        translateX={state.translateX}
-                        isTransitioning={state.isTransitioning}
-                        onTransitionEnd={() => carousel.handleTransitionEnd(sectionIndex)}
-                      >
-                        {section.images.map((image, imageIndex) => (
-                          <CarouselSlide key={imageIndex}>
-                            <img 
-                              src={image} 
-                              alt={`${section.title} - ${imageIndex + 1}`}
-                              onClick={() => openModal(image, sectionIndex, imageIndex)}
-                              draggable={false}
-                            />
-                            <ZoomIcon show={carousel.hoveredCarousel === sectionIndex} />
-                          </CarouselSlide>
-                        ))}
-                      </CarouselTrack>
-                      
-                      <ImageCounter>
-                        {state.currentIndex + 1} / {section.images.length}
-                      </ImageCounter>
-                    </CarouselWrapper>
-                    
-                    {section.images.length > 1 && (
-                      <DotsContainer>
-                        {renderDots(
-                          section.images.length,
-                          state.currentIndex,
-                          (index) => carousel.goToSlide(sectionIndex, index)
+                  <SectionLayout>
+                    <ImageSection>
+                      <CarouselContainer>
+                        <CarouselWrapper
+                          onMouseEnter={() => carousel.setHoveredCarousel(sectionIndex)}
+                          onMouseLeave={() => {
+                            carousel.setHoveredCarousel(null);
+                            carousel.handleMouseUp(sectionIndex, section.images.length);
+                          }}
+                          onMouseDown={(e) => carousel.handleMouseDown(e, sectionIndex)}
+                          onMouseMove={(e) => carousel.handleMouseMove(e, sectionIndex, section.images.length)}
+                          onMouseUp={() => carousel.handleMouseUp(sectionIndex, section.images.length)}
+                          onTouchStart={(e) => carousel.handleTouchStart(e, sectionIndex)}
+                          onTouchMove={(e) => carousel.handleTouchMove(e, sectionIndex, section.images.length)}
+                          onTouchEnd={() => carousel.handleTouchEnd(sectionIndex, section.images.length)}
+                          ref={(ref) => {
+                            if (ref && state.slideWidth === 0) {
+                              carousel.setSlideWidth(sectionIndex, ref.offsetWidth);
+                            }
+                          }}
+                        >
+                          <CarouselTrack
+                            translateX={state.translateX}
+                            isTransitioning={state.isTransitioning}
+                            onTransitionEnd={() => carousel.handleTransitionEnd(sectionIndex)}
+                          >
+                            {section.images.map((image, imageIndex) => (
+                              <CarouselSlide key={imageIndex}>
+                                <img 
+                                  src={image} 
+                                  alt={`${section.title} - ${imageIndex + 1}`}
+                                  onClick={() => openModal(image, sectionIndex, imageIndex)}
+                                  draggable={false}
+                                />
+                                <ZoomIcon show={carousel.hoveredCarousel === sectionIndex} />
+                              </CarouselSlide>
+                            ))}
+                          </CarouselTrack>
+                          
+                          <ImageCounter>
+                            {state.currentIndex + 1} / {section.images.length}
+                          </ImageCounter>
+                        </CarouselWrapper>
+                        
+                        {section.images.length > 1 && (
+                          <DotsContainer>
+                            {renderDots(
+                              section.images.length,
+                              state.currentIndex,
+                              (index) => carousel.goToSlide(sectionIndex, index)
+                            )}
+                          </DotsContainer>
                         )}
-                      </DotsContainer>
-                    )}
-                  </CarouselContainer>
-                  
-                  <DetailContent>
-                    <h3>{section.title}</h3>
-                    <p>{renderTextWithCitations(section.description, section.citations)}</p>
-                    <MaterialsList>
-                      <h4>주요 재료</h4>
-                      <ul>
-                        {section.materials.map((material, idx) => (
-                          <li key={idx}>{material}</li>
-                        ))}
-                      </ul>
-                    </MaterialsList>
-                    <DetailDescription>
-                      <p>{renderTextWithCitations(section.details, section.citations)}</p>
-                    </DetailDescription>
-                  </DetailContent>
+                      </CarouselContainer>
+                    </ImageSection>
+                    
+                    <ContentSection>
+                      <DetailContent>
+                        <h3>{section.title}</h3>
+                        <p>{renderTextWithCitations(section.description, section.citations)}</p>
+                        <MaterialsList>
+                          <h4>주요 재료</h4>
+                          <ul>
+                            {section.materials.map((material, idx) => (
+                              <li key={idx}>{material}</li>
+                            ))}
+                          </ul>
+                        </MaterialsList>
+                        <DetailDescription>
+                          <p>{renderTextWithCitations(section.details, section.citations)}</p>
+                        </DetailDescription>
+                      </DetailContent>
+                    </ContentSection>
+                  </SectionLayout>
                 </GlassCard>
               );
             })}
@@ -1072,7 +1423,7 @@ export default function ProjectDetail() {
       </Container>
 
       <Modal show={!!modalImage} onClick={closeModal}>
-        <CloseButton onClick={closeModal}>×</CloseButton>
+        <CloseButton onClick={closeModal} />
         <ModalNavButton 
           direction="left" 
           onClick={(e) => {
@@ -1087,7 +1438,14 @@ export default function ProjectDetail() {
             navigateModalImage('next');
           }}
         />
-        {modalImage && <img src={modalImage} alt="확대된 이미지" onClick={(e) => e.stopPropagation()} />}
+        {modalImage && (
+          <ModalImageContainer 
+            isTransitioning={isModalTransitioning}
+            direction={modalTransitionDirection}
+          >
+            <img src={modalImage} alt="확대된 이미지" onClick={(e) => e.stopPropagation()} />
+          </ModalImageContainer>
+        )}
       </Modal>
     </>
   );

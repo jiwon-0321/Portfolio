@@ -21,6 +21,14 @@ const Nav = styled.nav`
   &:hover {
     background: rgba(255, 255, 255, 0.35);
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.75rem 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.75rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -35,6 +43,14 @@ const Logo = styled.div`
   
   &:hover {
     transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
   }
 `;
 
@@ -63,6 +79,22 @@ const NavLinks = styled.div`
       width: 100%;
     }
   }
+  
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    
+    a {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    
+    a {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const ContactButton = styled.button`
@@ -78,6 +110,16 @@ const ContactButton = styled.button`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
   }
 `;
 

@@ -11,6 +11,14 @@ const ContactSection = styled.section`
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -19,6 +27,16 @@ const Title = styled.h1`
   font-size: 3rem;
   margin-bottom: 3rem;
   text-shadow: 0 2px 10px rgba(26, 32, 44, 0.2);
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ContactGrid = styled.div`
@@ -47,6 +65,16 @@ const ContactCard = styled.div`
     box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
     border-color: rgba(102, 126, 234, 0.4);
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
 `;
 
 const ContactIcon = styled.div`
@@ -61,18 +89,46 @@ const ContactIcon = styled.div`
   background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
   color: white;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.6rem;
+  }
 `;
 
 const ContactTitle = styled.h3`
   color: #2D3748;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const ContactInfo = styled.p`
   color: #4A5568;
   font-size: 1.1rem;
   font-weight: 500;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const NotionLink = styled.a`
@@ -86,6 +142,14 @@ const NotionLink = styled.a`
   &:hover {
     color: #667EEA;
     transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
   }
 `;
 

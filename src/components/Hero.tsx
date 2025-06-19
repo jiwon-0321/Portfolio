@@ -15,6 +15,7 @@ const HeroSection = styled.section`
   box-shadow: 0 20px 60px rgba(160, 174, 192, 0.15);
   position: relative;
   overflow: hidden;
+  gap: 3rem;
   
 
   
@@ -23,38 +24,57 @@ const HeroSection = styled.section`
     text-align: center;
     padding: 3rem 2rem;
     margin-top: 6rem;
+    gap: 2rem;
   }
 `;
 
 const HeroContent = styled.div`
   flex: 1;
+  max-width: 50%;
   z-index: 2;
   
   h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     color: #1A202C;
     text-shadow: 0 2px 10px rgba(26, 32, 44, 0.2);
+    line-height: 1.3;
     
     span {
       background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      font-weight: 800;
     }
     
     @media (max-width: 768px) {
-      font-size: 2.2rem;
+      font-size: 2rem;
+      line-height: 1.25;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
     }
   }
   
   p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #4A5568;
     margin-bottom: 2rem;
-    line-height: 1.6;
+    line-height: 1.7;
     opacity: 0.9;
+    font-weight: 400;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 
@@ -89,20 +109,36 @@ const CTAButton = styled.button`
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const ProfileImageContainer = styled.div`
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 2;
   
   @media (max-width: 768px) {
+    max-width: 100%;
     margin-top: 2rem;
   }
 `;
 
 const ProfileImage = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid rgba(102, 126, 234, 0.3);
@@ -113,6 +149,16 @@ const ProfileImage = styled.img`
     transform: scale(1.05);
     box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
   }
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 250px;
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 export default function Hero() {
@@ -122,15 +168,19 @@ export default function Hero() {
       <HeroContent className="slide-in-left">
         <h1>
           안녕하세요!<br/>
-          실내건축 디자이너 <span>홍길동</span>입니다.
+          실내건축 디자이너를 꿈꾸는<br/>
+          취업 준비생 <span>조지원</span>입니다.
         </h1>
-        <p>창의적이고 실용적인 공간을 설계하여 사람들의 삶을 더욱 풍요롭게 만듭니다.</p>
+        <p>
+          공간의 기능성과 감성을 함께 고려하는 디자인을 공부하며,<br/>
+          사람의 행동에 긍정적인 영향을 주는 설계를 지향합니다.
+        </p>
         <CTAButton className="pulse" onClick={() => router.push('/projects')}>
           포트폴리오 보기
         </CTAButton>
       </HeroContent>
       <ProfileImageContainer className="slide-in-right">
-        <ProfileImage className="float" src="/images/아이콘 사진.jpeg" alt="프로필" />
+        <ProfileImage className="float" src="/images/profile.jpeg" alt="프로필 사진" />
       </ProfileImageContainer>
     </HeroSection>
   );

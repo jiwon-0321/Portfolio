@@ -23,6 +23,14 @@ const projects = [
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 const Header = styled.div`
@@ -42,6 +50,30 @@ const Header = styled.div`
     color: #4A148C;
     opacity: 0.8;
   }
+  
+  @media (max-width: 768px) {
+    margin: 6rem 0 3rem 0;
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin: 5rem 0 2.5rem 0;
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const ProjectsGrid = styled.div`
@@ -55,6 +87,12 @@ const ProjectsGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding-bottom: 3rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding-bottom: 2rem;
   }
 `;
 
@@ -106,6 +144,14 @@ const ProjectContent = styled.div`
   padding: 1.5rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ProjectCategory = styled.div`
