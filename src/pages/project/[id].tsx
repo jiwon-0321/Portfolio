@@ -76,40 +76,64 @@ interface ProjectData {
 // 프로젝트 데이터
 const projectData: Record<string, ProjectData> = {
   1: {
-    title: '모던 카페 인테리어',
-    category: '상업공간',
+    title: 'The Habi (자연 + 바이오필릭 컨셉 호텔)',
+    category: '숙박공간',
     location: '서울시 강남구',
     area: '120㎡',
     period: '2023.03 - 2023.05',
-    client: 'ABC 카페',
+    client: 'The Habi Hotels',
     overview: {
-      concept: '자연 친화적이고 모던한 감성의 카페 공간으로, 도심 속에서 자연을 느낄 수 있는 휴식 공간을 제공합니다.',
-      objective: '고객들이 편안하게 휴식을 취하고 소통할 수 있는 공간을 조성하여 브랜드 가치를 높이고자 했습니다.',
-      target: '20-40대 직장인 및 학생들을 주요 타겟으로 하는 프리미엄 카페'
+      concept: '자연과 기술이 조화를 이루는 바이오필릭 디자인 컨셉의 호텔입니다. 도심 속에서 진정한 휴식과 재충전의 경험을 제공합니다.',
+      objective: '투숙객에게 자연과의 연결을 통해 심리적 안정과 만족감을 제공하고, 지속가능한 디자인을 통해 브랜드 가치를 높이고자 했습니다.',
+      target: '자연 속에서의 휴식을 추구하는 20-50대 여행객 및 비즈니스 출장객'
     },
     sections: [
       {
-        title: '외관 및 입구 디자인',
-        images: ['/images/1.jpg', '/main images/1.jpg', '/main images/1-1.jpg'],
-        description: '자연스러운 목재와 유리를 활용하여 개방감을 조성했습니다. 특히 자연 요소의 도입은 고객의 심리적 안정감을 높이는 효과가 있습니다.',
-        materials: ['천연 목재 (오크)', '강화유리', '자연석 타일'],
-        details: '입구부터 자연 친화적인 분위기를 연출하여 고객들의 시선을 사로잡고, 내부 공간에 대한 기대감을 높였습니다. 색채 계획에서는 따뜻한 톤의 색상을 사용하여 고객 만족도 향상을 도모했습니다.',
+        title: '로비 및 라운지',
+        images: ['/main images/main.png.png'],
+        description: '자연 채광을 극대화하고, 살아있는 식물 벽(Living Wall)과 자연 소재를 사용하여 호텔에 들어서는 순간부터 자연의 품에 안긴 듯한 느낌을 줍니다.',
+        materials: ['천연 대리석', '살아있는 식물 벽', '원목 루버'],
+        details: '개방적인 공간 구성과 함께 곳곳에 프라이빗한 휴식 공간을 마련하여 투숙객들이 편안하게 머물 수 있도록 설계했습니다. 천장의 유기적인 조명은 자연의 빛을 형상화했습니다.',
         citations: [2, 1]
       },
       {
-        title: '내부 공간 구성',
-        images: ['/images/1.jpg', '/images/1.jpg', '/images/1.jpg'],
-        description: '효율적인 동선과 다양한 좌석 배치로 고객 만족도를 극대화했습니다.',
-        materials: ['원목 가구', '패브릭 소파', 'LED 조명'],
-        details: '1인석부터 단체석까지 다양한 좌석을 배치하여 고객의 다양한 니즈를 충족시켰습니다. 특히 창가 좌석은 자연광을 최대한 활용할 수 있도록 설계했습니다. 카페 공간의 색채가 고객 만족도에 미치는 영향을 고려하여 설계했습니다.',
+        title: '공간 계획 및 구성',
+        images: ['/main images/평면도 layout.PNG', '/main images/iso.jpg'],
+        description: '개인화된 휴식 경험을 제공하기 위해 각 객실의 공간을 효율적으로 구성하고, 자연 채광을 고려하여 설계했습니다.',
+        materials: ['친환경 마감재', '스마트 조명 시스템', '빌트인 가구'],
+        details: '평면도는 공간의 흐름과 기능성을 보여주며, 아이소메트릭 뷰는 전체적인 공간 구조를 입체적으로 이해하는 데 도움을 줍니다.',
         citations: [1]
       },
       {
-        title: '조명 및 색채 계획',
-        images: ['/images/1.jpg', '/images/1.jpg'],
-        description: '따뜻한 색온도의 조명과 자연스러운 색채 조합으로 편안한 분위기를 연출했습니다.',
-        materials: ['LED 펜던트 조명', '간접조명', '자연 색상 페인트'],
-        details: '시간대별 조명 조절이 가능하도록 설계하여 아침, 점심, 저녁 각각 다른 분위기를 연출할 수 있습니다. 상업공간에서의 자연 요소 도입 효과를 적극 활용했습니다.',
+        title: '객실 및 디테일',
+        images: ['/main images/1-1.jpg', '/main images/1-2.png', '/main images/7-1.jpg', '/main images/7-2.png'],
+        description: '자연 소재를 적극적으로 활용하고, 창밖의 풍경을 내부로 끌어들여 투숙객에게 깊은 휴식과 영감을 주는 공간을 디자인했습니다.',
+        materials: ['원목 마루', '테라조 타일', '맞춤 제작 가구'],
+        details: '객실은 휴식의 본질에 집중할 수 있도록 미니멀하게 구성되었으며, 곳곳에 배치된 예술 작품과 디자인 조명이 공간에 깊이를 더합니다.',
+        citations: [2]
+      },
+      {
+        title: '욕실 및 위생 공간',
+        images: ['/main images/4-1.jpg', '/main images/4-2.png'],
+        description: '하루의 피로를 풀 수 있는 편안하고 고급스러운 욕실 공간입니다. 자연 채광과 간결한 디자인이 조화를 이룹니다.',
+        materials: ['이탈리아산 타일', '매립형 수전', '간접 조명', '스마트 미러'],
+        details: '자연 채광이 들어오는 넓은 창과 독립형 욕조를 배치하여, 마치 개인 스파에 온 듯한 기분을 느낄 수 있도록 디자인했습니다.',
+        citations: [2]
+      },
+      {
+        title: '부대시설 (레스토랑 & 바)',
+        images: ['/main images/3-1.jpg', '/main images/3-2.png', '/main images/3-3.jpg', '/main images/3-4.png'],
+        description: '고급스러운 레스토랑과 바로, 투숙객에게 특별한 다이닝 경험을 제공합니다. 자연의 모티프를 현대적으로 재해석한 디자인이 특징입니다.',
+        materials: ['황동 마감재', '벨벳 가구', '대형 거울', '천연석 바닥'],
+        details: '레스토랑은 개방형 주방으로 요리 과정을 직접 볼 수 있어 신뢰감을 주며, 바는 도시의 야경을 감상할 수 있는 파노라마 뷰를 자랑합니다.',
+        citations: [1]
+      },
+      {
+        title: '외부 공간 및 조경',
+        images: ['/main images/5.jpg', '/main images/5=1.png', '/main images/6.jpg'],
+        description: '도심 속에서 자연을 만끽할 수 있는 옥상 정원과 산책로입니다. 바이오필릭 디자인을 외부 공간까지 확장했습니다.',
+        materials: ['데크 목재', '자연석', '계절별 식물', '수경시설'],
+        details: '옥상 정원에는 작은 인피니티 풀과 휴식 공간이 마련되어 있으며, 호텔 주변을 둘러싼 산책로는 투숙객에게 평온한 아침을 선사합니다.',
         citations: [2]
       }
     ],
@@ -277,11 +301,11 @@ const SectionTitle = styled.h2`
 `;
 
 const ProjectTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 700;
   color: ${COLORS.primary};
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
 `;
 
 const ProjectInfo = styled.div`
@@ -410,17 +434,17 @@ const CarouselSlide = styled.div`
     }
   }
 `;
-
+  
 const OverlayIcon = styled.div<{ show: boolean }>`
-  position: absolute;
-  background: rgba(74, 20, 140, 0.8);
+    position: absolute;
+    background: rgba(74, 20, 140, 0.8);
   color: ${COLORS.white};
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   font-size: 1.2rem;
   opacity: ${props => props.show ? 1 : 0};
   transition: ${TRANSITION};
@@ -558,6 +582,7 @@ const DetailDescription = styled.div`
   padding: 1rem;
   border-radius: 10px;
   border-left: 3px solid ${COLORS.secondary};
+  white-space: pre-wrap;
   
   p {
     margin: 0;
@@ -697,16 +722,17 @@ const ModalImageContainer = styled.div<{
   direction: 'left' | 'right' | null;
 }>`
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  transition: ${props => props.isTransitioning ? 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s ease' : 'none'};
+    max-width: 90%;
+    max-height: 90%;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.3s ease-out;
+  
   transform: ${props => {
     if (!props.isTransitioning) return 'translateX(0) scale(1)';
-    if (props.direction === 'right') return 'translateX(50px) scale(0.95)';
-    if (props.direction === 'left') return 'translateX(-50px) scale(0.95)';
+    if (props.direction === 'right') return 'translateX(150px) scale(0.9)';
+    if (props.direction === 'left') return 'translateX(-150px) scale(0.9)';
     return 'translateX(0) scale(1)';
   }};
-  opacity: ${props => props.isTransitioning ? 0.7 : 1};
+  opacity: ${props => props.isTransitioning ? 0 : 1};
   
   img {
     width: 100%;
@@ -844,6 +870,49 @@ const ModalNavButton = styled(ModalButton)<{ direction: 'left' | 'right' }>`
   
   @media (max-width: 480px) {
     ${props => props.direction}: 1rem;
+  }
+`;
+
+const CarouselNavButton = styled.button<{ direction: 'left' | 'right' }>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  ${({ direction }) => (direction === 'left' ? 'left: 1rem;' : 'right: 1rem;')}
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1.8rem;
+  line-height: 1;
+
+  ${CarouselContainer}:hover & {
+    opacity: 1;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  &:before {
+    content: '${({ direction }) => (direction === 'left' ? '‹' : '›')}';
+    display: block;
+    margin-top: -2px;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
   }
 `;
 
@@ -1052,6 +1121,43 @@ const useCarousel = (project: ProjectData | undefined) => {
     });
   }, [carouselStates, updateCarouselState]);
 
+  const handleDotClick = useCallback((sectionIndex: number, dotIndex: number) => {
+    const state = carouselStates[sectionIndex];
+    if (!state || state.isTransitioning) return;
+
+    const slideWidth = state.slideWidth || 400;
+    const newTranslateX = -dotIndex * slideWidth;
+
+    updateCarouselState(sectionIndex, {
+      currentIndex: dotIndex,
+      translateX: newTranslateX,
+      isTransitioning: true,
+    });
+  }, [carouselStates, updateCarouselState]);
+
+  const handleArrowClick = useCallback((sectionIndex: number, direction: 'prev' | 'next') => {
+    const state = carouselStates[sectionIndex];
+    if (!state || !project || state.isTransitioning) return;
+
+    const totalImages = project.sections[sectionIndex].images.length;
+    let newIndex = state.currentIndex;
+
+    if (direction === 'prev') {
+      newIndex = state.currentIndex > 0 ? state.currentIndex - 1 : totalImages - 1;
+    } else { // 'next'
+      newIndex = state.currentIndex < totalImages - 1 ? state.currentIndex + 1 : 0;
+    }
+
+    const slideWidth = state.slideWidth || 400;
+    const newTranslateX = -newIndex * slideWidth;
+
+    updateCarouselState(sectionIndex, {
+      currentIndex: newIndex,
+      translateX: newTranslateX,
+      isTransitioning: true,
+    });
+  }, [carouselStates, updateCarouselState, project]);
+
   return {
     carouselStates,
     hoveredCarousel,
@@ -1064,43 +1170,21 @@ const useCarousel = (project: ProjectData | undefined) => {
     handleTouchMove,
     handleTouchEnd,
     handleTransitionEnd,
-    setSlideWidth
+    setSlideWidth,
+    handleDotClick,
+    handleArrowClick
   };
 };
 
 // 유틸리티 함수
 const renderDots = (totalImages: number, currentIndex: number, onDotClick: (index: number) => void) => {
-  const maxDots = 3;
-  
-  if (totalImages <= maxDots) {
-    return Array.from({ length: totalImages }, (_, index) => (
-      <Dot
-        key={index}
-        active={currentIndex === index}
-        onClick={() => onDotClick(index)}
-      />
-    ));
-  }
-  
-  const dots = [];
-  let startIndex = Math.max(0, currentIndex - 1);
-  let endIndex = Math.min(totalImages - 1, startIndex + 2);
-  
-  if (endIndex === totalImages - 1) {
-    startIndex = Math.max(0, endIndex - 2);
-  }
-  
-  for (let i = startIndex; i <= endIndex; i++) {
-    dots.push(
-      <Dot
-        key={i}
-        active={currentIndex === i}
-        onClick={() => onDotClick(i)}
-      />
-    );
-  }
-  
-  return dots;
+  return Array.from({ length: totalImages }, (_, index) => (
+    <Dot
+      key={index}
+      active={currentIndex === index}
+      onClick={() => onDotClick(index)}
+    />
+  ));
 };
 
 export default function ProjectDetail() {
@@ -1114,7 +1198,7 @@ export default function ProjectDetail() {
   const [highlightedReference, setHighlightedReference] = useState<number | null>(null);
   const [isModalTransitioning, setIsModalTransitioning] = useState(false);
   const [modalTransitionDirection, setModalTransitionDirection] = useState<'left' | 'right' | null>(null);
-  
+
   const referencesRef = useRef<HTMLDivElement>(null);
   const carousel = useCarousel(project);
 
@@ -1172,8 +1256,8 @@ export default function ProjectDetail() {
       setTimeout(() => {
         setIsModalTransitioning(false);
         setModalTransitionDirection(null);
-      }, 150);
-    }, 150);
+      }, 50);
+    }, 400);
   }, [modalImageIndex, project, isModalTransitioning]);
 
   const toggleReference = useCallback((index: number) => {
@@ -1288,7 +1372,7 @@ export default function ProjectDetail() {
                 <OverviewCard key={index}>
                   <h3>{card.title}</h3>
                   <p>{card.content}</p>
-                </OverviewCard>
+              </OverviewCard>
               ))}
             </OverviewGrid>
           </GlassCard>
@@ -1300,7 +1384,7 @@ export default function ProjectDetail() {
                 <InfoItem key={index}>
                   <h4>{item.label}</h4>
                   <p>{item.value}</p>
-                </InfoItem>
+              </InfoItem>
               ))}
             </ProjectInfo>
           </GlassCard>
@@ -1357,40 +1441,57 @@ export default function ProjectDetail() {
                               </CarouselSlide>
                             ))}
                           </CarouselTrack>
-                          
-                          <ImageCounter>
-                            {state.currentIndex + 1} / {section.images.length}
-                          </ImageCounter>
                         </CarouselWrapper>
                         
                         {section.images.length > 1 && (
-                          <DotsContainer>
-                            {renderDots(
-                              section.images.length,
-                              state.currentIndex,
-                              (index) => carousel.goToSlide(sectionIndex, index)
-                            )}
-                          </DotsContainer>
+                          <>
+                            <CarouselNavButton 
+                              direction="left"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                carousel.handleArrowClick(sectionIndex, 'prev');
+                              }}
+                              aria-label="이전 이미지"
+                            />
+                            <CarouselNavButton 
+                              direction="right"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                carousel.handleArrowClick(sectionIndex, 'next');
+                              }}
+                              aria-label="다음 이미지"
+                            />
+                            <ImageCounter>
+                              {carousel.carouselStates[sectionIndex]?.currentIndex + 1 || 1} / {section.images.length}
+                            </ImageCounter>
+                            <DotsContainer>
+                              {renderDots(
+                                section.images.length,
+                                carousel.carouselStates[sectionIndex]?.currentIndex || 0,
+                                (dotIndex) => carousel.handleDotClick(sectionIndex, dotIndex)
+                              )}
+                            </DotsContainer>
+                          </>
                         )}
                       </CarouselContainer>
                     </ImageSection>
                     
                     <ContentSection>
-                      <DetailContent>
-                        <h3>{section.title}</h3>
-                        <p>{renderTextWithCitations(section.description, section.citations)}</p>
-                        <MaterialsList>
-                          <h4>주요 재료</h4>
-                          <ul>
+                <DetailContent>
+                  <h3>{section.title}</h3>
+                  <p>{renderTextWithCitations(section.description, section.citations)}</p>
+                  <MaterialsList>
+                    <h4>주요 재료</h4>
+                    <ul>
                             {section.materials.map((material, idx) => (
-                              <li key={idx}>{material}</li>
-                            ))}
-                          </ul>
-                        </MaterialsList>
-                        <DetailDescription>
-                          <p>{renderTextWithCitations(section.details, section.citations)}</p>
-                        </DetailDescription>
-                      </DetailContent>
+                        <li key={idx}>{material}</li>
+                      ))}
+                    </ul>
+                  </MaterialsList>
+                  <DetailDescription>
+                    <p>{renderTextWithCitations(section.details, section.citations)}</p>
+                  </DetailDescription>
+                </DetailContent>
                     </ContentSection>
                   </SectionLayout>
                 </GlassCard>

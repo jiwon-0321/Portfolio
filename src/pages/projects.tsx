@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 const projects = [
   {
     id: 1,
-    title: '모던 카페 인테리어',
-    category: '상업공간',
-    image: '/images/1.jpg',
-    description: '자연 친화적이고 모던한 감성의 카페 공간 디자인'
+    title: 'The Habi (자연 + 바이오필릭 컨셉 호텔)',
+    category: '숙박공간',
+    image: '/main images/main.png.png',
+    description: '자연과 호흡하는 도심 속 바이오필릭 디자인 호텔'
   },
   {
     id: 2,
