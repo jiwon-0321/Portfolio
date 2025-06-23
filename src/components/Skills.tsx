@@ -25,6 +25,13 @@ const designTools = [
     desc: '3D 모델링 및 렌더링이 가능합니다.',
     detailDesc: 'SketchUp을 능숙하게 다루어 복잡한 3D 모델링과 공간 시각화 작업을 수행합니다. 정밀한 모델링, 고급 컴포넌트 활용, 플러그인 사용, Layout을 통한 도면 작성, 엔스케이프 등 렌더링 프로그램 연동을 통해 포토리얼리스틱한 결과물을 제작할 수 있습니다.\n\n• 포트폴리오 제작\n\n• 개인 주거공간 리모델링 시뮬레이션 (가구 배치 및 동선 검토)'
   },
+  {
+    name: 'Khroma',
+    icon: 'khroma',
+    percent: 70,
+    desc: 'AI 색상 도구를 활용한 팔레트 생성',
+    detailDesc: 'Khroma를 사용하여 프로젝트 컨셉에 맞는 색상 조합을 탐색하고, 사용자 선호도를 학습한 AI를 통해 독창적이고 조화로운 색상 팔레트를 생성합니다.'
+  },
 ];
 
 const renderingTools = [
@@ -101,7 +108,7 @@ const generationSkills: Skill[] = [
 
 const searchSkills: Skill[] = [
   { 
-    name: 'Perplexity AI', 
+    name: 'Perplexity', 
     icon: 'perplexity',
     percent: 70, 
     desc: '대화형 AI 검색 엔진으로 리서치와 정보 탐색에 활용합니다.',
@@ -114,6 +121,13 @@ const searchSkills: Skill[] = [
     desc: 'AI 기반 검색 및 아이디어 생성',
     detailDesc: 'Genspark를 통해 아이디어를 구체화하고 관련 정보를 종합하여 새로운 프로젝트 계획을 수립합니다. 리서치 초기 단계에서 인사이트를 얻는 데 효과적입니다.'
   },
+  {
+    name: 'Scispace',
+    icon: 'scispace',
+    percent: 70,
+    desc: 'AI 기반 연구 및 논문 분석 보조',
+    detailDesc: 'Scispace를 사용하여 방대한 양의 논문을 빠르게 분석하고, 주요 내용을 요약하며, 관련 연구를 탐색하여 연구 효율성을 극대화합니다.'
+  }
 ];
 
 const codeAssistantSkills: Skill[] = [
@@ -134,6 +148,16 @@ const presentationSkills: Skill[] = [
     desc: 'AI 기반 프레젠테이션 제작 도구입니다.',
     detailDesc: '클라이언트 제안서, 프로젝트 발표 자료, 포트폴리오 프레젠테이션을 AI의 도움으로 빠르고 전문적으로 제작할 수 있습니다. 자동 레이아웃 생성과 디자인 제안 기능을 통해 시각적으로 완성도 높은 자료를 만들 수 있습니다.'
   },
+];
+
+const aiMarketingSkills: Skill[] = [
+  {
+    name: 'Lily AI',
+    icon: 'lilys',
+    percent: 65,
+    desc: '이커머스 상품 추천 및 검색 최적화',
+    detailDesc: 'Lily AI를 활용하여 고객의 언어를 이해하고, 제품 속성을 자동으로 태깅하여 검색 정확도와 추천 개인화를 향상시킵니다.'
+  }
 ];
 
 const MainContainer = styled.div`
@@ -271,6 +295,12 @@ const AIIcon = styled.div<{ iconType: string }>`
         return 'linear-gradient(135deg, #FF6B6B 0%, #D43D3D 100%)';
       case 'genspark':
         return 'linear-gradient(135deg, #6BFFB8 0%, #3DD48D 100%)';
+      case 'khroma':
+        return 'linear-gradient(135deg, #F766AD 0%, #F73A8A 100%)';
+      case 'lilys':
+        return 'linear-gradient(135deg, #A076F9 0%, #8142F6 100%)';
+      case 'scispace':
+        return 'linear-gradient(135deg, #4285F4 0%, #1a73e8 100%)';
       default:
         return 'linear-gradient(135deg, #7B9A6D 0%, #2C5530 100%)';
     }
@@ -318,6 +348,12 @@ const getAIIconContent = (iconType: string) => {
       return '🎵';
     case 'genspark':
       return '💡';
+    case 'khroma':
+      return '🎨';
+    case 'lilys':
+      return '🛍️';
+    case 'scispace':
+      return '🔬';
     default:
       return '🔮';
   }
@@ -467,9 +503,10 @@ export default function Skills() {
       {renderSkillSection(designTools, 'Design Tools', expandedCards, toggleExpand)}
       {renderSkillSection(renderingTools, 'Rendering & Image Correction', expandedCards, toggleExpand)}
       {renderSkillSection(llmSkills, 'LLM', expandedCards, toggleExpand)}
-      {renderSkillSection(generationSkills, 'AI Content Generation', expandedCards, toggleExpand)}
-      {renderSkillSection(searchSkills, 'AI Search & Multitool', expandedCards, toggleExpand)}
-      {renderSkillSection(codeAssistantSkills, 'AI Development Tools', expandedCards, toggleExpand)}
+      {renderSkillSection(generationSkills, 'Content Generation AI', expandedCards, toggleExpand)}
+      {renderSkillSection(searchSkills, 'Search & Multitool AI', expandedCards, toggleExpand)}
+      {renderSkillSection(codeAssistantSkills, 'Development Tools AI', expandedCards, toggleExpand)}
+      {renderSkillSection(aiMarketingSkills, 'Summarization AI', expandedCards, toggleExpand)}
     </MainContainer>
   );
 } 
