@@ -165,6 +165,14 @@ const ExperienceBadge = styled.div`
   letter-spacing: 0.5px;
 `;
 
+const BadgeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+`;
+
 const WorkConnection = styled.div`
   background: rgba(196, 215, 155, 0.2);
   padding: 1rem;
@@ -371,9 +379,20 @@ export default function Hobbies() {
                   <HobbyIcon>{hobby.icon}</HobbyIcon>
                   <HobbyTitle>{hobby.title}</HobbyTitle>
                   <HobbyDescription>{hobby.description}</HobbyDescription>
-                  {hobby.experience && (
-                    <ExperienceBadge>{hobby.experience}</ExperienceBadge>
-                  )}
+                  <BadgeContainer>
+                    {hobby.experience && (
+                      <ExperienceBadge>{hobby.experience}</ExperienceBadge>
+                    )}
+                    {hobby.title === '독서' && (
+                      <ExperienceBadge>월평균 4권</ExperienceBadge>
+                    )}
+                    {hobby.title === '골프' && (
+                      <ExperienceBadge>Life best: 85타</ExperienceBadge>
+                    )}
+                    {hobby.title === '영어회화' && (
+                      <ExperienceBadge>소통 가능</ExperienceBadge>
+                    )}
+                  </BadgeContainer>
                   <WorkConnection>
                     <h4>{hobby.workConnection.title}</h4>
                     <p>{hobby.workConnection.description}</p>

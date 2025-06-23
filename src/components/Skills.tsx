@@ -90,6 +90,13 @@ const generationSkills: Skill[] = [
     desc: 'AI 기반 비디오 편집 및 생성 도구입니다.',
     detailDesc: '프로젝트 프레젠테이션용 동영상 제작, 공간 워크스루 영상 생성, 타임랩스 효과 등 다양한 비디오 콘텐츠 제작에 활용합니다. AI를 활용한 자동 편집 기능으로 효율적인 영상 제작이 가능합니다.'
   },
+  { 
+    name: 'Suno', 
+    icon: 'suno',
+    percent: 70, 
+    desc: 'AI를 활용한 음악 생성 및 작곡',
+    detailDesc: 'Suno를 이용해 다양한 장르와 스타일의 음악을 생성합니다. 프로젝트 배경음악, 효과음 제작 등에 활용하여 콘텐츠의 완성도를 높입니다.'
+  },
 ];
 
 const searchSkills: Skill[] = [
@@ -99,6 +106,23 @@ const searchSkills: Skill[] = [
     percent: 70, 
     desc: '대화형 AI 검색 엔진으로 리서치와 정보 탐색에 활용합니다.',
     detailDesc: '정확한 출처를 기반으로 정보를 요약하고 질문에 답변해주어, 프로젝트 관련 리서치, 최신 트렌드 분석, 기술 자료 탐색 시간을 단축합니다. 신뢰도 높은 정보를 바탕으로 기획의 깊이를 더합니다.'
+  },
+  { 
+    name: 'Genspark', 
+    icon: 'genspark',
+    percent: 70, 
+    desc: 'AI 기반 검색 및 아이디어 생성',
+    detailDesc: 'Genspark를 통해 아이디어를 구체화하고 관련 정보를 종합하여 새로운 프로젝트 계획을 수립합니다. 리서치 초기 단계에서 인사이트를 얻는 데 효과적입니다.'
+  },
+];
+
+const codeAssistantSkills: Skill[] = [
+  { 
+    name: 'Cursor', 
+    icon: 'cursor',
+    percent: 80, 
+    desc: 'AI 코드 에디터를 활용한 개발 생산성 향상',
+    detailDesc: 'AI 페어 프로그래밍을 통해 코드 작성, 리팩토링, 디버깅 작업을 가속화하고, 복잡한 로직을 빠르게 구현하여 코드 품질을 높입니다.'
   },
 ];
 
@@ -241,6 +265,12 @@ const AIIcon = styled.div<{ iconType: string }>`
         return 'linear-gradient(135deg, #00BCD4 0%, #0097A7 100%)';
       case 'gamma':
         return 'linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%)';
+      case 'cursor':
+        return 'linear-gradient(135deg, #17B2F1 0%, #1788F1 100%)';
+      case 'suno':
+        return 'linear-gradient(135deg, #FF6B6B 0%, #D43D3D 100%)';
+      case 'genspark':
+        return 'linear-gradient(135deg, #6BFFB8 0%, #3DD48D 100%)';
       default:
         return 'linear-gradient(135deg, #7B9A6D 0%, #2C5530 100%)';
     }
@@ -282,6 +312,12 @@ const getAIIconContent = (iconType: string) => {
       return '🎬';
     case 'gamma':
       return '📊';
+    case 'cursor':
+      return '🖱️';
+    case 'suno':
+      return '🎵';
+    case 'genspark':
+      return '💡';
     default:
       return '🔮';
   }
@@ -377,7 +413,7 @@ const renderSkillSection = (skills: Skill[], sectionTitle: string, expandedCards
           className="slide-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
-          {sectionTitle === 'AI 기술' ? (
+          {sectionTitle.startsWith('AI') || sectionTitle === 'LLM' ? (
             <AIIcon iconType={skill.icon}>
               {getAIIconContent(skill.icon)}
             </AIIcon>
@@ -427,13 +463,13 @@ export default function Skills() {
 
   return (
     <MainContainer>
-      <MainTitle>나의 기술</MainTitle>
+      <MainTitle>My Skills</MainTitle>
       {renderSkillSection(designTools, 'Design Tools', expandedCards, toggleExpand)}
       {renderSkillSection(renderingTools, 'Rendering & Image Correction', expandedCards, toggleExpand)}
       {renderSkillSection(llmSkills, 'LLM', expandedCards, toggleExpand)}
-      {renderSkillSection(generationSkills, 'Image & Video Generation', expandedCards, toggleExpand)}
-      {renderSkillSection(searchSkills, 'AI Search', expandedCards, toggleExpand)}
-      {renderSkillSection(presentationSkills, 'AI Presentation', expandedCards, toggleExpand)}
+      {renderSkillSection(generationSkills, 'AI Content Generation', expandedCards, toggleExpand)}
+      {renderSkillSection(searchSkills, 'AI Search & Multitool', expandedCards, toggleExpand)}
+      {renderSkillSection(codeAssistantSkills, 'AI Development Tools', expandedCards, toggleExpand)}
     </MainContainer>
   );
 } 

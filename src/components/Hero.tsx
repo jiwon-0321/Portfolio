@@ -34,7 +34,7 @@ const HeroContent = styled.div`
   z-index: 2;
   
   h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.8rem;
     color: #1A202C;

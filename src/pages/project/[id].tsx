@@ -89,14 +89,6 @@ const projectData: Record<string, ProjectData> = {
     },
     sections: [
       {
-        title: '로비 및 라운지',
-        images: ['/main images/main.png.png'],
-        description: '자연 채광을 극대화하고, 살아있는 식물 벽(Living Wall)과 자연 소재를 사용하여 호텔에 들어서는 순간부터 자연의 품에 안긴 듯한 느낌을 줍니다.',
-        materials: ['천연 대리석', '살아있는 식물 벽', '원목 루버'],
-        details: '개방적인 공간 구성과 함께 곳곳에 프라이빗한 휴식 공간을 마련하여 투숙객들이 편안하게 머물 수 있도록 설계했습니다. 천장의 유기적인 조명은 자연의 빛을 형상화했습니다.',
-        citations: [2, 1]
-      },
-      {
         title: '공간 계획 및 구성',
         images: ['/main images/평면도 layout.PNG', '/main images/iso.jpg'],
         description: '개인화된 휴식 경험을 제공하기 위해 각 객실의 공간을 효율적으로 구성하고, 자연 채광을 고려하여 설계했습니다.',
@@ -106,7 +98,7 @@ const projectData: Record<string, ProjectData> = {
       },
       {
         title: '객실 및 디테일',
-        images: ['/main images/1-1.jpg', '/main images/1-2.png', '/main images/7-1.jpg', '/main images/7-2.png'],
+        images: ['/main images/main.png.png', '/main images/1-1.jpg', '/main images/1-2.png', '/main images/7-1.jpg', '/main images/7-2.png'],
         description: '자연 소재를 적극적으로 활용하고, 창밖의 풍경을 내부로 끌어들여 투숙객에게 깊은 휴식과 영감을 주는 공간을 디자인했습니다.',
         materials: ['원목 마루', '테라조 타일', '맞춤 제작 가구'],
         details: '객실은 휴식의 본질에 집중할 수 있도록 미니멀하게 구성되었으며, 곳곳에 배치된 예술 작품과 디자인 조명이 공간에 깊이를 더합니다.',
@@ -297,6 +289,54 @@ const SectionTitle = styled.h2`
     height: 3px;
     background: ${GRADIENTS.primary};
     border-radius: 2px;
+  }
+`;
+
+const OverviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+`;
+
+const DownloadButton = styled.button`
+  background: ${GRADIENTS.primary};
+  color: ${COLORS.white};
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: ${TRANSITION};
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(196, 215, 155, 0.4);
+  }
+  
+  &:before {
+    content: '📄';
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -1341,6 +1381,15 @@ export default function ProjectDetail() {
     { label: '클라이언트', value: project?.client }
   ], [project]);
 
+  const handleDownloadProposal = () => {
+    const link = document.createElement('a');
+    link.href = '/proposal/biophilic_hotel_proposal_20250623152513.pdf';
+    link.setAttribute('download', 'The_Habi_Hotel_Proposal.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (!project) {
     return (
       <>
@@ -1366,7 +1415,12 @@ export default function ProjectDetail() {
           </BackButton>
           
           <GlassCard>
-            <SectionTitle>프로젝트 개요</SectionTitle>
+            <OverviewHeader>
+              <SectionTitle style={{ marginBottom: 0, textAlign: 'left' }}>프로젝트 개요</SectionTitle>
+              <DownloadButton onClick={handleDownloadProposal}>
+                공간 기획서 다운로드
+              </DownloadButton>
+            </OverviewHeader>
             <OverviewGrid>
               {overviewCards.map((card, index) => (
                 <OverviewCard key={index}>
