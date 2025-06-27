@@ -106,7 +106,7 @@ const llmSkills: Skill[] = [
   },
   { 
     name: 'Claude AI', 
-    icon: 'claude',
+    icon: '/icons/claude.png',
     percent: 90, 
     desc: '대용량 문서 분석, 복잡한 추론, 코드 리뷰, 창작 작업 등에 특화된 AI 어시스턴트로, 긴 맥락 이해와 안전성에 중점을 두고 설계되었습니다.',
     detailDesc: '',
