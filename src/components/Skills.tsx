@@ -400,7 +400,7 @@ const AIIcon = styled.div<{ iconType: string }>`
   overflow: hidden;
   
   background: ${({ iconType }) =>
-    iconType === 'chatgpt' || iconType === '/icons/chatgpt.svg' || iconType === 'claude' || iconType === '/icons/gemini.png' || iconType === '/icons/Midjourney.png' || iconType === '/icons/suno.webp' || iconType === '/icons/Runwayml.png' || iconType === '/icons/perplexity.png' || iconType === '/icons/genspark.jpg' || iconType === '/icons/scispace.jpeg' || iconType === '/icons/cursor.png' || iconType === '/icons/lilys.jpeg' || iconType === '/icons/sketchup.png'
+    iconType === 'chatgpt' || iconType === '/icons/chatgpt.svg' || iconType === 'claude' || iconType === '/icons/gemini.png' || iconType === '/icons/Midjourney.png' || iconType === '/icons/suno.webp' || iconType === '/icons/Runwayml.png' || iconType === '/icons/perplexity.png' || iconType === '/icons/genspark.jpg' || iconType === '/icons/scispace.jpeg' || iconType === '/icons/cursor.png' || iconType === '/icons/lilys.jpeg' || iconType === '/icons/sketchup.png' || iconType === '/icons/autocad.png' || iconType === '/icons/khroma.png' || iconType === '/icons/photoshop.png' || iconType === '/icons/V-ray.jpg' || iconType === '/icons/enscape.png'
       ? '#fff'
       : (() => {
           switch (iconType) {
@@ -796,6 +796,54 @@ const renderSkillSection = (skills: Skill[], sectionTitle: string, expandedCards
                 />
               ) : (
                 getAIIconContent(skill.icon)
+              )}
+            </AIIcon>
+          ) : sectionTitle === 'Design Tools' ? (
+            <AIIcon iconType={skill.icon}>
+              {skill.icon === '/icons/autocad.png' ? (
+                <img
+                  src="/icons/autocad.png"
+                  alt="AutoCAD"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : skill.icon === '/icons/sketchup.png' ? (
+                <img
+                  src="/icons/sketchup.png"
+                  alt="SketchUp"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : skill.icon === '/icons/khroma.png' ? (
+                <img
+                  src="/icons/khroma.png"
+                  alt="Khroma"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : (
+                <SkillIcon src={skill.icon} alt={skill.name} />
+              )}
+            </AIIcon>
+          ) : sectionTitle === 'Rendering & Image Correction' ? (
+            <AIIcon iconType={skill.icon}>
+              {skill.icon === '/icons/photoshop.png' ? (
+                <img
+                  src="/icons/photoshop.png"
+                  alt="Photoshop"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : skill.icon === '/icons/V-ray.jpg' ? (
+                <img
+                  src="/icons/V-ray.jpg"
+                  alt="V-Ray"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : skill.icon === '/icons/enscape.png' ? (
+                <img
+                  src="/icons/enscape.png"
+                  alt="Enscape"
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                />
+              ) : (
+                <SkillIcon src={skill.icon} alt={skill.name} />
               )}
             </AIIcon>
           ) : (
