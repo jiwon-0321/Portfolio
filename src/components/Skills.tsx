@@ -828,7 +828,7 @@ const renderSkillSection = (skills: Skill[], sectionTitle: string, expandedCards
                 <img
                   src="/icons/photoshop.png"
                   alt="Photoshop"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
+                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '12px' }}
                 />
               ) : skill.icon === '/icons/V-ray.jpg' ? (
                 <img
