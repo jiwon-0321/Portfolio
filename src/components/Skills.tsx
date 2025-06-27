@@ -26,7 +26,7 @@ const designTools = [
   },
   { 
     name: 'SketchUp', 
-    icon: '/icons/sketchup.jpg', 
+    icon: '/icons/sketchup.png', 
     percent: 90, 
     desc: '직관적인 3D 모델링으로 설계 아이디어를 빠르게 구현하고, 다양한 플러그인을 활용한 전문적인 모델링 작업을 수행합니다.',
     detailDesc: '• 포트폴리오 제작\n\n• 개인 주거공간을 스케치업으로 설계 모델링한 후 시공업체와 협업하여 공간 개선 작업을 진행'
