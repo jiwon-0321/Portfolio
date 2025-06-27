@@ -26,7 +26,7 @@ const designTools = [
   },
   { 
     name: 'SketchUp', 
-    icon: '/icons/sketchup.png', 
+    icon: '/icons/sketchup.jpg', 
     percent: 90, 
     desc: '직관적인 3D 모델링으로 설계 아이디어를 빠르게 구현하고, 다양한 플러그인을 활용한 전문적인 모델링 작업을 수행합니다.',
     detailDesc: '• 포트폴리오 제작\n\n• 개인 주거공간을 스케치업으로 설계 모델링한 후 시공업체와 협업하여 공간 개선 작업을 진행'
@@ -400,7 +400,7 @@ const AIIcon = styled.div<{ iconType: string }>`
   overflow: hidden;
   
   background: ${({ iconType }) =>
-    iconType === 'chatgpt' || iconType === '/icons/chatgpt.svg' || iconType === 'claude' || iconType === '/icons/gemini.png' || iconType === '/icons/Midjourney.png' || iconType === '/icons/suno.webp' || iconType === '/icons/Runwayml.png' || iconType === '/icons/perplexity.png' || iconType === '/icons/genspark.jpg' || iconType === '/icons/scispace.jpeg' || iconType === '/icons/cursor.png' || iconType === '/icons/lilys.jpeg' || iconType === '/icons/sketchup.png' || iconType === '/icons/autocad.png' || iconType === '/icons/khroma.png' || iconType === '/icons/photoshop.png' || iconType === '/icons/V-ray.jpg' || iconType === '/icons/enscape.png'
+    iconType.startsWith('/icons/')
       ? '#fff'
       : (() => {
           switch (iconType) {
@@ -732,123 +732,23 @@ const renderSkillSection = (skills: Skill[], sectionTitle: string, expandedCards
           className="slide-up"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
-          {sectionTitle.startsWith('AI') || sectionTitle === 'LLM' ? (
-            <AIIcon iconType={skill.icon}>
-              {skill.icon === 'chatgpt' || skill.icon === '/icons/chatgpt.svg' ? (
-                <img
-                  src="/icons/chatgpt.svg"
-                  alt="ChatGPT"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === 'claude' ? (
-                <img
-                  src="/icons/claude.png"
-                  alt="Claude AI"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/gemini.png' ? (
-                <img
-                  src="/icons/gemini.png"
-                  alt="Gemini"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/Midjourney.png' ? (
-                <img
-                  src="/icons/Midjourney.png"
-                  alt="Midjourney"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/suno.webp' ? (
-                <img
-                  src="/icons/suno.webp"
-                  alt="Suno"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/Runwayml.png' ? (
-                <img
-                  src="/icons/Runwayml.png"
-                  alt="Runway ML"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/genspark.jpg' ? (
-                <img
-                  src="/icons/genspark.jpg"
-                  alt="Genspark"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/scispace.jpeg' ? (
-                <img
-                  src="/icons/scispace.jpeg"
-                  alt="Scispace"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/cursor.png' ? (
-                <img
-                  src="/icons/cursor.png"
-                  alt="Cursor"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/lilys.jpeg' ? (
-                <img
-                  src="/icons/lilys.jpeg"
-                  alt="LilysAI"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : (
-                getAIIconContent(skill.icon)
-              )}
-            </AIIcon>
-          ) : sectionTitle === 'Design Tools' ? (
-            <AIIcon iconType={skill.icon}>
-              {skill.icon === '/icons/autocad.png' ? (
-                <img
-                  src="/icons/autocad.png"
-                  alt="AutoCAD"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/sketchup.png' ? (
-                <img
-                  src="/icons/sketchup.png"
-                  alt="SketchUp"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/khroma.png' ? (
-                <img
-                  src="/icons/khroma.png"
-                  alt="Khroma"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : (
-                <SkillIcon src={skill.icon} alt={skill.name} />
-              )}
-            </AIIcon>
-          ) : sectionTitle === 'Rendering & Image Correction' ? (
-            <AIIcon iconType={skill.icon}>
-              {skill.icon === '/icons/photoshop.png' ? (
-                <img
-                  src="/icons/photoshop.png"
-                  alt="Photoshop"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '12px' }}
-                />
-              ) : skill.icon === '/icons/V-ray.jpg' ? (
-                <img
-                  src="/icons/V-ray.jpg"
-                  alt="V-Ray"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : skill.icon === '/icons/enscape.png' ? (
-                <img
-                  src="/icons/enscape.png"
-                  alt="Enscape"
-                  style={{ width: 48, height: 48, display: 'block', background: '#fff', borderRadius: '50%' }}
-                />
-              ) : (
-                <SkillIcon src={skill.icon} alt={skill.name} />
-              )}
-            </AIIcon>
-          ) : (
-            <SkillIcon src={skill.icon} alt={skill.name} />
-          )}
+          <AIIcon iconType={skill.icon}>
+            {skill.icon.startsWith('/icons/') ? (
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  display: 'block',
+                  background: '#fff',
+                  borderRadius: skill.name === 'Photoshop' ? '12px' : '50%',
+                }}
+              />
+            ) : (
+              getAIIconContent(skill.icon)
+            )}
+          </AIIcon>
           <SkillName>{skill.name}</SkillName>
           <SkillBarContainer>
             <SkillLevel percent={skill.percent} />
