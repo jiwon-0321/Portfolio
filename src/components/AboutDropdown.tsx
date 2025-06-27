@@ -10,7 +10,7 @@ const Dropdown = styled.div`
 const DropdownButton = styled.button`
   background: transparent;
   border: none;
-  color: #2D3748;
+  color: #2C3E50;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -24,7 +24,7 @@ const DropdownButton = styled.button`
   gap: 0.5rem;
   
   &:hover {
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(245, 168, 159, 0.1);
     transform: translateY(-1px);
   }
   
@@ -36,7 +36,7 @@ const DropdownButton = styled.button`
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
@@ -63,7 +63,7 @@ const ArrowIcon = styled.span<{ open: boolean }>`
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 5px solid #2D3748;
+  border-top: 5px solid #2C3E50;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: ${({ open }) => open ? 'rotate(180deg) scale(1.1)' : 'rotate(0deg) scale(1)'};
 `;
@@ -73,11 +73,11 @@ const DropdownContent = styled.div<{ open: boolean }>`
   top: calc(100% + 8px);
   left: 0;
   min-width: 200px;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(250, 249, 246, 0.98);
   backdrop-filter: blur(20px);
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
-  border: 1px solid rgba(160, 174, 192, 0.3);
+  box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
+  border: 1px solid rgba(250, 249, 246, 0.3);
   z-index: 1001;
   overflow: hidden;
   opacity: ${({ open }) => open ? '1' : '0'};
@@ -100,12 +100,12 @@ const DropdownContent = styled.div<{ open: boolean }>`
 `;
 
 const DropdownItem = styled.div`
-  color: #2D3748;
+  color: #2C3E50;
   padding: 1rem 0;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-bottom: 1px solid rgba(160, 174, 192, 0.2);
+  border-bottom: 1px solid rgba(250, 249, 246, 0.2);
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -123,7 +123,7 @@ const DropdownItem = styled.div`
     left: 0;
     width: 0;
     height: 100%;
-    background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }

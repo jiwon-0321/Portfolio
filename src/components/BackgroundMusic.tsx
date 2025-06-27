@@ -215,7 +215,7 @@ export default function BackgroundMusic() {
         loop
         preload="auto"
       >
-        <source src="/music/Fresh as Morning Dew.mp3" type="audio/mpeg" />
+        <source src="/music/Bright Horizon.mp3" type="audio/mpeg" />
         브라우저가 오디오를 지원하지 않습니다.
       </audio>
       
@@ -225,7 +225,7 @@ export default function BackgroundMusic() {
         </PlayButton>
         
         <MusicInfo>
-          <SongTitle>Fresh as Morning Dew</SongTitle>
+          <SongTitle>Bright Horizon</SongTitle>
           <ProgressBar>
             <Progress progress={progress} />
           </ProgressBar>

@@ -12,14 +12,14 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(160, 174, 192, 0.3);
+  border-bottom: 1px solid rgba(250, 249, 246, 0.3);
   padding: 1rem 2rem;
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(250, 249, 246, 0.35);
   }
   
   @media (max-width: 768px) {
@@ -34,7 +34,7 @@ const Nav = styled.nav`
 const Logo = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,7 +60,7 @@ const NavLinks = styled.div`
   gap: 2rem;
   
   a {
-    color: #2D3748;
+    color: #2C3E50;
     font-weight: 600;
     position: relative;
     
@@ -71,7 +71,7 @@ const NavLinks = styled.div`
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
       transition: width 0.3s ease;
     }
     
@@ -98,18 +98,18 @@ const NavLinks = styled.div`
 `;
 
 const ContactButton = styled.button`
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   color: white;
   border: none;
   border-radius: 25px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   font-size: 0.9rem;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(245, 168, 159, 0.3);
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 8px 25px rgba(245, 168, 159, 0.5);
   }
   
   @media (max-width: 768px) {

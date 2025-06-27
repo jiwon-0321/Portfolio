@@ -11,12 +11,12 @@ const Container = styled.div`
 const Content = styled.div`
   max-width: 1000px;
   margin: 8rem auto 4rem auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 30px;
-  border: 1px solid rgba(196, 215, 155, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   padding: 3rem;
-  box-shadow: 0 20px 60px rgba(74, 20, 140, 0.15);
+  box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
   position: relative;
   overflow: hidden;
   
@@ -27,7 +27,7 @@ const Content = styled.div`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(196, 215, 155, 0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(245, 168, 159, 0.1), transparent);
     animation: shimmer 3s infinite;
   }
   
@@ -46,14 +46,14 @@ const Header = styled.div`
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #4A148C;
+    color: #2C3E50;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
   }
   
   p {
     font-size: 1.1rem;
-    color: #4A148C;
+    color: #2C3E50;
     opacity: 0.8;
   }
 `;
@@ -71,10 +71,10 @@ const CertificatesGrid = styled.div`
 `;
 
 const CertificateCard = styled.div`
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  border: 1px solid rgba(160, 174, 192, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
@@ -93,14 +93,14 @@ const CertificateCard = styled.div`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(245, 168, 159, 0.1), transparent);
     transition: left 0.5s;
   }
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
-    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 15px 35px rgba(245, 168, 159, 0.15);
+    border-color: rgba(245, 168, 159, 0.4);
   }
   
   &:hover:before {
@@ -111,7 +111,7 @@ const CertificateCard = styled.div`
 const CertificateIcon = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -119,27 +119,27 @@ const CertificateIcon = styled.div`
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: white;
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(245, 168, 159, 0.3);
 `;
 
 const CertificateName = styled.h3`
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1A202C;
+  color: #2C3E50;
   margin-bottom: 0.5rem;
 `;
 
 const CertificateOrg = styled.div`
-  color: #4A5568;
-  opacity: 0.9;
+  color: #2C3E50;
+  opacity: 0.8;
   font-weight: 500;
   margin-bottom: 1rem;
 `;
 
 const CertificateDate = styled.div`
   display: inline-block;
-  background: rgba(102, 126, 234, 0.1);
-  color: #2D3748;
+  background: rgba(245, 168, 159, 0.1);
+  color: #2C3E50;
   padding: 0.3rem 0.8rem;
   border-radius: 12px;
   font-size: 0.9rem;
@@ -148,20 +148,20 @@ const CertificateDate = styled.div`
 `;
 
 const CertificateDescription = styled.p`
-  color: #4A148C;
+  color: #2C3E50;
   line-height: 1.5;
   opacity: 0.9;
   margin-bottom: 1rem;
 `;
 
 const CertificateDetails = styled.div`
-  background: rgba(196, 215, 155, 0.2);
+  background: rgba(245, 168, 159, 0.2);
   padding: 1rem;
   border-radius: 10px;
-  border-left: 3px solid #C4D79B;
+  border-left: 3px solid #F5A89F;
   
   h4 {
-    color: #4A148C;
+    color: #2C3E50;
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -172,14 +172,14 @@ const CertificateDetails = styled.div`
     padding: 0;
     
     li {
-      color: #4A148C;
+      color: #2C3E50;
       font-size: 0.8rem;
       margin-bottom: 0.3rem;
       opacity: 0.9;
       
       &:before {
         content: '•';
-        color: #C4D79B;
+        color: #F5A89F;
         font-weight: bold;
         margin-right: 0.5rem;
       }
@@ -190,7 +190,7 @@ const CertificateDetails = styled.div`
 const BackButton = styled(Link)`
   display: inline-flex;
   align-items: center;
-  color: #2D3748;
+  color: #2C3E50;
   font-weight: 500;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
@@ -199,7 +199,7 @@ const BackButton = styled(Link)`
   
   &:hover {
     transform: translateX(-5px);
-    color: #667EEA;
+    color: #F5A89F;
   }
   
   &:before {

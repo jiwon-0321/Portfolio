@@ -23,10 +23,10 @@ const ContactSection = styled.section`
 
 const Title = styled.h1`
   text-align: center;
-  color: #1A202C;
+  color: #2C3E50;
   font-size: 3rem;
   margin-bottom: 3rem;
-  text-shadow: 0 2px 10px rgba(26, 32, 44, 0.2);
+  text-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -52,18 +52,18 @@ const ContactGrid = styled.div`
 `;
 
 const ContactCard = styled.div`
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 20px;
-  border: 1px solid rgba(160, 174, 192, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
-    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 20px 40px rgba(245, 168, 159, 0.15);
+    border-color: rgba(245, 168, 159, 0.4);
   }
   
   @media (max-width: 768px) {
@@ -86,9 +86,9 @@ const ContactIcon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(245, 168, 159, 0.3);
   
   @media (max-width: 768px) {
     width: 50px;
@@ -104,7 +104,7 @@ const ContactIcon = styled.div`
 `;
 
 const ContactTitle = styled.h3`
-  color: #2D3748;
+  color: #2C3E50;
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   
@@ -118,7 +118,7 @@ const ContactTitle = styled.h3`
 `;
 
 const ContactInfo = styled.p`
-  color: #4A5568;
+  color: #2C3E50;
   font-size: 1.1rem;
   font-weight: 500;
   
@@ -133,14 +133,14 @@ const ContactInfo = styled.p`
 
 const NotionLink = styled.a`
   display: block;
-  color: #4A5568;
+  color: #2C3E50;
   font-size: 1.1rem;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
   
   &:hover {
-    color: #667EEA;
+    color: #F5A89F;
     transform: scale(1.05);
   }
   
@@ -190,7 +190,7 @@ export default function Contact() {
                 </svg>
               </ContactIcon>
               <ContactTitle>Notion</ContactTitle>
-              <NotionLink href="https://www.notion.so/1ac36ffb21994669b0e7b1581898ca9b" target="_blank" rel="noopener noreferrer">
+              <NotionLink href="https://holy-minibus-4ea.notion.site/All-1df3dd01256981e8ac19cc2cf2d92de4?source=copy_link" target="_blank" rel="noopener noreferrer">
                 방문하기
               </NotionLink>
             </ContactCard>

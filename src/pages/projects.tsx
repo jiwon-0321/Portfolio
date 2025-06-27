@@ -40,14 +40,14 @@ const Header = styled.div`
   h1 {
     font-size: 3rem;
     font-weight: 700;
-    color: #4A148C;
+    color: #2C3E50;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
   }
   
   p {
     font-size: 1.2rem;
-    color: #4A148C;
+    color: #2C3E50;
     opacity: 0.8;
   }
   
@@ -97,10 +97,10 @@ const ProjectsGrid = styled.div`
 `;
 
 const ProjectCard = styled.div`
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 20px;
-  border: 1px solid rgba(196, 215, 155, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -108,8 +108,8 @@ const ProjectCard = styled.div`
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(74, 20, 140, 0.2);
-    border-color: rgba(196, 215, 155, 0.5);
+    box-shadow: 0 20px 40px rgba(245, 168, 159, 0.2);
+    border-color: rgba(245, 168, 159, 0.5);
   }
   
   &:before {
@@ -119,7 +119,7 @@ const ProjectCard = styled.div`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(196, 215, 155, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(245, 168, 159, 0.1), transparent);
     transition: left 0.5s;
     z-index: 1;
   }
@@ -156,7 +156,7 @@ const ProjectContent = styled.div`
 
 const ProjectCategory = styled.div`
   display: inline-block;
-  background: linear-gradient(135deg, #C4D79B 0%, #4A148C 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
@@ -168,12 +168,12 @@ const ProjectCategory = styled.div`
 const ProjectTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 600;
-  color: #4A148C;
+  color: #2C3E50;
   margin-bottom: 0.5rem;
 `;
 
 const ProjectDescription = styled.p`
-  color: #4A148C;
+  color: #2C3E50;
   opacity: 0.8;
   line-height: 1.5;
   margin-bottom: 1rem;

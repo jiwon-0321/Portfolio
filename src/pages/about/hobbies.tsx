@@ -11,12 +11,12 @@ const Container = styled.div`
 const Content = styled.div`
   max-width: 1200px;
   margin: 8rem auto 4rem auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 30px;
-  border: 1px solid rgba(196, 215, 155, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   padding: 3rem;
-  box-shadow: 0 20px 60px rgba(74, 20, 140, 0.15);
+  box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
   position: relative;
   overflow: hidden;
   
@@ -27,7 +27,7 @@ const Content = styled.div`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(196, 215, 155, 0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(245, 168, 159, 0.1), transparent);
     animation: shimmer 3s infinite;
   }
   
@@ -46,14 +46,14 @@ const Header = styled.div`
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #4A148C;
+    color: #2C3E50;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
   }
   
   p {
     font-size: 1.1rem;
-    color: #4A148C;
+    color: #2C3E50;
     opacity: 0.8;
   }
 `;
@@ -66,7 +66,7 @@ const Section = styled.section`
   h2 {
     font-size: 1.8rem;
     font-weight: 600;
-    color: #4A148C;
+    color: #2C3E50;
     margin-bottom: 2rem;
     text-align: center;
     position: relative;
@@ -79,7 +79,7 @@ const Section = styled.section`
       transform: translateX(-50%);
       width: 60px;
       height: 3px;
-      background: linear-gradient(135deg, #C4D79B 0%, #4A148C 100%);
+      background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
       border-radius: 2px;
     }
   }
@@ -97,10 +97,10 @@ const HobbiesGrid = styled.div`
 `;
 
 const HobbyCard = styled.div`
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(250, 249, 246, 0.2);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  border: 1px solid rgba(196, 215, 155, 0.4);
+  border: 1px solid rgba(245, 168, 159, 0.4);
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
@@ -113,14 +113,14 @@ const HobbyCard = styled.div`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(196, 215, 155, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(245, 168, 159, 0.2), transparent);
     transition: left 0.5s;
   }
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(74, 20, 140, 0.2);
-    border-color: rgba(196, 215, 155, 0.6);
+    box-shadow: 0 15px 35px rgba(245, 168, 159, 0.2);
+    border-color: rgba(245, 168, 159, 0.6);
   }
   
   &:hover:before {
@@ -132,19 +132,19 @@ const HobbyIcon = styled.div`
   font-size: 3rem;
   text-align: center;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 8px rgba(74, 20, 140, 0.3));
+  filter: drop-shadow(0 4px 8px rgba(245, 168, 159, 0.3));
 `;
 
 const HobbyTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 600;
-  color: #4A148C;
+  color: #2C3E50;
   text-align: center;
   margin-bottom: 1rem;
 `;
 
 const HobbyDescription = styled.p`
-  color: #4A148C;
+  color: #2C3E50;
   line-height: 1.6;
   text-align: center;
   opacity: 0.9;
@@ -153,7 +153,7 @@ const HobbyDescription = styled.p`
 
 const ExperienceBadge = styled.div`
   display: inline-block;
-  background: linear-gradient(135deg, #C4D79B 0%, #4A148C 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
@@ -161,7 +161,7 @@ const ExperienceBadge = styled.div`
   font-weight: 600;
   margin-bottom: 0.8rem;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(74, 20, 140, 0.3);
+  box-shadow: 0 2px 8px rgba(245, 168, 159, 0.3);
   letter-spacing: 0.5px;
 `;
 
@@ -174,20 +174,20 @@ const BadgeContainer = styled.div`
 `;
 
 const WorkConnection = styled.div`
-  background: rgba(196, 215, 155, 0.2);
+  background: rgba(245, 168, 159, 0.2);
   padding: 1rem;
   border-radius: 10px;
-  border-left: 3px solid #C4D79B;
+  border-left: 3px solid #F5A89F;
   
   h4 {
-    color: #4A148C;
+    color: #2C3E50;
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
   
   p {
-    color: #4A148C;
+    color: #2C3E50;
     font-size: 0.8rem;
     line-height: 1.4;
     opacity: 0.9;
@@ -211,18 +211,19 @@ const InterestsTags = styled.div`
 `;
 
 const InterestTag = styled.span`
-  background: linear-gradient(135deg, #C4D79B 0%, #4A148C 100%);
+  background: linear-gradient(135deg, #5B6D8B 0%, #3A4B6B 40%, #2C3E50 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
-  box-shadow: 0 4px 10px rgba(74, 20, 140, 0.3);
+  box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(74, 20, 140, 0.4);
+    background: linear-gradient(135deg, #6A7F9A 0%, #4A5B7B 40%, #3A4B6B 100%);
+    box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
   }
 `;
 
@@ -237,7 +238,7 @@ const InterestsDescription = styled.p`
 const BackButton = styled(Link)`
   display: inline-flex;
   align-items: center;
-  color: #2D3748;
+  color: #2C3E50;
   font-weight: 500;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
@@ -246,7 +247,7 @@ const BackButton = styled(Link)`
   
   &:hover {
     transform: translateX(-5px);
-    color: #7B9A6D;
+    color: #F5A89F;
   }
   
   &:before {

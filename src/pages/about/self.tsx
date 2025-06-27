@@ -11,12 +11,12 @@ const Container = styled.div`
 const Content = styled.div`
   max-width: 900px;
   margin: 8rem auto 4rem auto;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 30px;
-  border: 1px solid rgba(160, 174, 192, 0.3);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   padding: 3rem;
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
   position: relative;
   overflow: hidden;
 `;
@@ -30,15 +30,15 @@ const Header = styled.div`
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1A202C;
+    color: #2C3E50;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(26, 32, 44, 0.2);
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
   }
   
   p {
     font-size: 1.1rem;
-    color: #4A5568;
-    opacity: 0.9;
+    color: #2C3E50;
+    opacity: 0.8;
   }
 `;
 
@@ -51,7 +51,7 @@ const Section = styled.section`
   margin-bottom: 2.5rem;
   
   h2 {
-    color: #2D3748;
+    color: #2C3E50;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -64,13 +64,13 @@ const Section = styled.section`
       left: 0;
       width: 60px;
       height: 3px;
-      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
       border-radius: 2px;
     }
   }
   
   p {
-    color: #4A5568;
+    color: #2C3E50;
     line-height: 1.8;
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -78,16 +78,16 @@ const Section = styled.section`
 `;
 
 const HighlightBox = styled.div`
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(245, 168, 159, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  border-left: 4px solid #667EEA;
+  border-left: 4px solid #F5A89F;
   
   p {
     margin: 0;
     font-style: italic;
-    color: #2D3748;
+    color: #2C3E50;
     font-weight: 500;
   }
 `;
@@ -95,7 +95,7 @@ const HighlightBox = styled.div`
 const BackButton = styled(Link)`
   display: inline-flex;
   align-items: center;
-  color: #2D3748;
+  color: #2C3E50;
   font-weight: 500;
   margin-bottom: 2rem;
   transition: all 0.3s ease;
@@ -104,7 +104,7 @@ const BackButton = styled(Link)`
   
   &:hover {
     transform: translateX(-5px);
-    color: #667EEA;
+    color: #F5A89F;
   }
   
   &:before {

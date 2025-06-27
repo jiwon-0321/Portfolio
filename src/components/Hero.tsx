@@ -6,13 +6,13 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(250, 249, 246, 0.25);
   backdrop-filter: blur(20px);
   border-radius: 30px;
-  border: 1px solid rgba(160, 174, 192, 0.3);
+  border: 1px solid rgba(250, 249, 246, 0.3);
   padding: 4rem 3rem;
   margin: 8rem 0 4rem 0;
-  box-shadow: 0 20px 60px rgba(160, 174, 192, 0.15);
+  box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
   position: relative;
   overflow: hidden;
   gap: 3rem;
@@ -37,12 +37,12 @@ const HeroContent = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.8rem;
-    color: #1A202C;
-    text-shadow: 0 2px 10px rgba(26, 32, 44, 0.2);
+    color: #2C3E50;
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
     line-height: 1.3;
     
     span {
-      background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+      background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -61,7 +61,7 @@ const HeroContent = styled.div`
   
   p {
     font-size: 1.1rem;
-    color: #4A5568;
+    color: #34495E;
     margin-bottom: 2rem;
     line-height: 1.7;
     opacity: 0.9;
@@ -79,14 +79,14 @@ const HeroContent = styled.div`
 `;
 
 const CTAButton = styled.button`
-  background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+  background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
   color: white;
   border: none;
   border-radius: 50px;
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 30px rgba(245, 168, 159, 0.3);
   position: relative;
   overflow: hidden;
   
@@ -107,7 +107,7 @@ const CTAButton = styled.button`
   
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 15px 40px rgba(245, 168, 159, 0.5);
   }
   
   @media (max-width: 768px) {
@@ -141,13 +141,13 @@ const ProfileImage = styled.img`
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid rgba(102, 126, 234, 0.3);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+  border: 4px solid rgba(245, 168, 159, 0.3);
+  box-shadow: 0 15px 35px rgba(245, 168, 159, 0.15);
   transition: all 0.3s ease;
   
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+    box-shadow: 0 20px 50px rgba(245, 168, 159, 0.25);
   }
 
   @media (max-width: 768px) {

@@ -5,21 +5,22 @@ import Navbar from '../../components/Navbar';
 
 // 상수 정의
 const COLORS = {
-  primary: '#4A148C',
-  secondary: '#C4D79B',
+  primary: '#2C3E50',
+  secondary: '#F5A89F',
   white: '#FFFFFF',
   black: '#000000',
+  background: '#FAF9F6',
 } as const;
 
 const GRADIENTS = {
-  primary: `linear-gradient(135deg, ${COLORS.secondary} 0%, ${COLORS.primary} 100%)`,
+  primary: `linear-gradient(135deg, ${COLORS.secondary} 0%, #F2998E 100%)`,
 } as const;
 
 const GLASSMORPHISM = css`
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(196, 215, 155, 0.3);
-  box-shadow: 0 20px 60px rgba(74, 20, 140, 0.15);
+  border: 1px solid rgba(245, 168, 159, 0.3);
+  box-shadow: 0 20px 60px rgba(44, 62, 80, 0.15);
 `;
 
 const TRANSITION = 'all 0.3s ease';
@@ -195,6 +196,7 @@ const projectData: Record<string, ProjectData> = {
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  background: linear-gradient(135deg, ${COLORS.background} 0%, #F8F6F3 100%);
   
   @media (max-width: 768px) {
     padding: 0 1rem;
@@ -250,7 +252,7 @@ const BackButton = styled.button`
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(196, 215, 155, 0.4);
+    box-shadow: 0 8px 25px rgba(245, 168, 159, 0.4);
   }
   
   &:before {
@@ -321,7 +323,7 @@ const DownloadButton = styled.button`
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(196, 215, 155, 0.4);
+    box-shadow: 0 8px 25px rgba(245, 168, 159, 0.4);
   }
   
   &:before {
@@ -345,7 +347,7 @@ const ProjectTitle = styled.h1`
     font-weight: 700;
   color: ${COLORS.primary};
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(74, 20, 140, 0.3);
+    text-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
 `;
 
 const ProjectInfo = styled.div`
@@ -379,7 +381,7 @@ const OverviewGrid = styled.div`
 `;
 
 const OverviewCard = styled.div`
-  background: rgba(196, 215, 155, 0.2);
+  background: rgba(245, 168, 159, 0.2);
   border-radius: 15px;
   padding: 1.5rem;
   border-left: 4px solid ${COLORS.secondary};
@@ -403,9 +405,9 @@ const CarouselContainer = styled.div`
   margin-bottom: 3rem;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
-  border: 2px solid rgba(196, 215, 155, 0.4);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(196, 215, 155, 0.05));
+  box-shadow: 0 15px 40px rgba(44, 62, 80, 0.2);
+  border: 2px solid rgba(245, 168, 159, 0.4);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(245, 168, 159, 0.05));
   backdrop-filter: blur(10px);
   
   &::before {
@@ -415,7 +417,7 @@ const CarouselContainer = styled.div`
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, rgba(196, 215, 155, 0.6), rgba(74, 20, 140, 0.3), rgba(196, 215, 155, 0.6));
+    background: linear-gradient(135deg, rgba(245, 168, 159, 0.6), rgba(44, 62, 80, 0.3), rgba(245, 168, 159, 0.6));
     border-radius: 22px;
     z-index: -1;
   }
@@ -477,7 +479,7 @@ const CarouselSlide = styled.div`
   
 const OverlayIcon = styled.div<{ show: boolean }>`
     position: absolute;
-    background: rgba(74, 20, 140, 0.8);
+    background: rgba(44, 62, 80, 0.8);
   color: ${COLORS.white};
   width: 40px;
   height: 40px;
@@ -529,18 +531,18 @@ const Dot = styled.button<{ active: boolean }>`
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid ${props => props.active ? 'rgba(74, 20, 140, 0.8)' : 'rgba(196, 215, 155, 0.4)'};
+  border: 2px solid ${props => props.active ? 'rgba(44, 62, 80, 0.8)' : 'rgba(245, 168, 159, 0.4)'};
   background: ${props => props.active ? GRADIENTS.primary : 'rgba(255, 255, 255, 0.8)'};
   cursor: pointer;
   transition: ${TRANSITION};
-  box-shadow: 0 2px 8px rgba(74, 20, 140, 0.2);
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
   backdrop-filter: blur(10px);
   
   &:hover {
     transform: scale(1.3);
-    background: ${props => props.active ? GRADIENTS.primary : 'rgba(196, 215, 155, 0.6)'};
-    border-color: ${props => props.active ? 'rgba(74, 20, 140, 1)' : 'rgba(196, 215, 155, 0.8)'};
-    box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3);
+    background: ${props => props.active ? GRADIENTS.primary : 'rgba(245, 168, 159, 0.6)'};
+    border-color: ${props => props.active ? 'rgba(44, 62, 80, 1)' : 'rgba(245, 168, 159, 0.8)'};
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
   }
 `;
 
@@ -605,7 +607,7 @@ const MaterialsList = styled.div`
     padding: 0;
     
     li {
-      background: rgba(196, 215, 155, 0.3);
+      background: rgba(245, 168, 159, 0.3);
       color: ${COLORS.primary};
       padding: 0.3rem 0.8rem;
       border-radius: 12px;
@@ -618,7 +620,7 @@ const MaterialsList = styled.div`
 `;
 
 const DetailDescription = styled.div`
-  background: rgba(196, 215, 155, 0.2);
+  background: rgba(245, 168, 159, 0.2);
   padding: 1rem;
   border-radius: 10px;
   border-left: 3px solid ${COLORS.secondary};
@@ -644,13 +646,13 @@ const CitationNumber = styled.sup`
   
   &:hover {
     transform: scale(1.2);
-    box-shadow: 0 2px 8px rgba(74, 20, 140, 0.4);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.4);
   }
 `;
 
 const ReferenceItem = styled.div<{ isOpen: boolean; isHighlighted: boolean }>`
   background: ${({ isHighlighted }) => 
-    isHighlighted ? 'rgba(196, 215, 155, 0.4)' : 'rgba(196, 215, 155, 0.2)'};
+    isHighlighted ? 'rgba(245, 168, 159, 0.4)' : 'rgba(245, 168, 159, 0.2)'};
   border-radius: 12px;
   margin-bottom: 0.8rem;
   border-left: 3px solid ${COLORS.secondary};
@@ -659,9 +661,9 @@ const ReferenceItem = styled.div<{ isOpen: boolean; isHighlighted: boolean }>`
   transform: ${({ isHighlighted }) => isHighlighted ? 'scale(1.02)' : 'scale(1)'};
   
   &:hover {
-    background: rgba(196, 215, 155, 0.25);
+    background: rgba(245, 168, 159, 0.25);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(74, 20, 140, 0.1);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
   }
 `;
 
@@ -674,7 +676,7 @@ const ReferenceHeader = styled.div`
   transition: ${TRANSITION};
   
   &:hover {
-    background: rgba(196, 215, 155, 0.1);
+    background: rgba(245, 168, 159, 0.1);
   }
 `;
 

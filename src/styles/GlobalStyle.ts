@@ -11,10 +11,10 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 25%, #CBD5E0 50%, #A0AEC0 75%, #718096 100%);
+    background: linear-gradient(135deg, #FAF9F6 0%, #F8F7F4 25%, #F6F5F2 50%, #F4F3F0 75%, #F2F1EE 100%);
     min-height: 100vh;
     line-height: 1.6;
-    color: #2D3748;
+    color: #2C3E50;
     overflow-x: hidden;
   }
   
@@ -27,17 +27,17 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1A202C;
+    color: #2C3E50;
   }
   
   h2 {
     font-size: 2rem;
-    color: #2D3748;
+    color: #2C3E50;
   }
   
   p {
     margin-bottom: 1rem;
-    color: #4A5568;
+    color: #34495E;
   }
   
   button {
@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
   
   button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+    box-shadow: 0 10px 25px rgba(245, 168, 159, 0.25);
   }
   
   a {
@@ -69,11 +69,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   .glass-effect {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(250, 249, 246, 0.25);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(250, 249, 246, 0.18);
+    box-shadow: 0 8px 32px rgba(245, 168, 159, 0.15);
   }
   
   .fade-in {
