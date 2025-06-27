@@ -26,7 +26,7 @@ const designTools = [
   },
   { 
     name: 'SketchUp', 
-    icon: '/icons/sketchup.png?v=2', 
+    icon: '/icons/sketchup.png', 
     percent: 90, 
     desc: '직관적인 3D 모델링으로 설계 아이디어를 빠르게 구현하고, 다양한 플러그인을 활용한 전문적인 모델링 작업을 수행합니다.',
     detailDesc: '• 포트폴리오 제작\n\n• 개인 주거공간을 스케치업으로 설계 모델링한 후 시공업체와 협업하여 공간 개선 작업을 진행'
@@ -400,7 +400,7 @@ const AIIcon = styled.div<{ iconType: string }>`
   overflow: hidden;
   
   background: ${({ iconType }) =>
-    iconType === 'chatgpt' || iconType === '/icons/chatgpt.svg' || iconType === 'claude' || iconType === '/icons/gemini.png' || iconType === '/icons/Midjourney.png' || iconType === '/icons/suno.webp' || iconType === '/icons/Runwayml.png' || iconType === '/icons/perplexity.png' || iconType === '/icons/genspark.jpg' || iconType === '/icons/scispace.jpeg' || iconType === '/icons/cursor.png' || iconType === '/icons/lilys.jpeg'
+    iconType === 'chatgpt' || iconType === '/icons/chatgpt.svg' || iconType === 'claude' || iconType === '/icons/gemini.png' || iconType === '/icons/Midjourney.png' || iconType === '/icons/suno.webp' || iconType === '/icons/Runwayml.png' || iconType === '/icons/perplexity.png' || iconType === '/icons/genspark.jpg' || iconType === '/icons/scispace.jpeg' || iconType === '/icons/cursor.png' || iconType === '/icons/lilys.jpeg' || iconType === '/icons/sketchup.png'
       ? '#fff'
       : (() => {
           switch (iconType) {
