@@ -84,7 +84,7 @@ const projectData: Record<string, ProjectData> = {
     period: '2023.03 - 2023.05',
     client: 'The Habi Hotels',
     overview: {
-      concept: '자연과 기술이 조화를 이루는 바이오필릭 디자인 컨셉의 호텔입니다. 도심 속에서 진정한 휴식과 재충전의 경험을 제공합니다.',
+      concept: '자연과 기술이 조화를 이루는 바이오필릭 디자인 컨셉의 호텔입니다. 진정한 휴식과 재충전의 경험을 제공합니다.',
       objective: '투숙객에게 자연과의 연결을 통해 심리적 안정과 만족감을 제공하고, 지속가능한 디자인을 통해 브랜드 가치를 높이고자 했습니다.',
       target: '자연 속에서의 휴식을 추구하는 20-50대 여행객 및 비즈니스 출장객'
     },
@@ -124,7 +124,7 @@ const projectData: Record<string, ProjectData> = {
       {
         title: '외부 공간 및 조경',
         images: ['/main images/5.jpg', '/main images/5=1.png', '/main images/6.jpg'],
-        description: '도심 속에서 자연을 만끽할 수 있는 옥상 정원과 산책로입니다. 바이오필릭 디자인을 외부 공간까지 확장했습니다.',
+        description: '자연을 만끽할 수 있는 옥상 정원과 산책로입니다. 바이오필릭 디자인을 외부 공간까지 확장했습니다.',
         materials: ['데크 목재', '자연석', '계절별 식물', '수경시설'],
         details: '옥상 정원에는 작은 인피니티 풀과 휴식 공간이 마련되어 있으며, 호텔 주변을 둘러싼 산책로는 투숙객에게 평온한 아침을 선사합니다.',
         citations: [2]

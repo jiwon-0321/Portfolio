@@ -391,7 +391,7 @@ export default function Hobbies() {
                       <ExperienceBadge>Life best: 85타</ExperienceBadge>
                     )}
                     {hobby.title === '영어회화' && (
-                      <ExperienceBadge>소통 가능</ExperienceBadge>
+                      <ExperienceBadge>외국인친구와 소통가능</ExperienceBadge>
                     )}
                   </BadgeContainer>
                   <WorkConnection>
