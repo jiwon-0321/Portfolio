@@ -164,7 +164,7 @@ export default function AboutDropdown() {
       </DropdownButton>
       <DropdownContent open={open}>
         <DropdownItem onClick={() => router.push('/about/self')}>자기소개서</DropdownItem>
-        <DropdownItem onClick={() => router.push('/about/career')}>경력</DropdownItem>
+        <DropdownItem onClick={() => router.push('/about/career')}>학력 및 경력</DropdownItem>
         <DropdownItem onClick={() => router.push('/about/certificate')}>자격증</DropdownItem>
         <DropdownItem onClick={() => router.push('/about/hobbies')}>취미 및 관심분야</DropdownItem>
       </DropdownContent>
