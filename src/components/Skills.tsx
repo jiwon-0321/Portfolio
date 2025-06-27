@@ -159,7 +159,7 @@ const generationSkills: Skill[] = [
     icon: '/icons/Runwayml.png',
     percent: 80, 
     desc: 'AI 기반 비디오 편집 및 생성 플랫폼으로, 텍스트-투-비디오, 이미지-투-비디오, 배경 제거, 모션 브러시 등 다양한 영상 제작 도구를 제공합니다.',
-    detailDesc: '• AI 기반 비디오 생성 및 편집으로 창작 워크플로우 최적화\n\n• Text-to-Video, Image-to-Video 기능을 활용한 멀티미디어 콘텐츠 제작'
+    detailDesc: '• AI 기반 비디오 생성 및 편집으로 창작 워크플로우 최적화'
   },
   { 
     name: 'Suno', 
@@ -361,7 +361,7 @@ const SkillIcon = styled.img`
   width: 60px;
   height: 60px;
   margin-bottom: 1rem;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.15));
   transition: all 0.3s ease;
@@ -370,6 +370,16 @@ const SkillIcon = styled.img`
   ${SkillCard}:hover & {
     transform: scale(1.1);
     filter: drop-shadow(0 6px 12px rgba(102, 126, 234, 0.25));
+  }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
   }
 `;
 
