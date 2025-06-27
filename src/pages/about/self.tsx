@@ -287,8 +287,8 @@ export default function AboutSelf() {
         <Content className="fade-in">
           <Header>
             <h1>자기소개서</h1>
-            <div className="subtitle">실내건축인테리어 분야 심리학 기반 공간 설계 전문가를 꿈꾸며</div>
-            <div className="description">사람들이 진정으로 행복을 느낄 수 있는 공간을 만드는 것이 저의 목표입니다</div>
+            <div className="subtitle">공간이 무의식 깊숙이 작용하여 사람의 일상과 삶 전반에 변화를 가져올 수 있기에,</div>
+            <div className="description">이러한 힘을 통해 사람들의 삶을 긍정적으로 변화시키는 공간을 설계하는 것이 저의 목표입니다</div>
           </Header>
           
           <ContentSection>
