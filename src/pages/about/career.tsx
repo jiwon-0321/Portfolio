@@ -58,6 +58,28 @@ const Header = styled.div`
   }
 `;
 
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
+    border-radius: 2px;
+  }
+`;
+
 const Timeline = styled.div`
   position: relative;
   z-index: 2;
@@ -188,80 +210,117 @@ export default function Career() {
         <BackButton href="/">홈으로 돌아가기</BackButton>
         <Content className="fade-in">
           <Header>
-            <h1>경력</h1>
-            <p>다양한 프로젝트를 통해 쌓아온 실무 경험을 소개합니다</p>
+            <h1>학력 및 경력</h1>
+            <p>체계적인 교육과정과 다양한 프로젝트를 통해 쌓아온 경험을 소개합니다</p>
           </Header>
           
+          <SectionTitle>학력</SectionTitle>
           <Timeline>
             <TimelineItem>
-              <Period>2022.03 - 현재</Period>
-              <Company>(주)OO건축사사무소</Company>
-              <Position>실내건축 디자이너</Position>
-              <Description>
-                상업공간 및 주거공간의 실내건축 설계를 담당하며, 클라이언트 미팅부터 
-                시공 감리까지 프로젝트 전 과정을 관리하고 있습니다. 
-                특히 카페, 레스토랑 등 상업공간 프로젝트에서 우수한 성과를 거두었습니다.
-              </Description>
-              <Achievements>
-                <li>연간 15개 이상의 상업공간 프로젝트 완료</li>
-                <li>클라이언트 만족도 95% 이상 달성</li>
-                <li>사내 우수 디자이너상 수상 (2023)</li>
-                <li>신입 직원 멘토링 담당</li>
-              </Achievements>
-              <Skills>
-                <SkillTag>AutoCAD</SkillTag>
-                <SkillTag>SketchUp</SkillTag>
-                <SkillTag>V-Ray</SkillTag>
-                <SkillTag>Photoshop</SkillTag>
-                <SkillTag>프로젝트 관리</SkillTag>
-              </Skills>
+              <Period>2011.02.11 - 2014.02.07</Period>
+              <Company>고척고등학교</Company>
+              <Position>졸업</Position>
             </TimelineItem>
             
             <TimelineItem>
-              <Period>2020.06 - 2022.02</Period>
-              <Company>XX디자인스튜디오</Company>
-              <Position>주니어 디자이너</Position>
+              <Period>2020.01.06 - 2024.02.23</Period>
+              <Company>국가평생교육진흥원 (학점은행제)</Company>
+              <Position>경영학사</Position>
+            </TimelineItem>
+          </Timeline>
+
+          <SectionTitle>경력</SectionTitle>
+          <Timeline>
+            <TimelineItem>
+              <Period>2015.10 - 2017.07</Period>
+              <Company>대한민국 육군 제9사단</Company>
+              <Position>병장 전역</Position>
               <Description>
-                주거공간 인테리어 전문 스튜디오에서 아파트, 빌라 등 다양한 주거공간의 
-                인테리어 디자인을 담당했습니다. 3D 모델링과 렌더링 업무를 주로 맡아 
-                시각화 전문성을 키웠습니다.
+                전산분대장으로 임무를 수행하며 분대원 지도 및 신병 교육을 담당했습니다.
+                KCTC(한국전투훈련단) 및 호국훈련 등 주요 연합훈련에 참여하여 실전 역량을 쌓았으며,
+                KCTC 훈련에서 우수한 성과로 사단장 표창을 수상했습니다. 
+                극한 상황에서의 문제해결 능력과 강인한 정신력, 리더십 역량을 개발했습니다.
               </Description>
               <Achievements>
-                <li>월평균 8개 프로젝트 3D 모델링 완료</li>
-                <li>포토리얼리스틱 렌더링 전문성 확보</li>
-                <li>고객 프레젠테이션 참여 및 제안서 작성</li>
-                <li>인테리어 트렌드 리서치 및 자료 정리</li>
+                <li>전산분대장 역임으로 분대원 지도 및 신병 교육 담당</li>
+                <li>KCTC(한국전투훈련단) 및 호국훈련 등 주요 연합훈련 참여</li>
+                <li>KCTC 훈련 우수 성과로 사단장 표창 수상</li>
+                <li>극한 상황에서의 문제해결 능력과 강인한 정신력 개발</li>
+                <li>리더십 역량 및 조직 관리 능력 향상</li>
               </Achievements>
-              <Skills>
-                <SkillTag>SketchUp</SkillTag>
-                <SkillTag>V-Ray</SkillTag>
-                <SkillTag>Photoshop</SkillTag>
-                <SkillTag>InDesign</SkillTag>
-                <SkillTag>3D 모델링</SkillTag>
-              </Skills>
+            </TimelineItem>
+
+            <TimelineItem>
+              <Period>2019.02 - 2019.08</Period>
+              <Company>영등포 청년건축단</Company>
+              <Position>건축 기술 습득 및 봉사활동</Position>
+              <Description>
+                도배 및 소규모 수리 기술 습득을 통한 실무 기초 역량을 구축했습니다.
+                저소득층 어르신을 대상으로 한 무료 주거환경 개선 봉사활동에 참여하며
+                직접적인 공간 개선 작업을 통해 인테리어 디자인에 대한 관심과 사명감을 형성했습니다.
+              </Description>
+              <Achievements>
+                <li>도배 및 소규모 수리 기술 실무 역량 구축</li>
+                <li>저소득층 어르신 대상 무료 주거환경 개선 봉사활동 참여</li>
+                <li>현장 실무 경험을 바탕으로 한 공간의 기능성과 거주자 만족도 이해 증진</li>
+                <li>인테리어 디자인에 대한 관심과 사회적 사명감 형성</li>
+              </Achievements>
+
             </TimelineItem>
             
             <TimelineItem>
-              <Period>2019.09 - 2020.05</Period>
-              <Company>프리랜서</Company>
-              <Position>실내건축 디자이너</Position>
+              <Period>2020.06 - 2020.12</Period>
+              <Company>LH 한국토지주택공사 도시재생 청년인턴</Company>
+              <Position>도시재생사업 지원</Position>
               <Description>
-                개인 클라이언트를 대상으로 소규모 주거공간 리모델링 프로젝트를 진행했습니다. 
-                기획부터 시공까지 전 과정을 직접 관리하며 실무 경험을 쌓았습니다.
+                독산동 우시장 일대 도시재생활성화계획 수립 및 실행을 지원했습니다.
+                주민 역량 강화를 위한 마을기록단 양성 교육 프로그램 기획 및 운영을 보조하고,
+                지역 공동체 활성화를 위한 다양한 주민 참여형 프로그램을 기획·추진했습니다.
               </Description>
               <Achievements>
-                <li>총 12개의 주거공간 리모델링 프로젝트 완료</li>
-                <li>개인 포트폴리오 웹사이트 구축</li>
-                <li>SNS 마케팅을 통한 고객 확보</li>
-                <li>시공업체 네트워크 구축</li>
+                <li>독산동 우시장 역사·문화 아카이빙 영상 제작 및 편집 담당</li>
+                <li>'이웃만들기' 등 주민 참여형 프로그램 기획·추진</li>
+                <li>마을기록단 양성 교육 프로그램 기획 및 운영 보조</li>
+                <li>지역 주민과의 소통을 통한 참여형 도시계획 프로세스 경험</li>
               </Achievements>
-              <Skills>
-                <SkillTag>AutoCAD</SkillTag>
-                <SkillTag>SketchUp</SkillTag>
-                <SkillTag>고객 상담</SkillTag>
-                <SkillTag>견적 산출</SkillTag>
-                <SkillTag>시공 관리</SkillTag>
-              </Skills>
+
+            </TimelineItem>
+            
+            <TimelineItem>
+              <Period>2021.04 - 2022.04</Period>
+              <Company>LH 한국토지주택공사(계약직)</Company>
+              <Position>토지보상 업무</Position>
+              <Description>
+                남양주 왕숙1지구 2구역(진관리·신원리) 토지보상 업무를 전담했습니다.
+                공익사업을 위한 토지 등의 취득 및 보상에 관한 법률 등 관련 법규를 숙지하고 
+                보상 대상자를 대상으로 보상 절차 및 기준 안내, 상담 업무를 수행했습니다.
+              </Description>
+              <Achievements>
+                <li>감정평가사와 협업하여 지장물 조사, 영업손실 조사 등 현장 업무 담당</li>
+                <li>우수한 업무 성과로 계약 기간 3개월 연장</li>
+                <li>보상계약 체결 업무까지 확대 수행</li>
+                <li>토지보상 관련 법규 및 실무 프로세스 전문성 확보</li>
+              </Achievements>
+
+            </TimelineItem>
+            
+            <TimelineItem>
+              <Period>2022.05 - 현재</Period>
+              <Company>전문 역량 강화 및 미래 준비 기간</Company>
+              <Position>자기계발 및 전문성 향상</Position>
+              <Description>
+                실내건축기사 자격 취득을 통해 공간 설계에 대한 체계적인 이론 지식과 법규 이해를 완성했습니다.
+                차세대 AI 도구 활용 능력 습득을 통해 업무 효율성을 혁신적으로 향상시켰으며,
+                체계적 독서 습관과 영어 회화 능력 향상을 통해 종합적 역량을 확장했습니다.
+              </Description>
+              <Achievements>
+                <li>실내건축기사 자격 취득을 통한 공간 설계 이론 지식 이해 완성</li>
+                <li>ChatGPT, Claude, Midjourney 등 최신 AI 기술을 활용한 업무 프로세스 최적화</li>
+                <li>연간 50권 이상 독서를 통한 자기계발, 심리학, 경영학, 사회학 등 다양한 분야 지식 축적</li>
+                <li>기초 영어 회화 능력 향상을 통한 글로벌 정보 접근성 확보</li>
+                <li>자기관리 및 지속적 성장 마인드셋 확립</li>
+              </Achievements>
+
             </TimelineItem>
           </Timeline>
         </Content>

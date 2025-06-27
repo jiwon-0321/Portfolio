@@ -127,7 +127,7 @@ export default function Navbar() {
   return (
     <Nav className="slide-in-left">
       <Link href="/">
-        <Logo className="bounce-in">Jiwon Portfolio</Logo>
+        <Logo className="bounce-in">Jiwon's Portfolio</Logo>
       </Link>
       <NavLinks className="slide-in-right">
         <AboutDropdown />
