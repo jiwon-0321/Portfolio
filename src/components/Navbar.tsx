@@ -171,7 +171,7 @@ export default function Navbar() {
       <Link href="/">
         <Logo className="bounce-in">
           <LogoText>Jiwon Portfolio</LogoText>
-          <LogoTextShort>Jiwon</LogoTextShort>
+          <LogoTextShort>🏠</LogoTextShort>
         </Logo>
       </Link>
       <NavLinks className="slide-in-right">
