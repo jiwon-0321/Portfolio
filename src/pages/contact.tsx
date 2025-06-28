@@ -21,21 +21,70 @@ const ContactSection = styled.section`
   }
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+  }
+`;
+
 const Title = styled.h1`
-  text-align: center;
   color: #2C3E50;
   font-size: 3rem;
-  margin-bottom: 3rem;
+  margin: 0;
   text-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
+  flex: 1;
+  text-align: center;
+  margin-left: 150px;
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+    flex: none;
+    margin-left: 0;
   }
   
   @media (max-width: 480px) {
     font-size: 2rem;
-    margin-bottom: 2rem;
+  }
+`;
+
+const ResumeButton = styled.button`
+  background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -154,12 +203,22 @@ const NotionLink = styled.a`
 `;
 
 export default function Contact() {
+  const handleResumeDownload = () => {
+    // 이력서 다운로드 기능 - 나중에 이력서 파일로 연결 예정
+    alert('이력서 다운로드 기능이 곧 추가될 예정입니다! 📄');
+  };
+
   return (
     <>
       <Navbar />
       <Container>
         <ContactSection className="fade-in">
-          <Title>연락처</Title>
+          <TitleWrapper>
+            <Title>연락처</Title>
+            <ResumeButton onClick={handleResumeDownload}>
+              📄 이력서 다운로드
+            </ResumeButton>
+          </TitleWrapper>
           
           <ContactGrid>
             <ContactCard className="slide-up">

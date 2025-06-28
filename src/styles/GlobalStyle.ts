@@ -28,16 +28,50 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 2.5rem;
     font-weight: 700;
     color: #2C3E50;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 1.6rem;
+    }
   }
   
   h2 {
     font-size: 2rem;
     color: #2C3E50;
+    
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.6rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 1.4rem;
+    }
   }
   
   p {
     margin-bottom: 1rem;
     color: #34495E;
+    
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
   }
   
   button {
@@ -66,6 +100,18 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    
+    @media (max-width: 768px) {
+      padding: 0 1.5rem;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 0 1rem;
+    }
+    
+    @media (max-width: 360px) {
+      padding: 0 0.75rem;
+    }
   }
   
   .glass-effect {
@@ -74,6 +120,14 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 20px;
     border: 1px solid rgba(250, 249, 246, 0.18);
     box-shadow: 0 8px 32px rgba(245, 168, 159, 0.15);
+    
+    @media (max-width: 768px) {
+      border-radius: 15px;
+    }
+    
+    @media (max-width: 480px) {
+      border-radius: 12px;
+    }
   }
   
   .fade-in {

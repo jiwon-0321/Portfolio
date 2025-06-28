@@ -6,6 +6,18 @@ import Navbar from '../../components/Navbar';
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 360px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 const Content = styled.div`
@@ -35,6 +47,24 @@ const Content = styled.div`
     0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
     100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
   }
+  
+  @media (max-width: 768px) {
+    margin: 6rem auto 3rem auto;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 5rem auto 2rem auto;
+    padding: 2rem;
+    border-radius: 15px;
+  }
+  
+  @media (max-width: 360px) {
+    margin: 4rem auto 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
 `;
 
 const Header = styled.div`
@@ -49,12 +79,51 @@ const Header = styled.div`
     color: #2C3E50;
     margin-bottom: 1rem;
     text-shadow: 0 2px 10px rgba(44, 62, 80, 0.3);
+    
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 2rem;
+      margin-bottom: 0.7rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 1.8rem;
+      margin-bottom: 0.6rem;
+    }
   }
   
   p {
     font-size: 1.1rem;
     color: #2C3E50;
     opacity: 0.8;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 360px) {
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -82,6 +151,33 @@ const Section = styled.section`
       background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
       border-radius: 2px;
     }
+    
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+      margin-bottom: 1.8rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 360px) {
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -93,6 +189,18 @@ const HobbiesGrid = styled.div`
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 360px) {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -126,6 +234,25 @@ const HobbyCard = styled.div`
   &:hover:before {
     left: 100%;
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+    border-radius: 15px;
+    
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 360px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
 `;
 
 const HobbyIcon = styled.div`
@@ -133,6 +260,21 @@ const HobbyIcon = styled.div`
   text-align: center;
   margin-bottom: 1rem;
   filter: drop-shadow(0 4px 8px rgba(245, 168, 159, 0.3));
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const HobbyTitle = styled.h3`
@@ -141,6 +283,21 @@ const HobbyTitle = styled.h3`
   color: #2C3E50;
   text-align: center;
   margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const HobbyDescription = styled.p`
@@ -149,6 +306,24 @@ const HobbyDescription = styled.p`
   text-align: center;
   opacity: 0.9;
   margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const ExperienceBadge = styled.div`
@@ -163,6 +338,24 @@ const ExperienceBadge = styled.div`
   text-align: center;
   box-shadow: 0 2px 8px rgba(245, 168, 159, 0.3);
   letter-spacing: 0.5px;
+  
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 0.55rem;
+    padding: 0.18rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const BadgeContainer = styled.div`
@@ -171,6 +364,21 @@ const BadgeContainer = styled.div`
   gap: 0.5rem;
   margin-bottom: 0.8rem;
   flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.3rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 360px) {
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const WorkConnection = styled.div`
@@ -184,6 +392,21 @@ const WorkConnection = styled.div`
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+    }
   }
   
   p {
@@ -192,14 +415,62 @@ const WorkConnection = styled.div`
     line-height: 1.4;
     opacity: 0.9;
     margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.7rem;
+      line-height: 1.25;
+    }
+    
+    @media (max-width: 360px) {
+      font-size: 0.65rem;
+      line-height: 1.2;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.7rem;
+    border-radius: 6px;
+  }
+  
+  @media (max-width: 360px) {
+    padding: 0.6rem;
+    border-radius: 5px;
   }
 `;
 
 const InterestsContainer = styled.div`
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  border: 1px solid rgba(196, 215, 155, 0.3);
   padding: 2rem;
+  margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+    border-radius: 15px;
+    margin-top: 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+  }
+  
+  @media (max-width: 360px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-top: 1.2rem;
+  }
 `;
 
 const InterestsTags = styled.div`
@@ -348,6 +619,16 @@ export default function Hobbies() {
         title: '업무 연관성',
         description: '해외 클라이언트와의 소통 및 최신 해외 디자인 트렌드 습득에 도움이 됩니다.'
       }
+    },
+    {
+      icon: '✈️',
+      title: '혼자 해외 여행',
+      description: '새로운 사람들과의 만남과 다양한 문화를 직접 체험하며, 작은 일상에서 벗어나 세상을 넓혀가고 있습니다. 모든 것을 스스로 계획하고 책임지며 여행하는 과정에서 독립성과 자신감을 기르고 있습니다.',
+      experience: null,
+      workConnection: {
+        title: '업무 연관성',
+        description: '다양한 국가의 사람들과 소통하며 문화적 감수성을 기르고, 글로벌 마인드셋을 갖출 수 있습니다. 또한 독립적으로 문제를 해결하고 적응하는 능력은 업무에서도 큰 자산이 됩니다.'
+      }
     }
   ];
 
@@ -392,6 +673,12 @@ export default function Hobbies() {
                     )}
                     {hobby.title === '영어회화' && (
                       <ExperienceBadge>외국인친구와 소통가능</ExperienceBadge>
+                    )}
+                    {hobby.title === '혼자 해외 여행' && (
+                      <>
+                        <ExperienceBadge>평균 1년에 2회</ExperienceBadge>
+                        <ExperienceBadge>방문국가 10개국 이상</ExperienceBadge>
+                      </>
                     )}
                   </BadgeContainer>
                   <WorkConnection>

@@ -12,22 +12,30 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(250, 249, 246, 0.25);
+  background: rgba(250, 249, 246, 0.15);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(250, 249, 246, 0.3);
   padding: 1rem 2rem;
   transition: all 0.3s ease;
+  min-height: 70px;
   
   &:hover {
-    background: rgba(250, 249, 246, 0.35);
+    background: rgba(250, 249, 246, 0.25);
   }
   
   @media (max-width: 768px) {
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 65px;
   }
   
   @media (max-width: 480px) {
+    padding: 0.6rem 1rem;
+    min-height: 60px;
+  }
+  
+  @media (max-width: 360px) {
     padding: 0.5rem 0.75rem;
+    min-height: 55px;
   }
 `;
 
@@ -40,6 +48,7 @@ const Logo = styled.div`
   background-clip: text;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
   
   &:hover {
     transform: scale(1.05);
@@ -52,19 +61,25 @@ const Logo = styled.div`
   @media (max-width: 480px) {
     font-size: 1.1rem;
   }
+  
+  @media (max-width: 360px) {
+    font-size: 1rem;
+  }
 `;
 
 const NavLinks = styled.div`
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   
   a {
     color: #2C3E50;
     font-weight: 600;
+    font-size: 1rem;
     position: relative;
+    white-space: nowrap;
     
-    &:not(:last-child):after {
+    &:after {
       content: '';
       position: absolute;
       bottom: -5px;
@@ -75,13 +90,13 @@ const NavLinks = styled.div`
       transition: width 0.3s ease;
     }
     
-    &:not(:last-child):hover:after {
+    &:hover:after {
       width: 100%;
     }
   }
   
   @media (max-width: 768px) {
-    gap: 1.5rem;
+    gap: 1rem;
     
     a {
       font-size: 0.9rem;
@@ -89,7 +104,15 @@ const NavLinks = styled.div`
   }
   
   @media (max-width: 480px) {
-    gap: 1rem;
+    gap: 0.7rem;
+    
+    a {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    gap: 0.5rem;
     
     a {
       font-size: 0.8rem;
@@ -102,10 +125,11 @@ const ContactButton = styled.button`
   color: white;
   border: none;
   border-radius: 25px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.65rem 1.3rem;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   box-shadow: 0 4px 15px rgba(245, 168, 159, 0.3);
+  white-space: nowrap;
   
   &:hover {
     transform: translateY(-2px);
@@ -113,12 +137,17 @@ const ContactButton = styled.button`
   }
   
   @media (max-width: 768px) {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
   }
   
   @media (max-width: 480px) {
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 360px) {
+    padding: 0.4rem 0.8rem;
     font-size: 0.75rem;
   }
 `;
@@ -131,10 +160,8 @@ export default function Navbar() {
       </Link>
       <NavLinks className="slide-in-right">
         <AboutDropdown />
-        <Link href="/contact">Contact</Link>
-        <Link href="/projects">
-          <ContactButton className="pulse">포트폴리오</ContactButton>
-        </Link>
+        <Link href="/projects">📁 포트폴리오</Link>
+        <Link href="/contact">🤝 Contact</Link>
       </NavLinks>
     </Nav>
   );
