@@ -51,17 +51,28 @@ interface ProjectSection {
   citations: number[];
 }
 
+interface OverviewItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  features?: string[];
+  targets?: string[];
+  segments?: string[];
+}
+
 interface ProjectData {
   title: string;
   category: string;
   location: string;
-  area: string;
-  period: string;
+  floors?: string;
+  role?: string;
+  area?: string;
+  period?: string;
   client: string;
   overview: {
-    concept: string;
-    objective: string;
-    target: string;
+    concept: OverviewItem;
+    objective: OverviewItem;
+    target: OverviewItem;
   };
   sections: ProjectSection[];
   references: Array<{
@@ -79,14 +90,44 @@ const projectData: Record<string, ProjectData> = {
   1: {
     title: 'The Habi (자연 + 바이오필릭 컨셉 호텔)',
     category: '숙박공간',
-    location: '서울시 강남구',
-    area: '120㎡',
-    period: '2023.03 - 2023.05',
-    client: 'The Habi Hotels',
+    location: '경기도 가평',
+    floors: '지상 1층',
+    role: '공간 기획, 컨셉 디자인, 인테리어 설계',
+    client: '개인 프로젝트',
     overview: {
-      concept: '자연과 기술이 조화를 이루는 바이오필릭 디자인 컨셉의 호텔입니다. 진정한 휴식과 재충전의 경험을 제공합니다.',
-      objective: '투숙객에게 자연과의 연결을 통해 심리적 안정과 만족감을 제공하고, 지속가능한 디자인을 통해 브랜드 가치를 높이고자 했습니다.',
-      target: '자연 속에서의 휴식을 추구하는 20-50대 여행객 및 비즈니스 출장객'
+      concept: {
+        title: "Natural Harmony",
+        subtitle: "자연과 기술이 조화를 이루는 바이오필릭 디자인",
+        description: "도시 속에서도 숲속 같은 평온함을 제공하는 자연 친화적 공간",
+        features: [
+          "실내 정원과 수직 녹화 시스템",
+          "자연광 중심의 조명 설계", 
+          "천연 목재, 석재 등 친환경 소재",
+          "자연음향과 아로마테라피 시스템"
+        ]
+      },
+      objective: {
+        title: "Project Goals",
+        subtitle: "스트레스 제로, 만족도 100%의 치유 공간 창조",
+        description: "심신의 회복과 재충전이 이루어지는 웰니스 경험 제공",
+        targets: [
+          "투숙객 스트레스 지수 30% 감소",
+          "고객 만족도 95% 이상 달성",
+          "재방문율 60% 이상 확보",
+          "지속가능한 디자인을 통한 브랜드 차별화"
+        ]
+      },
+      target: {
+        title: "Target Audience",
+        subtitle: "진정한 휴식을 갈망하는 성숙한 여행객",
+        description: "30-60대 휴식 추구형 여행객",
+        segments: [
+          "업무 스트레스로 지친 직장인",
+          "힐링을 추구하는 중장년층",
+          "프리미엄 경험을 중시하는 여행객",
+          "워케이션을 계획하는 디지털 노마드"
+        ]
+      }
     },
     sections: [
       {
@@ -157,9 +198,39 @@ const projectData: Record<string, ProjectData> = {
     period: '2023.06 - 2023.08',
     client: 'XYZ 컨설팅',
     overview: {
-      concept: '효율적이고 창의적인 업무 환경을 위한 스마트 오피스 공간으로, 협업과 집중을 동시에 지원하는 공간을 구현했습니다.',
-      objective: '직원들의 업무 효율성을 높이고 창의적 사고를 촉진할 수 있는 업무 환경을 조성하고자 했습니다.',
-      target: 'IT 컨설팅 회사의 30명 규모 직원을 위한 업무공간'
+      concept: {
+        title: "Smart Office",
+        subtitle: "효율적이고 창의적인 업무 환경",
+        description: "협업과 집중을 동시에 지원하는 스마트 오피스 공간",
+        features: [
+          "시스템 데스크와 인체공학 의자",
+          "높이 조절 가능한 파티션",
+          "흡음 패널 적용",
+          "화상회의 시설 완비"
+        ]
+      },
+      objective: {
+        title: "Objectives", 
+        subtitle: "업무 효율성과 창의성 향상",
+        description: "직원들의 업무 효율성을 높이고 창의적 사고를 촉진",
+        targets: [
+          "업무 효율성 향상",
+          "창의적 사고 촉진",
+          "소통과 협업 증진",
+          "개인 집중 공간 확보"
+        ]
+      },
+      target: {
+        title: "Target Users",
+        subtitle: "IT 컨설팅 회사 직원",
+        description: "30명 규모의 업무 공간",
+        segments: [
+          "프로젝트 매니저",
+          "시니어 컨설턴트",
+          "주니어 컨설턴트",
+          "지원 업무 담당자"
+        ]
+      }
     },
     sections: [
       {
@@ -653,22 +724,22 @@ const CitationNumber = styled.sup`
 const ReferenceItem = styled.div<{ isOpen: boolean; isHighlighted: boolean }>`
   background: ${({ isHighlighted }) => 
     isHighlighted ? 'rgba(245, 168, 159, 0.4)' : 'rgba(245, 168, 159, 0.2)'};
-  border-radius: 12px;
-  margin-bottom: 0.8rem;
-  border-left: 3px solid ${COLORS.secondary};
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 2px solid ${COLORS.secondary};
   overflow: hidden;
   transition: ${TRANSITION};
-  transform: ${({ isHighlighted }) => isHighlighted ? 'scale(1.02)' : 'scale(1)'};
+  transform: ${({ isHighlighted }) => isHighlighted ? 'scale(1.01)' : 'scale(1)'};
   
   &:hover {
     background: rgba(245, 168, 159, 0.25);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
   }
 `;
 
 const ReferenceHeader = styled.div`
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -682,7 +753,7 @@ const ReferenceHeader = styled.div`
 
 const ReferenceTitle = styled.h4`
   color: ${COLORS.primary};
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 0;
   flex: 1;
@@ -692,13 +763,13 @@ const ReferenceTitle = styled.h4`
 const ReferenceNumber = styled.div`
   background: ${GRADIENTS.primary};
   color: ${COLORS.white};
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.3rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 50%;
-  margin-right: 1rem;
-  min-width: 24px;
-  height: 24px;
+  margin-right: 0.75rem;
+  min-width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -706,33 +777,46 @@ const ReferenceNumber = styled.div`
 
 const ExpandIcon = styled.div<{ isOpen: boolean }>`
   color: ${COLORS.primary};
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-  transform: ${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
-  margin-left: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(245, 168, 159, 0.4);
+  border-radius: 50%;
+  background: ${({ isOpen }) => isOpen ? 'rgba(245, 168, 159, 0.2)' : 'transparent'};
   
   &:before {
-    content: '▼';
+    content: '${({ isOpen }) => isOpen ? '−' : '+'}';
+  }
+  
+  &:hover {
+    border-color: rgba(245, 168, 159, 0.8);
+    background: rgba(245, 168, 159, 0.15);
+    transform: scale(1.1);
   }
 `;
 
 const ReferenceContent = styled.div<{ isOpen: boolean }>`
-  max-height: ${({ isOpen }) => isOpen ? '200px' : '0'};
+  max-height: ${({ isOpen }) => isOpen ? '150px' : '0'};
   opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
   overflow: hidden;
   transition: ${TRANSITION};
-  padding: ${({ isOpen }) => isOpen ? '0 1.5rem 1rem 1.5rem' : '0 1.5rem'};
+  padding: ${({ isOpen }) => isOpen ? '0 1rem 0.75rem 1rem' : '0 1rem'};
   
   p {
     color: ${COLORS.primary};
-    margin: 0.2rem 0;
+    margin: 0.15rem 0;
     opacity: 0.8;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     
     &.author { font-weight: 500; }
     &.journal { font-style: italic; }
-    &.details { font-size: 0.85rem; opacity: 0.7; }
+    &.details { font-size: 0.8rem; opacity: 0.7; }
   }
 `;
 
@@ -1370,16 +1454,16 @@ export default function ProjectDetail() {
   }, [modalImage, navigateModalImage, closeModal]);
 
   const overviewCards = useMemo(() => [
-    { title: '컨셉', content: project?.overview.concept },
-    { title: '목표', content: project?.overview.objective },
-    { title: '타겟', content: project?.overview.target }
+    { title: '컨셉', data: project?.overview.concept },
+    { title: '목표', data: project?.overview.objective },
+    { title: '타겟', data: project?.overview.target }
   ], [project]);
 
   const projectInfoItems = useMemo(() => [
     { label: '카테고리', value: project?.category },
     { label: '위치', value: project?.location },
-    { label: '면적', value: project?.area },
-    { label: '기간', value: project?.period },
+    { label: '층수', value: project?.floors },
+    { label: '역할', value: project?.role },
     { label: '클라이언트', value: project?.client }
   ], [project]);
 
@@ -1427,7 +1511,48 @@ export default function ProjectDetail() {
               {overviewCards.map((card, index) => (
                 <OverviewCard key={index}>
                   <h3>{card.title}</h3>
-                  <p>{card.content}</p>
+                  {card.data && (
+                    <>
+                      <div style={{ marginBottom: '1rem' }}>
+                        <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#F5A89F', marginBottom: '0.5rem' }}>
+                          {card.data.title}
+                        </h4>
+                        <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '0.75rem', opacity: 0.8 }}>
+                          "{card.data.subtitle}"
+                        </p>
+                        <p style={{ lineHeight: '1.5', marginBottom: '1rem' }}>
+                          {card.data.description}
+                        </p>
+                      </div>
+                      {(card.data.features || card.data.targets || card.data.segments) && (
+                        <ul style={{ 
+                          listStyle: 'none', 
+                          padding: 0, 
+                          margin: 0,
+                          display: 'grid',
+                          gap: '0.5rem'
+                        }}>
+                          {(card.data.features || card.data.targets || card.data.segments)?.map((item, idx) => (
+                            <li key={idx} style={{ 
+                              display: 'flex', 
+                              alignItems: 'center',
+                              fontSize: '0.9rem',
+                              lineHeight: '1.4'
+                            }}>
+                              <span style={{ 
+                                marginRight: '0.5rem', 
+                                color: '#F5A89F',
+                                fontSize: '0.8rem'
+                              }}>
+                                ●
+                              </span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  )}
               </OverviewCard>
               ))}
             </OverviewGrid>
