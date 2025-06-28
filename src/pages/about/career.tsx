@@ -269,7 +269,7 @@ export default function Career() {
             </TimelineItem>
             
             <TimelineItem>
-              <Period>2020.06 - 2020.12</Period>
+              <Period>2020.05 - 2020.11</Period>
               <Company>LH 한국토지주택공사 도시재생 청년인턴</Company>
               <Position>도시재생사업 지원</Position>
               <Description>
@@ -287,7 +287,7 @@ export default function Career() {
             </TimelineItem>
             
             <TimelineItem>
-              <Period>2021.04 - 2022.04</Period>
+              <Period>2021.03 - 2022.02</Period>
               <Company>LH 한국토지주택공사(계약직)</Company>
               <Position>토지보상 업무</Position>
               <Description>
