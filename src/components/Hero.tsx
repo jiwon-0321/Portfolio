@@ -290,39 +290,98 @@ const ProfileImage = styled.img`
   }
 `;
 
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+`;
+
+const BusinessCardImage = styled.img`
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+`;
+
+const CanvaCredit = styled.p`
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1rem;
+`;
+
 export default function Hero() {
   const router = useRouter();
-  
+  const [isCardVisible, setIsCardVisible] = React.useState(false);
+
   const handleBusinessCardView = () => {
-    // 디지털 명함 보기 기능 - 나중에 디지털명함 페이지나 모달로 연결 예정
-    alert('디지털 명함 기능이 곧 추가될 예정입니다! 📇');
+    setIsCardVisible(true);
+  };
+
+  const handleCloseCard = () => {
+    setIsCardVisible(false);
   };
 
   return (
-    <HeroSection className="fade-in">
-      <HeroContent className="slide-in-left">
-        <h1>
-          안녕하세요!<br/>
-          실내건축 디자이너를 꿈꾸는<br/>
-          취업 준비생 <span>조지원</span>입니다.
-        </h1>
-        <p>
-          공간의 기능성과 감성을 균형 있게 고려하여 사람 중심의 설계를 지향합니다.<br/>
-          다양한 AI 디자인 툴을 적극 활용해 창의적인 아이디어 발굴부터 효율적인 설계 실행까지,<br/>
-          혁신적인 방법으로 공간의 새로운 가능성을 탐구하고 있습니다.
-        </p>
-        <ButtonContainer>
-          <CTAButton className="pulse" onClick={() => router.push('/projects')}>
-            포트폴리오 보기
-          </CTAButton>
-          <BusinessCardButton className="pulse" onClick={handleBusinessCardView}>
-            디지털 명함 보기
-          </BusinessCardButton>
-        </ButtonContainer>
-      </HeroContent>
-      <ProfileImageContainer className="slide-in-right">
-        <ProfileImage className="float" src="/images/profile.jpeg" alt="프로필 사진" />
-      </ProfileImageContainer>
-    </HeroSection>
+    <>
+      <HeroSection className="fade-in">
+        <HeroContent className="slide-in-left">
+          <h1>
+            안녕하세요!<br/>
+            실내건축 디자이너를 꿈꾸는<br/>
+            취업 준비생 <span>조지원</span>입니다.
+          </h1>
+          <p>
+            공간의 기능성과 감성을 균형 있게 고려하여 사람 중심의 설계를 지향합니다.<br/>
+            다양한 AI 디자인 툴을 적극 활용해 창의적인 아이디어 발굴부터 효율적인 설계 실행까지,<br/>
+            혁신적인 방법으로 공간의 새로운 가능성을 탐구하고 있습니다.
+          </p>
+          <ButtonContainer>
+            <CTAButton className="pulse" onClick={() => router.push('/projects')}>
+              포트폴리오 보기
+            </CTAButton>
+            <BusinessCardButton className="pulse" onClick={handleBusinessCardView}>
+              디지털 명함 보기
+            </BusinessCardButton>
+          </ButtonContainer>
+        </HeroContent>
+        <ProfileImageContainer className="slide-in-right">
+          <ProfileImage className="float" src="/images/profile.jpeg" alt="프로필 사진" />
+        </ProfileImageContainer>
+      </HeroSection>
+
+      {isCardVisible && (
+        <ModalOverlay onClick={handleCloseCard}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <CloseButton onClick={handleCloseCard}>&times;</CloseButton>
+            <BusinessCardImage src="/images/Business card.png" alt="디지털 명함" />
+            <CanvaCredit>made by canva</CanvaCredit>
+          </ModalContent>
+        </ModalOverlay>
+      )}
+    </>
   );
 } 
