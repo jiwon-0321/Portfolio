@@ -49,6 +49,10 @@ const LogoTextShort = styled.span`
   display: none;
   @media (max-width: 480px) {
     display: inline;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
   }
 `;
 
