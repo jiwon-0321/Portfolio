@@ -39,6 +39,19 @@ const Nav = styled.nav`
   }
 `;
 
+const LogoText = styled.span`
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
+const LogoTextShort = styled.span`
+  display: none;
+  @media (max-width: 480px) {
+    display: inline;
+  }
+`;
+
 const Logo = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
@@ -156,7 +169,10 @@ export default function Navbar() {
   return (
     <Nav className="slide-in-left">
       <Link href="/">
-        <Logo className="bounce-in">Jiwon's Portfolio</Logo>
+        <Logo className="bounce-in">
+          <LogoText>Jiwon's Portfolio</LogoText>
+          <LogoTextShort>Jiwon</LogoTextShort>
+        </Logo>
       </Link>
       <NavLinks className="slide-in-right">
         <AboutDropdown />
