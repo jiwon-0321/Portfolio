@@ -6,6 +6,14 @@ import Navbar from '../../components/Navbar';
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 const Content = styled.div`
@@ -19,6 +27,18 @@ const Content = styled.div`
   box-shadow: 0 20px 60px rgba(245, 168, 159, 0.15);
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    margin: 6rem auto 3rem auto;
+    padding: 2rem;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 5rem auto 2rem auto;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
 `;
 
 const Header = styled.div`
@@ -51,6 +71,40 @@ const Header = styled.div`
     opacity: 0.7;
     line-height: 1.6;
     font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .description {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .description {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -146,6 +200,77 @@ const Section = styled.section`
       }
     }
   }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    ul li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      &:before {
+        margin-right: 0.5rem;
+      }
+      
+      &:after {
+        left: 10px;
+        width: 40px;
+      }
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.2rem 0 0.6rem 0;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+    
+    ul {
+      margin: 0.8rem 0;
+      
+      li {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+        padding-left: 1.2rem;
+      }
+    }
+  }
 `;
 
 const HighlightBox = styled.div`
@@ -168,6 +293,38 @@ const HighlightBox = styled.div`
     margin: 0.8rem 0;
     font-weight: 500;
     color: #2C3E50;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      margin: 0.6rem 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
   }
 `;
 
@@ -198,6 +355,40 @@ const QuoteBox = styled.div`
     line-height: 1.7;
     text-align: center;
     font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    
+    &:before {
+      font-size: 2.5rem;
+      top: -8px;
+      left: 12px;
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+    
+    &:before {
+      font-size: 2rem;
+      top: -6px;
+      left: 10px;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
   }
 `;
 

@@ -6,6 +6,14 @@ import Navbar from '../../components/Navbar';
 const Container = styled.div`
   min-height: 100vh;
   padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 const Content = styled.div`
@@ -35,6 +43,18 @@ const Content = styled.div`
     0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
     100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
   }
+  
+  @media (max-width: 768px) {
+    margin: 6rem auto 3rem auto;
+    padding: 2rem;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 5rem auto 2rem auto;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
 `;
 
 const Header = styled.div`
@@ -55,6 +75,30 @@ const Header = styled.div`
     font-size: 1.1rem;
     color: #2C3E50;
     opacity: 0.8;
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+    
+    h1 {
+      font-size: 1.6rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -78,6 +122,28 @@ const SectionTitle = styled.h2`
     background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
     border-radius: 2px;
   }
+  
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1.5rem 0;
+    
+    &:after {
+      width: 60px;
+      height: 2px;
+      bottom: -8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem 0;
+    
+    &:after {
+      width: 50px;
+      height: 2px;
+      bottom: -6px;
+    }
+  }
 `;
 
 const Timeline = styled.div`
@@ -92,6 +158,19 @@ const Timeline = styled.div`
     bottom: 0;
     width: 2px;
     background: linear-gradient(135deg, #F5A89F 0%, #F2998E 100%);
+  }
+  
+  @media (max-width: 768px) {
+    &:before {
+      left: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &:before {
+      left: 15px;
+      width: 1px;
+    }
   }
 `;
 
@@ -112,6 +191,30 @@ const TimelineItem = styled.div`
     border: 3px solid rgba(250, 249, 246, 0.8);
     box-shadow: 0 4px 10px rgba(245, 168, 159, 0.3);
   }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+    padding-left: 60px;
+    
+    &:before {
+      left: 11px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(250, 249, 246, 0.8);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+    padding-left: 45px;
+    
+    &:before {
+      left: 7px;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(250, 249, 246, 0.8);
+    }
+  }
 `;
 
 const Period = styled.div`
@@ -123,6 +226,12 @@ const Period = styled.div`
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 12px;
+  }
 `;
 
 const Company = styled.h3`
@@ -130,6 +239,15 @@ const Company = styled.h3`
   font-weight: 600;
   color: #2C3E50;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
 `;
 
 const Position = styled.div`
@@ -138,6 +256,15 @@ const Position = styled.div`
   font-weight: 500;
   margin-bottom: 1rem;
   opacity: 0.8;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const Description = styled.p`
@@ -145,6 +272,17 @@ const Description = styled.p`
   line-height: 1.6;
   margin-bottom: 1rem;
   opacity: 0.9;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const Skills = styled.div`
@@ -152,6 +290,11 @@ const Skills = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+  
+  @media (max-width: 480px) {
+    gap: 0.3rem;
+    margin-top: 0.8rem;
+  }
 `;
 
 const SkillTag = styled.span`
@@ -161,6 +304,12 @@ const SkillTag = styled.span`
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 500;
+  
+  @media (max-width: 480px) {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 10px;
+  }
 `;
 
 const Achievements = styled.ul`
@@ -177,6 +326,26 @@ const Achievements = styled.ul`
       color: #F5A89F;
       font-weight: bold;
       margin-right: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 0.8rem;
+    padding-left: 1.2rem;
+    
+    li {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 0.6rem;
+    padding-left: 1rem;
+    
+    li {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
     }
   }
 `;

@@ -294,8 +294,8 @@ export default function Hero() {
   const router = useRouter();
   
   const handleBusinessCardView = () => {
-    // 전자 명함 보기 기능 - 나중에 전자명함 페이지나 모달로 연결 예정
-    alert('전자 명함 기능이 곧 추가될 예정입니다! 📇');
+    // 디지털 명함 보기 기능 - 나중에 디지털명함 페이지나 모달로 연결 예정
+    alert('디지털 명함 기능이 곧 추가될 예정입니다! 📇');
   };
 
   return (
@@ -316,7 +316,7 @@ export default function Hero() {
             포트폴리오 보기
           </CTAButton>
           <BusinessCardButton className="pulse" onClick={handleBusinessCardView}>
-            전자 명함 보기
+            디지털 명함 보기
           </BusinessCardButton>
         </ButtonContainer>
       </HeroContent>
