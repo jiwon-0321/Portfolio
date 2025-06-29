@@ -26,6 +26,21 @@ const GLASSMORPHISM = css`
 const TRANSITION = 'all 0.3s ease';
 const CAROUSEL_TRANSITION = 'transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)';
 
+// 상수 추가
+const MODAL_CONFIG = {
+  width: 320,
+  height: 300,
+  navbarHeight: 80,
+  dragThreshold: 0.25,
+  velocityThreshold: 0.3,
+  slideThreshold: 50,
+} as const;
+
+const DRAG_CONFIG = {
+  maxDragResistance: 0.8,
+  minResistance: 0.2,
+} as const;
+
 // 타입 정의
 interface CarouselState {
   currentIndex: number;
@@ -60,6 +75,17 @@ interface OverviewItem {
   segments?: string[];
 }
 
+interface MaterialModalState {
+  show: boolean;
+  material: string;
+  data?: any;
+  position?: { top: number; left: number };
+  isDragging?: boolean;
+  dragStart?: { x: number; y: number };
+  dragOffset?: { x: number; y: number };
+  animationKey?: number;
+}
+
 interface ProjectData {
   title: string;
   category: string;
@@ -85,6 +111,35 @@ interface ProjectData {
     description?: string;
   }>;
 }
+
+// 유틸리티 함수들
+const calculateModalPosition = (buttonRect: DOMRect, scrollY: number): { top: number; left: number } => {
+  const { width: modalWidth, navbarHeight } = MODAL_CONFIG;
+  return {
+    top: Math.max(navbarHeight, buttonRect.bottom + 10 + scrollY),
+    left: Math.max(10, Math.min(window.innerWidth - modalWidth - 10, buttonRect.left + (buttonRect.width / 2) - (modalWidth / 2)))
+  };
+};
+
+const calculateDragResistance = (currentIndex: number, totalImages: number, deltaX: number, slideWidth: number): number => {
+  const { maxDragResistance, minResistance } = DRAG_CONFIG;
+  const maxDrag = slideWidth * maxDragResistance;
+  
+  if (currentIndex === 0 && deltaX > 0) {
+    return Math.max(minResistance, 1 - (deltaX / maxDrag));
+  } else if (currentIndex === totalImages - 1 && deltaX < 0) {
+    return Math.max(minResistance, 1 - (Math.abs(deltaX) / maxDrag));
+  }
+  return 1;
+};
+
+const shouldSlideChange = (deltaX: number, slideWidth: number): boolean => {
+  const { dragThreshold, velocityThreshold, slideThreshold } = MODAL_CONFIG;
+  const threshold = slideWidth * dragThreshold;
+  const velocity = Math.abs(deltaX) / slideWidth;
+  
+  return velocity > velocityThreshold ? Math.abs(deltaX) > slideThreshold : Math.abs(deltaX) > threshold;
+};
 
 // 프로젝트 데이터
 const projectData: Record<string, ProjectData> = {
@@ -684,14 +739,18 @@ const MaterialButton = styled.button`
   }
 `;
 
-const MaterialModal = styled.div<{ show: boolean; position?: { top: number; left: number } }>`
-  position: fixed;
+const MaterialModal = styled.div<{ show: boolean; position?: { top: number; left: number }; isDragging?: boolean }>`
+  position: absolute;
   top: ${props => props.position ? `${props.position.top}px` : '50%'};
   left: ${props => props.position ? `${props.position.left}px` : '50%'};
   transform: ${props => props.position ? 'none' : 'translate(-50%, -50%)'};
   width: 320px;
   display: ${props => props.show ? 'block' : 'none'};
-  z-index: 1000;
+  z-index: 999;
+  cursor: ${props => props.isDragging ? 'grabbing' : 'grab'};
+  user-select: none;
+  transition: ${props => props.isDragging ? 'none' : 'all 0.2s ease'};
+  opacity: ${props => props.isDragging ? 0.9 : 1};
   
   /* 말풍선 화살표 */
   &::before {
@@ -709,25 +768,61 @@ const MaterialModal = styled.div<{ show: boolean; position?: { top: number; left
   }
 `;
 
-const MaterialModalContent = styled.div`
+const MaterialModalContent = styled.div<{ isDragging?: boolean }>`
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  box-shadow: ${props => props.isDragging ? '0 16px 48px rgba(0, 0, 0, 0.25)' : '0 8px 24px rgba(0, 0, 0, 0.15)'};
   border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
-  animation: tooltipSlideIn 0.2s ease-out;
+  animation: modalSlideDown 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  transform-origin: top center;
 
-  @keyframes tooltipSlideIn {
-    from {
+  @keyframes modalSlideDown {
+    0% {
       opacity: 0;
-      transform: translateY(-10px) scale(0.95);
+      transform: scaleY(0.3) translateY(-8px);
     }
-    to {
+    60% {
+      opacity: 0.8;
+      transform: scaleY(0.9) translateY(-2px);
+    }
+    100% {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: scaleY(1) translateY(0);
     }
+  }
+
+  .drag-header {
+    background: rgba(245, 168, 159, 0.2);
+    padding: 0.75rem 1.5rem;
+    cursor: grab;
+    border-bottom: 1px solid rgba(245, 168, 159, 0.1);
+    position: relative;
+    
+    &:active {
+      cursor: grabbing;
+    }
+    
+    .drag-handle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      
+      &::before {
+        content: '';
+        width: 40px;
+        height: 4px;
+        background: rgba(44, 62, 80, 0.3);
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 1.5rem;
   }
 
   h3 {
@@ -782,6 +877,7 @@ const MaterialModalContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 
     &:hover {
       color: #333;
@@ -1438,12 +1534,7 @@ export default function ProjectDetail() {
   const [highlightedReference, setHighlightedReference] = useState<number | null>(null);
   const [isModalTransitioning, setIsModalTransitioning] = useState(false);
   const [modalTransitionDirection, setModalTransitionDirection] = useState<'left' | 'right' | null>(null);
-  const [materialModal, setMaterialModal] = useState<{ 
-    show: boolean; 
-    material: string; 
-    data?: any; 
-    position?: { top: number; left: number }; 
-  }>({ show: false, material: '' });
+    const [materialModal, setMaterialModal] = useState<MaterialModalState>({ show: false, material: '' });
 
   const referencesRef = useRef<HTMLDivElement>(null);
   const carousel = useCarousel(project);
@@ -1655,45 +1746,136 @@ export default function ProjectDetail() {
 
   const openMaterialModal = useCallback((material: string, sectionIndex: number, event: React.MouseEvent) => {
     const data = materialData[material];
-    const button = event.currentTarget as HTMLButtonElement;
-    const rect = button.getBoundingClientRect();
     
-    // 버튼 중앙 하단에 말풍선 위치 계산 (viewport 기준)
-    const position = {
-      top: rect.bottom + 10, // 버튼 아래 10px
-      left: rect.left + (rect.width / 2) - 160 // 모달 너비(320px)의 절반만큼 왼쪽으로
+    const defaultData = {
+      image: "/images/default-material.jpg",
+      description: `${material}에 대한 상세 정보입니다.`,
+      features: ["고품질", "내구성", "친환경"]
     };
     
-    setMaterialModal({ show: true, material, data, position });
+    const button = event.currentTarget as HTMLButtonElement;
+    const rect = button.getBoundingClientRect();
+    const position = calculateModalPosition(rect, window.scrollY);
+    
+    setMaterialModal({ 
+      show: true, 
+      material, 
+      data: data || defaultData, 
+      position, 
+      animationKey: Date.now() 
+    });
   }, [materialData]);
 
   const closeMaterialModal = useCallback(() => {
     setMaterialModal({ show: false, material: '' });
   }, []);
 
-  // 스크롤 시 모달 닫기 (스크롤 버그 방지)
-  useEffect(() => {
-    const handleScroll = () => {
-      if (materialModal.show) {
-        closeMaterialModal();
-      }
-    };
+  // 통합된 드래그 핸들러
+  const startDrag = useCallback((x: number, y: number) => {
+    if (!materialModal.position) return;
+    
+    setMaterialModal(prev => ({
+      ...prev,
+      isDragging: true,
+      dragStart: { x, y },
+      dragOffset: { x: 0, y: 0 }
+    }));
+  }, [materialModal.position]);
 
+  const updateDragPosition = useCallback((x: number, y: number) => {
+    if (!materialModal.isDragging || !materialModal.dragStart || !materialModal.position) return;
+    
+    const deltaX = x - materialModal.dragStart.x;
+    const deltaY = y - materialModal.dragStart.y;
+    
+    const { width: modalWidth, height: modalHeight } = MODAL_CONFIG;
+    const newX = Math.max(0, Math.min(window.innerWidth - modalWidth, materialModal.position.left + deltaX));
+    const newY = Math.max(0, Math.min(window.innerHeight - modalHeight, materialModal.position.top + deltaY));
+    
+    setMaterialModal(prev => ({
+      ...prev,
+      position: { top: newY, left: newX },
+      dragOffset: { x: deltaX, y: deltaY }
+    }));
+  }, [materialModal.isDragging, materialModal.dragStart, materialModal.position]);
+
+  const endDrag = useCallback(() => {
+    setMaterialModal(prev => ({
+      ...prev,
+      isDragging: false,
+      dragStart: undefined,
+      dragOffset: undefined
+    }));
+  }, []);
+
+  // 마우스 이벤트 핸들러
+  const handleDragStart = useCallback((e: React.MouseEvent) => {
+    startDrag(e.clientX, e.clientY);
+    e.preventDefault();
+  }, [startDrag]);
+
+  const handleDragMove = useCallback((e: MouseEvent) => {
+    updateDragPosition(e.clientX, e.clientY);
+  }, [updateDragPosition]);
+
+  // 터치 이벤트 핸들러
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+    e.preventDefault();
+  }, [startDrag]);
+
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    const touch = e.touches[0];
+    updateDragPosition(touch.clientX, touch.clientY);
+    e.preventDefault();
+  }, [updateDragPosition]);
+
+
+
+  // 마우스 및 터치 이벤트 리스너
+  useEffect(() => {
+    if (materialModal.isDragging) {
+      document.addEventListener('mousemove', handleDragMove);
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', endDrag);
+      document.body.style.cursor = 'grabbing';
+      document.body.style.userSelect = 'none';
+    } else {
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleDragMove);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', endDrag);
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+  }, [materialModal.isDragging, handleDragMove, endDrag, handleTouchMove]);
+
+  // 외부 클릭 시 모달 닫기
+  useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (materialModal.show && !(e.target as Element).closest('.material-modal-content')) {
+      if (materialModal.show && !(e.target as Element).closest('.material-modal-content') && !(e.target as Element).closest('[data-material-button]')) {
         closeMaterialModal();
       }
     };
 
     if (materialModal.show) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      document.addEventListener('click', handleClickOutside);
+      // 외부 클릭 이벤트를 약간 지연시켜 버튼 클릭과 충돌 방지
+      const timer = setTimeout(() => {
+        document.addEventListener('click', handleClickOutside);
+      }, 100);
+      
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener('click', handleClickOutside);
+      };
     }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('click', handleClickOutside);
-    };
   }, [materialModal.show, closeMaterialModal]);
 
   useEffect(() => {
@@ -1788,16 +1970,16 @@ export default function ProjectDetail() {
             <OverviewGrid>
               {overviewCards.map((card, index) => (
                 <OverviewCard key={index} style={{
-                  ...(index === 1 && { // 목표 카드 (index 1)에만 적용
+                  ...(index === 1 || index === 2) && { // 목표 카드 (index 1)와 타겟 카드 (index 2)에 적용
                     display: 'flex',
                     flexDirection: 'column',
                     height: '100%'
-                  })
+                  }
                 }}>
                   <h3>{card.title}</h3>
                   {card.data && (
                     <>
-                      <div style={{ marginBottom: '1rem', ...(index === 1 && { flex: '1' }) }}>
+                      <div style={{ marginBottom: '1rem', ...((index === 1 || index === 2) && { flex: '1' }) }}>
                         <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#F5A89F', marginBottom: '0.4rem' }}>
                           {card.data.title}
                         </h4>
@@ -1812,7 +1994,7 @@ export default function ProjectDetail() {
                         <ul style={{ 
                           listStyle: 'none', 
                           padding: 0, 
-                          margin: index === 1 ? 'auto 0 0 0' : '1rem 0 0 0', // 목표 카드는 자동으로 아래 정렬
+                          margin: (index === 1 || index === 2) ? 'auto 0 0 0' : '1rem 0 0 0', // 목표 카드와 타겟 카드는 자동으로 아래 정렬
                           display: 'grid',
                           gap: '0.4rem',
                           alignContent: 'end'
@@ -1955,7 +2137,12 @@ export default function ProjectDetail() {
                         {section.materials.map((material, idx) => (
                           <MaterialButton
                             key={idx}
-                            onClick={(e) => openMaterialModal(material, sectionIndex, e)}
+                            data-material-button="true"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              e.preventDefault();
+                              openMaterialModal(material, sectionIndex, e);
+                            }}
                           >
                             {material}
                           </MaterialButton>
@@ -2065,33 +2252,48 @@ export default function ProjectDetail() {
       <MaterialModal 
         show={materialModal.show} 
         position={materialModal.position}
+        isDragging={materialModal.isDragging}
       >
-        <MaterialModalContent className="material-modal-content" onClick={(e) => e.stopPropagation()}>
+        <MaterialModalContent 
+          key={materialModal.animationKey}
+          className="material-modal-content" 
+          onClick={(e) => e.stopPropagation()}
+          isDragging={materialModal.isDragging}
+        >
+          <div 
+            className="drag-header" 
+            onMouseDown={handleDragStart}
+            onTouchStart={handleTouchStart}
+          >
+            <div className="drag-handle"></div>
+            <h3>{materialModal.material}</h3>
+          </div>
           <button className="close-button" onClick={closeMaterialModal}>
             ×
           </button>
-          <h3>{materialModal.material}</h3>
-          {materialModal.data && (
-            <>
-              <img 
-                src={materialModal.data.image} 
-                alt={materialModal.material}
-                className="material-image"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
-              />
-              <p className="description">{materialModal.data.description}</p>
-              <div className="features">
-                {materialModal.data.features?.map((feature, idx) => (
-                  <span key={idx} className="feature-tag">
-                    {feature}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
+          <div className="modal-body">
+            {materialModal.data && (
+              <>
+                <img 
+                  src={materialModal.data.image} 
+                  alt={materialModal.material}
+                  className="material-image"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+                <p className="description">{materialModal.data.description}</p>
+                <div className="features">
+                  {materialModal.data.features?.map((feature, idx) => (
+                    <span key={idx} className="feature-tag">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </MaterialModalContent>
       </MaterialModal>
     </>
