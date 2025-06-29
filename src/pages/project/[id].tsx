@@ -123,10 +123,10 @@ const projectData: Record<string, ProjectData> = {
         subtitle: "자연과의 연결을 통해 진정한 휴식을 추구하는 여행객",
         description: "웰빙과 자연 친화적 경험을 중시하는 다양한 연령층의 고객",
         segments: [
-          "30-60대 웰빙 추구층 - 자연스러운 편안함 중시",
-          "스트레스 해소가 필요한 직장인 - 심리적 회복과 휴식 추구",
-          "혁신적 경험 추구 MZ세대 - 차별화된 특별한 숙박 경험 원함",
-          "자연 친화적 레저 여행객 - 지속가능한 여행 경험 선호"
+          "30-60대 웰빙 추구층",
+          "스트레스 해소 필요 직장인",
+          "혁신적 경험 추구 MZ세대",
+          "자연 친화적 레저 여행객"
         ]
       }
     },
@@ -463,9 +463,9 @@ const OverviewCard = styled.div`
   
   h3 {
     color: ${COLORS.primary};
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
   
   p {
@@ -822,44 +822,49 @@ const CitationNumber = styled.sup`
 
 const ReferenceItem = styled.div<{ isOpen: boolean; isHighlighted: boolean }>`
   background: ${({ isHighlighted }) => 
-    isHighlighted ? 'rgba(245, 168, 159, 0.4)' : 'rgba(245, 168, 159, 0.2)'};
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  border-left: 2px solid ${COLORS.secondary};
+    isHighlighted ? 'rgba(245, 168, 159, 0.15)' : 'rgba(245, 168, 159, 0.08)'};
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  border-left: 3px solid rgba(245, 168, 159, 0.6);
   overflow: hidden;
   transition: ${TRANSITION};
   transform: ${({ isHighlighted }) => isHighlighted ? 'scale(1.01)' : 'scale(1)'};
+  box-shadow: 0 2px 12px rgba(245, 168, 159, 0.08);
   
   &:hover {
-    background: rgba(245, 168, 159, 0.25);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.1);
+    background: rgba(245, 168, 159, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(245, 168, 159, 0.15);
+    border-left-color: rgba(245, 168, 159, 0.8);
   }
 `;
 
 const ReferenceHeader = styled.div`
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.25rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: ${TRANSITION};
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px 10px 0 0;
   
   &:hover {
-    background: rgba(245, 168, 159, 0.1);
+    background: rgba(255, 255, 255, 0.5);
   }
 `;
 
 const ReferenceTitle = styled.div`
   color: ${COLORS.primary};
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   margin: 0;
   flex: 1;
-  line-height: 1.4;
+  line-height: 1.5;
+  opacity: 0.9;
   
   .title {
-    font-weight: 600;
+    font-weight: 700;
   }
 `;
 
@@ -884,23 +889,25 @@ const ExpandIcon = styled.div<{ isOpen: boolean }>`
   font-weight: 500;
   transition: all 0.3s ease;
   margin-left: 0.5rem;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(245, 168, 159, 0.4);
+  border: 1px solid rgba(245, 168, 159, 0.3);
   border-radius: 50%;
-  background: ${({ isOpen }) => isOpen ? 'rgba(245, 168, 159, 0.2)' : 'transparent'};
+  background: ${({ isOpen }) => isOpen ? 'rgba(245, 168, 159, 0.12)' : 'rgba(255, 255, 255, 0.8)'};
+  opacity: 0.8;
   
   &:before {
     content: '${({ isOpen }) => isOpen ? '−' : '+'}';
   }
   
   &:hover {
-    border-color: rgba(245, 168, 159, 0.8);
-    background: rgba(245, 168, 159, 0.15);
+    border-color: rgba(245, 168, 159, 0.6);
+    background: rgba(245, 168, 159, 0.18);
     transform: scale(1.1);
+    opacity: 1;
   }
 `;
 
@@ -909,20 +916,21 @@ const ReferenceContent = styled.div<{ isOpen: boolean }>`
   opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
   overflow: hidden;
   transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease, background 0.3s ease;
-  padding: ${({ isOpen }) => isOpen ? '0.75rem 1rem 0.75rem 1rem' : '0 1rem'};
-  background: ${({ isOpen }) => isOpen ? 'rgba(245, 168, 159, 0.02)' : 'transparent'};
-  border-radius: ${({ isOpen }) => isOpen ? '0 0 8px 8px' : '0'};
-  border-top: ${({ isOpen }) => isOpen ? '1px solid rgba(245, 168, 159, 0.1)' : 'none'};
+  padding: ${({ isOpen }) => isOpen ? '1.25rem 1.25rem 1.25rem 1.25rem' : '0 1.25rem'};
+  background: ${({ isOpen }) => isOpen ? 'rgba(250, 249, 246, 0.6)' : 'transparent'};
+  border-radius: ${({ isOpen }) => isOpen ? '0 0 10px 10px' : '0'};
+  border-top: ${({ isOpen }) => isOpen ? '1px solid rgba(245, 168, 159, 0.2)' : 'none'};
   
   p {
     color: ${COLORS.primary};
-    margin: 0.15rem 0;
-    opacity: 0.8;
-    font-size: 0.85rem;
+    margin: 0.2rem 0;
+    opacity: 0.85;
+    font-size: 0.9rem;
+    line-height: 1.6;
     
-    &.author { font-weight: 500; }
-    &.journal { font-style: italic; }
-    &.details { font-size: 0.8rem; opacity: 0.7; }
+    &.author { font-weight: 500; opacity: 0.9; }
+    &.journal { font-style: italic; opacity: 0.8; }
+    &.details { font-size: 0.85rem; opacity: 0.75; }
   }
 `;
 
@@ -1790,13 +1798,13 @@ export default function ProjectDetail() {
                   {card.data && (
                     <>
                       <div style={{ marginBottom: '1rem', ...(index === 1 && { flex: '1' }) }}>
-                        <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#F5A89F', marginBottom: '0.5rem' }}>
+                        <h4 style={{ fontSize: '0.9rem', fontWeight: '600', color: '#F5A89F', marginBottom: '0.4rem' }}>
                           {card.data.title}
                         </h4>
-                        <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '0.75rem', opacity: 0.8 }}>
+                        <p style={{ fontSize: '0.8rem', fontStyle: 'italic', marginBottom: '0.6rem', opacity: 0.8 }}>
                           "{card.data.subtitle}"
                         </p>
-                        <p style={{ lineHeight: '1.5', marginBottom: '1rem' }}>
+                        <p style={{ fontSize: '0.8rem', lineHeight: '1.5', marginBottom: '0.8rem' }}>
                           {card.data.description}
                         </p>
                       </div>
@@ -1804,22 +1812,24 @@ export default function ProjectDetail() {
                         <ul style={{ 
                           listStyle: 'none', 
                           padding: 0, 
-                          margin: index === 1 ? 'auto 0 0 0' : '1.2rem 0 0 0', // 목표 카드는 자동으로 아래 정렬
+                          margin: index === 1 ? 'auto 0 0 0' : '1rem 0 0 0', // 목표 카드는 자동으로 아래 정렬
                           display: 'grid',
-                          gap: '0.5rem',
+                          gap: '0.4rem',
                           alignContent: 'end'
                         }}>
                           {(card.data.features || card.data.targets || card.data.segments)?.map((item, idx) => (
                             <li key={idx} style={{ 
                               display: 'flex', 
-                              alignItems: 'flex-end',
-                              fontSize: '0.75rem',
-                              lineHeight: '1.4'
+                              alignItems: 'flex-start',
+                              fontSize: '0.7rem',
+                              lineHeight: '1.3',
+                              marginBottom: '0.2rem'
                             }}>
                               <span style={{ 
-                                marginRight: '0.5rem', 
+                                marginRight: '0.4rem', 
                                 color: '#F5A89F',
-                                fontSize: '0.65rem'
+                                fontSize: '0.6rem',
+                                marginTop: '0.15rem'
                               }}>
                                 ●
                               </span>
