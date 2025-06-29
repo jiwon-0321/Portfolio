@@ -78,10 +78,11 @@ interface ProjectData {
   references: Array<{
     title: string;
     author: string;
-    journal: string;
+    journal?: string;
     year: string;
-    volume: string;
-    pages: string;
+    volume?: string;
+    pages?: string;
+    description?: string;
   }>;
 }
 
@@ -132,7 +133,7 @@ const projectData: Record<string, ProjectData> = {
     sections: [
       {
         title: '공간 계획 및 구성',
-        images: ['/main images/평면도 layout.PNG', '/main images/iso.jpg'],
+        images: ['/main images/평면도 layout.PNG', '/main images/스케치.jpg', '/main images/iso.jpg'],
         description: '개인화된 휴식 경험을 제공하기 위해 각 객실의 공간을 효율적으로 구성하고, 자연 채광을 고려하여 설계했습니다.',
         materials: ['친환경 마감재', '스마트 조명 시스템', '빌트인 가구'],
         details: '평면도는 공간의 흐름과 기능성을 보여주며, 아이소메트릭 뷰는 전체적인 공간 구조를 입체적으로 이해하는 데 도움을 줍니다.',
@@ -173,20 +174,22 @@ const projectData: Record<string, ProjectData> = {
     ],
     references: [
       {
-        title: '카페 공간의 색채가 고객 만족도에 미치는 영향',
-        author: '김○○, 이○○',
-        journal: '한국실내디자인학회논문집',
-        year: '2022',
-        volume: 'Vol.31, No.2',
-        pages: 'pp.45-52'
+        title: 'The Experience of Landscape',
+        author: 'Appleton, J.',
+        year: '1975',
+        description: '제이 애플턴(Jay Appleton)의 저서 "The Experience of Landscape"는 조망-피난처 이론(Prospect-Refuge Theory)을 처음으로 제시한 기념비적인 연구입니다. 이 이론은 인간이 생존 본능에 따라 시야가 확보되면서도(조망) 보호받는(피난처) 공간을 동시에 선호한다는 점을 핵심으로 합니다.\n\n📊 핵심 연구 데이터\n\n✨ 웰빙 및 생산성 향상\n최근의 생체친화적 디자인(Biophilic Design) 연구에 따르면, 조망과 피난처 원리가 적용된 자연 친화적 환경에서 근무하는 직원은 웰빙 수준이 15% 더 높고, 생산성은 6%, 창의성은 15% 더 높은 것으로 보고되었습니다.\n\n🏢 업무 환경에서의 효과\n자연광이 풍부하고 외부 조망이 가능한 사무실의 직원은 그렇지 않은 직원에 비해 생산성이 최대 15%까지 향상될 수 있다는 연구 결과도 있습니다.'
       },
       {
-        title: '상업공간에서의 자연 요소 도입 효과 연구',
-        author: '박○○',
-        journal: '대한건축학회논문집',
-        year: '2023',
-        volume: 'Vol.39, No.1',
-        pages: 'pp.123-130'
+        title: 'Design, productivity and well-being: What are the links?',
+        author: 'Heerwagen, J.H.',
+        year: '1998',
+        description: '주디스 히어바겐(Judith H. Heerwagen)의 이 연구는 건축 환경이 인간의 생산성과 웰빙에 미치는 영향을 탐구한 중요한 논문입니다. 특히 자연광이 인지기능과 스트레스 반응에 미치는 영향에 대한 생태심리학적 연구를 수행했습니다.\n\n📊 핵심 연구 데이터\n\n📈 업무 및 학습 성과 향상\n자연광에 더 많이 노출되는 환경은 업무 공간에서 성과를 최대 10%까지, 학교에서는 9~18%까지 향상시킬 수 있습니다.\n\n🏥 의료 환경에서의 회복 효과\n병원 환경에서 자연광이 잘 드는 병실의 환자는 그렇지 않은 환자에 비해 회복 속도가 8% 더 빠르고, 진통제 요구량도 더 적었습니다.\n\n🪟 자연 조망의 심리적 효과\n창문을 통해 자연 경관을 볼 수 있는 직원은 그렇지 않은 직원에 비해 좌절감을 덜 느끼고 더 높은 인내심을 보이며, 전반적인 삶의 만족도와 건강 상태가 더 양호하다고 보고했습니다.'
+      },
+      {
+        title: 'Wood and Human Stress in the Built Indoor Environment',
+        author: 'Burnard, M. D., & Kutnar, A.',
+        year: '2015',
+        description: '마이클 버나드(Michael D. Burnard)와 안드레이 쿠트나르(Andreja Kutnar)의 이 연구는 실내 환경에서 목재 사용이 인간의 스트레스 반응에 미치는 영향을 과학적으로 검증한 논문입니다. 연구진은 다양한 재료 표면에 대한 인간의 생리적 반응을 측정하여 목재의 스트레스 완화 효과를 실증적으로 입증했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 신경학적 반응\n참나무(white oak) 표면 접촉 시 대리석, 타일, 스테인리스 스틸 대비 전두엽 피질의 스트레스 반응이 유의미하게 감소하는 것으로 관찰되었습니다.\n\n🌿 자율신경계 조절\n목재 접촉 시 교감신경계가 억제되고 부교감신경계가 활성화되어 자연스러운 휴식 상태가 유도되는 것을 확인했습니다.\n\n❤️ 혈압 안정성\n차가운 플라스틱이나 스테인리스 스틸은 혈압 상승을 유발하는 반면, 목재 표면은 혈압 변화 없이 안정적인 생리 상태를 유지시키는 것으로 나타났습니다.\n\n📉 스트레스 호르몬 변화\n목재 가구가 배치된 사무실 환경에서 근무한 참가자들의 타액 내 코르티솜 농도가 대조군 대비 유의미하게 감소하여 전반적인 스트레스 수준 완화 효과가 입증되었습니다.'
       }
     ]
   },
@@ -751,13 +754,25 @@ const ReferenceHeader = styled.div`
   }
 `;
 
-const ReferenceTitle = styled.h4`
+const ReferenceTitle = styled.div`
   color: ${COLORS.primary};
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0;
   flex: 1;
   line-height: 1.4;
+  
+  .title {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  
+  .meta {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: ${COLORS.primary};
+    opacity: 0.7;
+  }
 `;
 
 const ReferenceNumber = styled.div`
@@ -802,10 +817,10 @@ const ExpandIcon = styled.div<{ isOpen: boolean }>`
 `;
 
 const ReferenceContent = styled.div<{ isOpen: boolean }>`
-  max-height: ${({ isOpen }) => isOpen ? '150px' : '0'};
+  max-height: ${({ isOpen }) => isOpen ? '1000px' : '0'};
   opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
   overflow: hidden;
-  transition: ${TRANSITION};
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
   padding: ${({ isOpen }) => isOpen ? '0 1rem 0.75rem 1rem' : '0 1rem'};
   
   p {
@@ -1504,7 +1519,7 @@ export default function ProjectDetail() {
             <OverviewHeader>
               <SectionTitle style={{ marginBottom: 0, textAlign: 'left' }}>프로젝트 개요</SectionTitle>
               <DownloadButton onClick={handleDownloadProposal}>
-                공간 기획서 다운로드
+                컨셉 기획서 다운로드
               </DownloadButton>
             </OverviewHeader>
             <OverviewGrid>
@@ -1690,13 +1705,55 @@ export default function ProjectDetail() {
               >
                 <ReferenceHeader onClick={() => toggleReference(index)}>
                   <ReferenceNumber>{index + 1}</ReferenceNumber>
-                  <ReferenceTitle>{ref.title}</ReferenceTitle>
+                  <ReferenceTitle>
+                    <div className="title">{ref.title}</div>
+                    <div className="meta">{ref.author} ({ref.year})</div>
+                  </ReferenceTitle>
                   <ExpandIcon isOpen={openReferences[index] || false} />
                 </ReferenceHeader>
                 <ReferenceContent isOpen={openReferences[index] || false}>
-                  <p className="author">저자: {ref.author}</p>
-                  <p className="journal">{ref.journal}</p>
-                  <p className="details">{ref.year}, {ref.volume}, {ref.pages}</p>
+                  {ref.journal && <p className="journal">{ref.journal}</p>}
+                  {(ref.volume || ref.pages) && (
+                    <p className="details">
+                      {ref.volume && `${ref.volume}`}
+                      {ref.pages && `, ${ref.pages}`}
+                    </p>
+                  )}
+                  {ref.description && (
+                    <div className="description" style={{ 
+                      marginTop: '1rem', 
+                      lineHeight: '1.6', 
+                      color: '#4A5568',
+                      fontSize: '0.95rem'
+                    }}>
+                      {ref.description.split('\n').map((line, index) => (
+                        <React.Fragment key={index}>
+                          {line.includes('📊 핵심 연구 데이터') ? (
+                            <div style={{ 
+                              fontSize: '1.1rem', 
+                              fontWeight: 'bold', 
+                              color: '#2D3748',
+                              margin: '1rem 0 0.5rem 0'
+                            }}>
+                              {line}
+                            </div>
+                          ) : (line.match(/^[✨🏢📈🏥🪟🧠🌿❤️📉]/) ? (
+                            <div style={{ 
+                              fontSize: '1rem', 
+                              fontWeight: '600', 
+                              color: '#2D3748',
+                              margin: '0.8rem 0 0.3rem 0'
+                            }}>
+                              {line}
+                            </div>
+                          ) : (
+                            <span>{line}</span>
+                          ))}
+                          {index < ref.description!.split('\n').length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  )}
                 </ReferenceContent>
               </ReferenceItem>
             ))}
