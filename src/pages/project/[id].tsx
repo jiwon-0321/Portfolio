@@ -144,7 +144,7 @@ const shouldSlideChange = (deltaX: number, slideWidth: number): boolean => {
 // 프로젝트 데이터
 const projectData: Record<string, ProjectData> = {
   1: {
-    title: 'The Habi (자연 + 바이오필릭 컨셉 호텔)',
+    title: 'The Habi (Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)',
     category: '숙박공간',
     location: '경기도 가평',
     floors: '지상 1층',
@@ -352,7 +352,7 @@ const Content = styled.div`
 const GlassCard = styled.div`
   ${GLASSMORPHISM}
   border-radius: 30px;
-  padding: 3rem;
+  padding: 2.5rem;
   margin-bottom: 3rem;
   
   @media (max-width: 768px) {
@@ -483,13 +483,13 @@ const ProjectInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 `;
 
 const InfoItem = styled.div`
   h4 {
     color: ${COLORS.primary};
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -498,6 +498,7 @@ const InfoItem = styled.div`
   
   p {
     color: ${COLORS.primary};
+    font-size: 0.85rem;
     opacity: 0.8;
     font-weight: 500;
   }
@@ -2028,7 +2029,15 @@ export default function ProjectDetail() {
           </GlassCard>
 
           <GlassCard>
-            <ProjectTitle>{project.title}</ProjectTitle>
+            <ProjectTitle>
+              {project.title.includes('The Habi') ? (
+                <>
+                  The Habi <span style={{ fontSize: '0.9rem', fontWeight: 400, color: '#2C3E50', opacity: 0.6 }}>(Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)</span>
+                </>
+              ) : (
+                project.title
+              )}
+            </ProjectTitle>
             <ProjectInfo>
               {projectInfoItems.map((item, index) => (
                 <InfoItem key={index}>

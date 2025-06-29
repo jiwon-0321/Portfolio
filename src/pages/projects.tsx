@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const projects = [
   {
     id: 1,
-    title: 'The Habi (자연 + 바이오필릭 컨셉 호텔)',
+    title: 'The Habi (Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)',
     category: '숙박공간',
     image: '/main images/main.png.png',
     description: '자연과 호흡하는 바이오필릭 디자인 호텔'
@@ -172,6 +172,13 @@ const ProjectTitle = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
+const ProjectTitleSmall = styled.span`
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #2C3E50;
+  opacity: 0.6;
+`;
+
 const ProjectDescription = styled.p`
   color: #2C3E50;
   opacity: 0.8;
@@ -202,7 +209,15 @@ export default function Projects() {
               <ProjectImage src={project.image} alt={project.title} />
               <ProjectContent>
                 <ProjectCategory>{project.category}</ProjectCategory>
-                <ProjectTitle>{project.title}</ProjectTitle>
+                <ProjectTitle>
+                  {project.title.includes('The Habi') ? (
+                    <>
+                      The Habi <ProjectTitleSmall>(Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)</ProjectTitleSmall>
+                    </>
+                  ) : (
+                    project.title
+                  )}
+                </ProjectTitle>
                 <ProjectDescription>{project.description}</ProjectDescription>
               </ProjectContent>
             </ProjectCard>
