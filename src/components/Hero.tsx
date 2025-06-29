@@ -327,11 +327,35 @@ const BusinessCardImage = styled.img`
   border-radius: 10px;
 `;
 
-const CanvaCredit = styled.p`
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 1rem;
+const DownloadButton = styled.button`
+  background: linear-gradient(135deg, #3498DB 0%, #2980B9 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
 `;
+
+
 
 export default function Hero() {
   const router = useRouter();
@@ -343,6 +367,25 @@ export default function Hero() {
 
   const handleCloseCard = () => {
     setIsCardVisible(false);
+  };
+
+  const handleDownloadCard = async () => {
+    try {
+      const response = await fetch('/images/Business card.png');
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = '조지원_디지털명함.png';
+      document.body.appendChild(link);
+      link.click();
+      
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('다운로드 중 오류가 발생했습니다:', error);
+    }
   };
 
   return (
@@ -378,7 +421,9 @@ export default function Hero() {
           <ModalContent onClick={(e) => e.stopPropagation()}>
             <CloseButton onClick={handleCloseCard}>&times;</CloseButton>
             <BusinessCardImage src="/images/Business card.png" alt="디지털 명함" />
-            <CanvaCredit>made by canva</CanvaCredit>
+            <DownloadButton onClick={handleDownloadCard}>
+              📥 명함 다운로드
+            </DownloadButton>
           </ModalContent>
         </ModalOverlay>
       )}
