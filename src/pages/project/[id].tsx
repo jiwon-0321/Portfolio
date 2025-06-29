@@ -98,35 +98,35 @@ const projectData: Record<string, ProjectData> = {
     overview: {
       concept: {
         title: "Natural Harmony",
-        subtitle: "자연과 기술이 조화를 이루는 바이오필릭 디자인",
-        description: "도시 속에서도 숲속 같은 평온함을 제공하는 자연 친화적 공간",
+        subtitle: "자연과 인간이 조화를 이루는 바이오필릭 디자인",
+        description: "신경건축학적 근거를 기반으로 한 심리적 안정과 웰빙 증진을 위한 실용적이고 비용 효율적인 자연 친화적 공간",
         features: [
-          "실내 정원과 수직 녹화 시스템",
-          "자연광 중심의 조명 설계", 
-          "천연 목재, 석재 등 친환경 소재",
-          "자연음향과 아로마테라피 시스템"
+          "병에 담긴 소량의 식물 - 관리가 쉬운 자연 요소",
+          "큰 창을 통한 자연 채광 - 서카디안 리듬 조절",
+          "천연 소재 활용 - 목재와 자연 텍스타일",
+          "자연 조망 확보 - 외부 정원과의 시각적 연결"
         ]
       },
       objective: {
         title: "Project Goals",
-        subtitle: "스트레스 제로, 만족도 100%의 치유 공간 창조",
-        description: "심신의 회복과 재충전이 이루어지는 웰니스 경험 제공",
+        subtitle: "단순하면서도 강력한 치유 공간 창조",
+        description: "신경건축학적 효과를 통한 투숙객의 심리적 웰빙과 만족도 향상",
         targets: [
-          "투숙객 스트레스 지수 30% 감소",
-          "고객 만족도 95% 이상 달성",
-          "재방문율 60% 이상 확보",
-          "지속가능한 디자인을 통한 브랜드 차별화"
+          "투숙객 만족도 30% 향상 및 재방문률 25% 증가",
+          "객실 프리미엄 가격 15-20% 상향 책정 가능",
+          "스트레스 감소 및 수면의 질 향상 효과",
+          "지속가능 호텔 인증 획득 및 브랜드 가치 상승"
         ]
       },
       target: {
         title: "Target Audience",
-        subtitle: "진정한 휴식을 갈망하는 성숙한 여행객",
-        description: "30-60대 휴식 추구형 여행객",
+        subtitle: "자연과의 연결을 통해 진정한 휴식을 추구하는 여행객",
+        description: "웰빙과 자연 친화적 경험을 중시하는 다양한 연령층의 고객",
         segments: [
-          "업무 스트레스로 지친 직장인",
-          "힐링을 추구하는 중장년층",
-          "프리미엄 경험을 중시하는 여행객",
-          "워케이션을 계획하는 디지털 노마드"
+          "자연 친화적 레저 여행객 - 지속가능한 여행 경험 선호",
+          "혁신적 경험 추구 MZ세대 - 차별화된 특별한 숙박 경험 원함",
+          "스트레스 해소가 필요한 직장인 - 심리적 회복과 휴식 추구",
+          "30-60대 웰빙 추구층 - 자연스러운 편안함 중시"
         ]
       }
     },
@@ -1484,7 +1484,7 @@ export default function ProjectDetail() {
 
   const handleDownloadProposal = () => {
     const link = document.createElement('a');
-    link.href = '/proposal/biophilic_hotel_proposal_20250623152513.pdf';
+    link.href = '/proposal/concept plan.pdf';
     link.setAttribute('download', 'The_Habi_Hotel_Proposal.pdf');
     document.body.appendChild(link);
     link.click();
@@ -1543,7 +1543,7 @@ export default function ProjectDetail() {
                         <ul style={{ 
                           listStyle: 'none', 
                           padding: 0, 
-                          margin: 0,
+                          margin: '1.2rem 0 0 0',
                           display: 'grid',
                           gap: '0.5rem'
                         }}>
@@ -1551,13 +1551,13 @@ export default function ProjectDetail() {
                             <li key={idx} style={{ 
                               display: 'flex', 
                               alignItems: 'center',
-                              fontSize: '0.9rem',
+                              fontSize: '0.8rem',
                               lineHeight: '1.4'
                             }}>
                               <span style={{ 
                                 marginRight: '0.5rem', 
                                 color: '#F5A89F',
-                                fontSize: '0.8rem'
+                                fontSize: '0.7rem'
                               }}>
                                 ●
                               </span>
