@@ -101,10 +101,10 @@ const projectData: Record<string, ProjectData> = {
         subtitle: "자연과 인간이 조화를 이루는 바이오필릭 디자인",
         description: "신경건축학적 근거를 기반으로 한 심리적 안정과 웰빙 증진을 위한 실용적이고 비용 효율적인 자연 친화적 공간",
         features: [
-          "병에 담긴 소량의 식물 - 관리가 쉬운 자연 요소",
-          "큰 창을 통한 자연 채광 - 서카디안 리듬 조절",
+          "자연 조망 확보 - 외부 정원과의 시각적 연결",
           "천연 소재 활용 - 목재와 자연 텍스타일",
-          "자연 조망 확보 - 외부 정원과의 시각적 연결"
+          "큰 창을 통한 자연 채광 - 서카디안 리듬 조절",
+          "병에 담긴 소량의 식물 - 관리가 쉬운 자연 요소"
         ]
       },
       objective: {
@@ -112,10 +112,10 @@ const projectData: Record<string, ProjectData> = {
         subtitle: "단순하면서도 강력한 치유 공간 창조",
         description: "신경건축학적 효과를 통한 투숙객의 심리적 웰빙과 만족도 향상",
         targets: [
-          "투숙객 만족도 30% 향상 및 재방문률 25% 증가",
-          "객실 프리미엄 가격 15-20% 상향 책정 가능",
+          "지속가능 호텔 인증 획득 및 브랜드 가치 상승",
           "스트레스 감소 및 수면의 질 향상 효과",
-          "지속가능 호텔 인증 획득 및 브랜드 가치 상승"
+          "객실 프리미엄 가격 15-20% 상향 책정 가능",
+          "투숙객 만족도 30% 향상 및 재방문률 25% 증가"
         ]
       },
       target: {
@@ -123,10 +123,10 @@ const projectData: Record<string, ProjectData> = {
         subtitle: "자연과의 연결을 통해 진정한 휴식을 추구하는 여행객",
         description: "웰빙과 자연 친화적 경험을 중시하는 다양한 연령층의 고객",
         segments: [
-          "자연 친화적 레저 여행객 - 지속가능한 여행 경험 선호",
-          "혁신적 경험 추구 MZ세대 - 차별화된 특별한 숙박 경험 원함",
+          "30-60대 웰빙 추구층 - 자연스러운 편안함 중시",
           "스트레스 해소가 필요한 직장인 - 심리적 회복과 휴식 추구",
-          "30-60대 웰빙 추구층 - 자연스러운 편안함 중시"
+          "혁신적 경험 추구 MZ세대 - 차별화된 특별한 숙박 경험 원함",
+          "자연 친화적 레저 여행객 - 지속가능한 여행 경험 선호"
         ]
       }
     },
@@ -452,6 +452,7 @@ const OverviewGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  align-items: stretch;
 `;
 
 const OverviewCard = styled.div`
@@ -666,29 +667,124 @@ const DetailContent = styled.div`
   }
 `;
 
-const MaterialsList = styled.div`
-  margin-bottom: 1.5rem;
+const MaterialButton = styled.button`
+  padding: 0.5rem 0.8rem;
+  background-color: rgba(245, 168, 159, 0.2);
+  border: 1px solid rgba(245, 168, 159, 0.4);
+  border-radius: 20px;
+  color: #2C3E50;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(245, 168, 159, 0.3);
+    transform: translateY(-1px);
+  }
+`;
+
+const MaterialModal = styled.div<{ show: boolean; position?: { top: number; left: number } }>`
+  position: fixed;
+  top: ${props => props.position ? `${props.position.top}px` : '50%'};
+  left: ${props => props.position ? `${props.position.left}px` : '50%'};
+  transform: ${props => props.position ? 'none' : 'translate(-50%, -50%)'};
+  width: 320px;
+  display: ${props => props.show ? 'block' : 'none'};
+  z-index: 1000;
   
-  h4 {
-    color: ${COLORS.primary};
-    font-size: 1rem;
-    font-weight: 600;
+  /* 말풍선 화살표 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(255, 255, 255, 0.95);
+    filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+  }
+`;
+
+const MaterialModalContent = styled.div`
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  animation: tooltipSlideIn 0.2s ease-out;
+
+  @keyframes tooltipSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  h3 {
+    margin: 0 0 1rem 0;
+    color: #2C3E50;
+    font-size: 1.1rem;
+  }
+
+  .material-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background: #f0f0f0;
+  }
+
+  .description {
+    line-height: 1.5;
+    color: #4A5568;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
     margin-bottom: 0.5rem;
   }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    
-    li {
-      background: rgba(245, 168, 159, 0.3);
-      color: ${COLORS.primary};
-      padding: 0.3rem 0.8rem;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: inline-block;
-      margin: 0.2rem 0.5rem 0.2rem 0;
+
+  .feature-tag {
+    padding: 0.2rem 0.4rem;
+    background: rgba(245, 168, 159, 0.2);
+    border-radius: 10px;
+    font-size: 0.7rem;
+    color: #2C3E50;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #333;
     }
   }
 `;
@@ -764,14 +860,6 @@ const ReferenceTitle = styled.div`
   
   .title {
     font-weight: 600;
-    margin-bottom: 0.2rem;
-  }
-  
-  .meta {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: ${COLORS.primary};
-    opacity: 0.7;
   }
 `;
 
@@ -820,8 +908,11 @@ const ReferenceContent = styled.div<{ isOpen: boolean }>`
   max-height: ${({ isOpen }) => isOpen ? '1000px' : '0'};
   opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-  padding: ${({ isOpen }) => isOpen ? '0 1rem 0.75rem 1rem' : '0 1rem'};
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease, background 0.3s ease;
+  padding: ${({ isOpen }) => isOpen ? '0.75rem 1rem 0.75rem 1rem' : '0 1rem'};
+  background: ${({ isOpen }) => isOpen ? 'rgba(245, 168, 159, 0.02)' : 'transparent'};
+  border-radius: ${({ isOpen }) => isOpen ? '0 0 8px 8px' : '0'};
+  border-top: ${({ isOpen }) => isOpen ? '1px solid rgba(245, 168, 159, 0.1)' : 'none'};
   
   p {
     color: ${COLORS.primary};
@@ -1339,6 +1430,12 @@ export default function ProjectDetail() {
   const [highlightedReference, setHighlightedReference] = useState<number | null>(null);
   const [isModalTransitioning, setIsModalTransitioning] = useState(false);
   const [modalTransitionDirection, setModalTransitionDirection] = useState<'left' | 'right' | null>(null);
+  const [materialModal, setMaterialModal] = useState<{ 
+    show: boolean; 
+    material: string; 
+    data?: any; 
+    position?: { top: number; left: number }; 
+  }>({ show: false, material: '' });
 
   const referencesRef = useRef<HTMLDivElement>(null);
   const carousel = useCarousel(project);
@@ -1415,23 +1512,181 @@ export default function ProjectDetail() {
   }, []);
 
   const renderTextWithCitations = useCallback((text: string, citations: number[] = []) => {
-    if (!citations?.length) return text;
+    return text;
+  }, []);
 
-    return (
-      <>
-        {text}
-        {citations.map((citationIndex, idx) => (
-          <CitationNumber 
-            key={idx}
-            onClick={() => scrollToReference(citationIndex - 1)}
-            title={`참조 논문 ${citationIndex}로 이동`}
-          >
-            {citationIndex}
-          </CitationNumber>
-        ))}
-      </>
-    );
-  }, [scrollToReference]);
+  // 재료별 상세 정보 데이터
+  const materialData = useMemo(() => ({
+    "친환경 마감재": {
+      image: "/images/eco-friendly-materials.jpg",
+      description: "VOC 저방출 천연 소재로 제작된 마감재입니다. 인체에 무해하며 자연과 조화를 이루는 친환경적인 선택입니다.",
+      features: ["VOC 저방출", "천연 소재", "재활용 가능"]
+    },
+    "스마트 조명 시스템": {
+      image: "/images/smart-lighting.jpg", 
+      description: "서카디안 리듬에 맞춰 자동으로 조절되는 조명 시스템으로 숙면과 건강한 생활 패턴을 도와줍니다.",
+      features: ["자동 조절", "생체 리듬 고려", "에너지 효율"]
+    },
+    "빌트인 가구": {
+      image: "/images/built-in-furniture.jpg",
+      description: "공간 효율성을 극대화하고 미니멀한 디자인을 구현하는 맞춤형 빌트인 가구입니다.",
+      features: ["공간 효율", "맞춤 제작", "미니멀 디자인"]
+    },
+    // 객실 재료들
+    "원목 마루": {
+      image: "/images/wood-flooring.jpg",
+      description: "천연 원목으로 제작된 마루로 따뜻한 느낌과 자연의 질감을 제공합니다.",
+      features: ["천연 소재", "온도 조절", "내구성"]
+    },
+    "테라조 타일": {
+      image: "/images/terrazzo-tile.jpg",
+      description: "재활용 대리석 조각을 활용한 테라조 타일로 지속가능하면서도 세련된 마감재입니다.",
+      features: ["재활용 소재", "고급 마감", "내구성"]
+    },
+    "맞춤 제작 가구": {
+      image: "/images/custom-furniture.jpg",
+      description: "공간에 완벽하게 맞춰 제작된 가구로 효율성과 미적 완성도를 동시에 추구합니다.",
+      features: ["맞춤 제작", "공간 효율", "디자인 일체감"]
+    },
+    // 욕실 재료들
+    "이탈리아산 타일": {
+      image: "/images/italian-tile.jpg",
+      description: "이탈리아에서 수입한 프리미엄 타일로 우아함과 품질을 보장합니다.",
+      features: ["수입 소재", "프리미엄 품질", "방수 기능"]
+    },
+    "매립형 수전": {
+      image: "/images/built-in-faucet.jpg",
+      description: "벽면에 매립되어 깔끔한 라인을 연출하는 고급 수전 시스템입니다.",
+      features: ["미니멀 디자인", "절수 기능", "내구성"]
+    },
+    "간접 조명": {
+      image: "/images/indirect-lighting.jpg",
+      description: "부드럽고 은은한 빛으로 편안한 분위기를 연출하는 간접 조명 시스템입니다.",
+      features: ["부드러운 조명", "분위기 연출", "에너지 효율"]
+    },
+    "스마트 미러": {
+      image: "/images/smart-mirror.jpg",
+      description: "LED 조명과 김서림 방지 기능이 내장된 지능형 거울입니다.",
+      features: ["LED 조명", "김서림 방지", "스마트 기능"]
+    },
+    // 레스토랑 재료들
+    "황동 마감재": {
+      image: "/images/brass-finish.jpg",
+      description: "따뜻한 황동 마감으로 고급스럽고 클래식한 분위기를 연출합니다.",
+      features: ["고급 마감", "내식성", "클래식 디자인"]
+    },
+    "벨벳 가구": {
+      image: "/images/velvet-furniture.jpg",
+      description: "부드러운 촉감과 고급스러운 광택의 벨벳 소재 가구입니다.",
+      features: ["럭셔리 소재", "부드러운 촉감", "고급스러운 외관"]
+    },
+    "대형 거울": {
+      image: "/images/large-mirror.jpg",
+      description: "공간을 넓어 보이게 하고 빛을 반사하여 밝은 분위기를 만드는 대형 거울입니다.",
+      features: ["공간 확장", "빛 반사", "시각적 효과"]
+    },
+    "천연석 바닥": {
+      image: "/images/natural-stone.jpg",
+      description: "자연에서 채취한 천연석으로 제작된 바닥재로 고급스러움과 내구성을 제공합니다.",
+      features: ["천연 소재", "고급스러움", "뛰어난 내구성"]
+    },
+    // 외부 공간 재료들
+    "데크 목재": {
+      image: "/images/deck-wood.jpg",
+      description: "방부 처리된 고급 데크 목재로 야외 환경에 최적화된 소재입니다.",
+      features: ["방부 처리", "야외 최적화", "자연 친화"]
+    },
+    "자연석": {
+      image: "/images/natural-rock.jpg",
+      description: "자연의 형태를 그대로 살린 조경용 자연석으로 정원의 자연스러움을 강조합니다.",
+      features: ["자연 형태", "조경 최적화", "환경 친화"]
+    },
+    "계절별 식물": {
+      image: "/images/seasonal-plants.jpg",
+      description: "계절마다 다른 모습으로 변화하는 식물들로 사계절 내내 아름다운 경관을 제공합니다.",
+      features: ["계절 변화", "자연 경관", "생태 친화"]
+    },
+    "수경시설": {
+      image: "/images/water-feature.jpg",
+      description: "물의 흐름과 소리로 평온함과 시원함을 제공하는 수경 조경 시설입니다.",
+      features: ["자연 소리", "시원한 효과", "명상적 분위기"]
+    },
+    // 업무 공간 재료들
+    "시스템 데스크": {
+      image: "/images/system-desk.jpg",
+      description: "모듈형 시스템으로 다양한 업무 환경에 맞춰 조합 가능한 데스크입니다.",
+      features: ["모듈형 구조", "유연한 조합", "업무 효율"]
+    },
+    "인체공학 의자": {
+      image: "/images/ergonomic-chair.jpg",
+      description: "장시간 업무에도 편안함을 제공하는 인체공학적 설계의 의자입니다.",
+      features: ["인체공학", "장시간 편안", "건강 고려"]
+    },
+    "흡음 패널": {
+      image: "/images/acoustic-panel.jpg",
+      description: "소음을 효과적으로 차단하고 흡수하여 조용한 업무 환경을 조성합니다.",
+      features: ["소음 차단", "음향 최적화", "집중력 향상"]
+    },
+    // 회의실 재료들
+    "방음 유리": {
+      image: "/images/soundproof-glass.jpg",
+      description: "뛰어난 방음 효과를 제공하면서도 투명성을 유지하는 고성능 유리입니다.",
+      features: ["방음 효과", "투명성", "프라이버시"]
+    },
+    "화이트보드": {
+      image: "/images/whiteboard.jpg",
+      description: "회의와 브레인스토밍을 위한 고품질 화이트보드로 아이디어 공유를 돕습니다.",
+      features: ["아이디어 공유", "쉬운 지우기", "내구성"]
+    },
+    "프로젝터 시설": {
+      image: "/images/projector.jpg",
+      description: "고해상도 프레젠테이션을 위한 최신 프로젝터 및 스크린 시설입니다.",
+      features: ["고해상도", "프레젠테이션", "최신 기술"]
+    }
+  }), []);
+
+  const openMaterialModal = useCallback((material: string, sectionIndex: number, event: React.MouseEvent) => {
+    const data = materialData[material];
+    const button = event.currentTarget as HTMLButtonElement;
+    const rect = button.getBoundingClientRect();
+    
+    // 버튼 중앙 하단에 말풍선 위치 계산 (viewport 기준)
+    const position = {
+      top: rect.bottom + 10, // 버튼 아래 10px
+      left: rect.left + (rect.width / 2) - 160 // 모달 너비(320px)의 절반만큼 왼쪽으로
+    };
+    
+    setMaterialModal({ show: true, material, data, position });
+  }, [materialData]);
+
+  const closeMaterialModal = useCallback(() => {
+    setMaterialModal({ show: false, material: '' });
+  }, []);
+
+  // 스크롤 시 모달 닫기 (스크롤 버그 방지)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (materialModal.show) {
+        closeMaterialModal();
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (materialModal.show && !(e.target as Element).closest('.material-modal-content')) {
+        closeMaterialModal();
+      }
+    };
+
+    if (materialModal.show) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [materialModal.show, closeMaterialModal]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -1524,11 +1779,17 @@ export default function ProjectDetail() {
             </OverviewHeader>
             <OverviewGrid>
               {overviewCards.map((card, index) => (
-                <OverviewCard key={index}>
+                <OverviewCard key={index} style={{
+                  ...(index === 1 && { // 목표 카드 (index 1)에만 적용
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%'
+                  })
+                }}>
                   <h3>{card.title}</h3>
                   {card.data && (
                     <>
-                      <div style={{ marginBottom: '1rem' }}>
+                      <div style={{ marginBottom: '1rem', ...(index === 1 && { flex: '1' }) }}>
                         <h4 style={{ fontSize: '1rem', fontWeight: '600', color: '#F5A89F', marginBottom: '0.5rem' }}>
                           {card.data.title}
                         </h4>
@@ -1543,21 +1804,22 @@ export default function ProjectDetail() {
                         <ul style={{ 
                           listStyle: 'none', 
                           padding: 0, 
-                          margin: '1.2rem 0 0 0',
+                          margin: index === 1 ? 'auto 0 0 0' : '1.2rem 0 0 0', // 목표 카드는 자동으로 아래 정렬
                           display: 'grid',
-                          gap: '0.5rem'
+                          gap: '0.5rem',
+                          alignContent: 'end'
                         }}>
                           {(card.data.features || card.data.targets || card.data.segments)?.map((item, idx) => (
                             <li key={idx} style={{ 
                               display: 'flex', 
-                              alignItems: 'center',
-                              fontSize: '0.8rem',
+                              alignItems: 'flex-end',
+                              fontSize: '0.75rem',
                               lineHeight: '1.4'
                             }}>
                               <span style={{ 
                                 marginRight: '0.5rem', 
                                 color: '#F5A89F',
-                                fontSize: '0.7rem'
+                                fontSize: '0.65rem'
                               }}>
                                 ●
                               </span>
@@ -1676,17 +1938,21 @@ export default function ProjectDetail() {
                 <DetailContent>
                   <h3>{section.title}</h3>
                   <p>{renderTextWithCitations(section.description, section.citations)}</p>
-                  <MaterialsList>
-                    <h4>주요 재료</h4>
-                    <ul>
-                            {section.materials.map((material, idx) => (
-                        <li key={idx}>{material}</li>
-                      ))}
-                    </ul>
-                  </MaterialsList>
-                  <DetailDescription>
-                    <p>{renderTextWithCitations(section.details, section.citations)}</p>
-                  </DetailDescription>
+                  {sectionIndex !== 0 && (
+                    <div>
+                      <h4 style={{ marginBottom: '1rem', color: '#2C3E50' }}>주요 재료</h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        {section.materials.map((material, idx) => (
+                          <MaterialButton
+                            key={idx}
+                            onClick={(e) => openMaterialModal(material, sectionIndex, e)}
+                          >
+                            {material}
+                          </MaterialButton>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </DetailContent>
                     </ContentSection>
                   </SectionLayout>
@@ -1706,8 +1972,7 @@ export default function ProjectDetail() {
                 <ReferenceHeader onClick={() => toggleReference(index)}>
                   <ReferenceNumber>{index + 1}</ReferenceNumber>
                   <ReferenceTitle>
-                    <div className="title">{ref.title}</div>
-                    <div className="meta">{ref.author} ({ref.year})</div>
+                    <div className="title">{ref.title} - {ref.author} ({ref.year})</div>
                   </ReferenceTitle>
                   <ExpandIcon isOpen={openReferences[index] || false} />
                 </ReferenceHeader>
@@ -1786,6 +2051,39 @@ export default function ProjectDetail() {
           </ModalImageContainer>
         )}
       </Modal>
+
+      <MaterialModal 
+        show={materialModal.show} 
+        position={materialModal.position}
+      >
+        <MaterialModalContent className="material-modal-content" onClick={(e) => e.stopPropagation()}>
+          <button className="close-button" onClick={closeMaterialModal}>
+            ×
+          </button>
+          <h3>{materialModal.material}</h3>
+          {materialModal.data && (
+            <>
+              <img 
+                src={materialModal.data.image} 
+                alt={materialModal.material}
+                className="material-image"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
+              <p className="description">{materialModal.data.description}</p>
+              <div className="features">
+                {materialModal.data.features?.map((feature, idx) => (
+                  <span key={idx} className="feature-tag">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
+        </MaterialModalContent>
+      </MaterialModal>
     </>
   );
 } 
