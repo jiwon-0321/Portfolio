@@ -253,6 +253,17 @@ export default function Certificate() {
         title: '',
         items: []
       }
+    },
+    {
+      name: 'PCMaster(정비사)',
+      organization: '공인자격(국가/민간)',
+      date: '2012.05.31',
+      icon: '🖥️',
+      description: '',
+      details: {
+        title: '',
+        items: []
+      }
     }
   ];
 
