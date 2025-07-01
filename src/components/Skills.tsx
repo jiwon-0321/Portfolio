@@ -31,7 +31,10 @@ const designTools = [
     desc: '직관적인 3D 모델링으로 설계 아이디어를 빠르게 구현하고, 다양한 플러그인을 활용한 전문적인 모델링 작업을 수행합니다.',
     detailDesc: '• 포트폴리오 제작\n\n• 개인 주거공간을 스케치업으로 설계 모델링한 후 시공업체와 협업하여 공간 개선 작업을 진행'
   },
-    { 
+];
+
+const colorPaletteTools = [
+  { 
     name: 'Khroma', 
     icon: '/icons/khroma.png',
     percent: 80,
@@ -280,12 +283,39 @@ const MainContainer = styled.div`
   margin: 4rem 0;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+`;
+
 const MainTitle = styled.h1`
-  text-align: center;
   color: #2C3E50;
   font-size: 2.8rem;
-  margin-bottom: 4rem;
+  margin: 0;
+  margin-left: 8rem;
   text-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+`;
+
+const TitleNote = styled.span`
+  color: #2C3E50;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  font-weight: 400;
+  white-space: nowrap;
 `;
 
 const SkillsSection = styled.section`
@@ -888,12 +918,16 @@ export default function Skills() {
 
   return (
     <MainContainer>
-      <MainTitle>My Skills</MainTitle>
+      <TitleContainer>
+        <MainTitle>My Skills</MainTitle>
+        <TitleNote>*퍼센트는 숙련도를 의미</TitleNote>
+      </TitleContainer>
       {renderSkillSection(designTools, 'Design Tools', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(renderingTools, 'Rendering & Image Correction', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(llmSkills, 'LLM', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(generationSkills, 'Content Generation AI', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(searchSkills, 'Search & Multitool AI', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
+      {renderSkillSection(colorPaletteTools, 'Color Palette Generation', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(codeAssistantSkills, 'Development Tools AI', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       {renderSkillSection(aiMarketingSkills, 'Summarization AI', expandedCards, toggleExpand, detailExpandedCards, toggleDetailExpand, openImageModal)}
       

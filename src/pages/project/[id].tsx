@@ -188,30 +188,30 @@ const projectData: Record<string, ProjectData> = {
     sections: [
       {
         title: '공간 계획 및 구성',
-        images: ['/main images/평면도 layout.PNG', '/main images/스케치.jpg', '/main images/iso.jpg'],
-        description: '개인화된 휴식 경험을 제공하기 위해 각 객실의 공간을 효율적으로 구성하고, 자연 채광을 고려하여 설계했습니다.',
+        images: ['/main images/평면도 layout.PNG', '/main images/iso.jpg', '/main images/스케치.jpg'],
+        description: '개인화된 휴식 경험을 제공하기 위해 공간의 흐름과 사용자 동선을 중심으로 설계하였고, 채광과 시선 분산 효과를 고려해 구조를 구성했습니다. 이 바이오필릭 호텔 객실은 자연과의 연결을 통해 투숙객에게 깊은 휴식을 제공하는 치유 공간으로 설계되었습니다.\n\n평면도에서 확인되는 공간 구성을 살펴보면, L자형 레이아웃으로 메인 침실 공간과 외부 정원이 서로 다른 방향을 향하도록 배치되어 있으며, 중앙의 연결 공간을 통해 각 영역들이 자연스럽게 이어집니다. 이러한 배치는 인간이 본능적으로 시야가 확보되면서도 보호받는 공간을 선호한다는 특성을 반영하여, 각 공간에서 다른 영역을 조망할 수 있으면서도 개별적인 프라이버시를 확보할 수 있도록 구성되어 심리적 안정감을 제공합니다(1).\n\n아이소메트릭 도면에서 드러나는 대형 천창과 측면 개구부들은 객실 내부로 자연광을 풍부하게 유입시키며, 특히 외부 정원 공간 상부의 대형 천창은 녹음과 빛이 만나는 자연스러운 조합을 연출하여 투숙객의 인지기능 향상과 스트레스 반응 감소에 긍정적 영향을 미칩니다(2).\n\n스케치에서 확인할 수 있는 실내 공간의 유기적 형태와 자연스러운 마감재 사용은 바이오필릭 디자인의 핵심을 보여줍니다. 직선적이지 않은 가구의 부드러운 형태와 천연 소재를 활용한 마감은 자연 환경에서 느낄 수 있는 편안함을 실내로 가져오며, 목재와 석재 등 자연 소재의 적극적 활용은 코르티솔 수치를 감소시켜 도시 생활로 지친 투숙객들에게 실질적인 치유 효과를 제공합니다(3).\n\n이러한 통합적 접근을 통해 자연의 치유력을 체험할 수 있는 바이오필릭 호텔 객실을 완성하고 있습니다.',
         materials: ['친환경 마감재', '스마트 조명 시스템', '빌트인 가구'],
         details: '평면도는 공간의 흐름과 기능성을 보여주며, 아이소메트릭 뷰는 전체적인 공간 구조를 입체적으로 이해하는 데 도움을 줍니다.',
-        citations: [1]
+        citations: [1, 2, 3]
       },
       {
-        title: '객실 및 디테일',
+        title: '전체 공간 구성',
         images: ['/main images/main.png.png', '/main images/1-1.jpg', '/main images/1-2.png', '/main images/7-1.jpg', '/main images/7-2.png'],
-        description: '자연 소재를 적극적으로 활용하고, 창밖의 풍경을 내부로 끌어들여 투숙객에게 깊은 휴식과 영감을 주는 공간을 디자인했습니다.',
+        description: '자연 소재를 적극적으로 활용하고, 창밖의 풍경을 내부로 끌어들여 투숙객에게 깊은 휴식과 영감을 주는 공간을 디자인했습니다.\n\n개인화된 휴식 경험을 제공하기 위해 공간의 흐름과 사용자 동선을 중심으로 설계하였고, 자연광 유입과 시선 분산 효과를 고려한 구조로 구성했습니다.\n\n또한 실내와 외부 공간의 시각적 연계를 통해 개방성과 안정감을 동시에 제공하며, 목재와 자연 패브릭의 사용은 뇌의 편도체 반응을 진정시키고 스트레스를 감소시키는 효과를 유도합니다.\n\n객실 내부는 가구와 벽체에 동일한 우드 톤을 적용하여 감각적 과잉을 줄이고, 벽면은 빛의 방향에 따라 달라지는 그림자 대비로 공간의 깊이를 더합니다.\n\n외부 정원과의 연결창은 자연 요소의 지속적 노출 효과를 통해 뇌의 전전두엽 활동을 증가시켜 명상 상태와 유사한 반응을 유도하며(4), 객실 내부에는 식물, 도자기, 곡선 가구 등 바이오필릭 요소를 점진적으로 배치하여 심리적 안정과 몰입감을 높였습니다(5).',
         materials: ['원목 마루', '테라조 타일', '맞춤 제작 가구'],
         details: '객실은 휴식의 본질에 집중할 수 있도록 미니멀하게 구성되었으며, 곳곳에 배치된 예술 작품과 디자인 조명이 공간에 깊이를 더합니다.',
-        citations: [2]
+        citations: [4, 5]
       },
       {
-        title: '욕실 및 위생 공간',
-        images: ['/main images/4-1.jpg', '/main images/4-2.png'],
+        title: '디테일',
+        images: ['/main images/4-1.jpg', '/main images/4-2.png', '/main images/2.jpg', '/main images/2-1.png'],
         description: '하루의 피로를 풀 수 있는 편안하고 고급스러운 욕실 공간입니다. 자연 채광과 간결한 디자인이 조화를 이룹니다.',
         materials: ['이탈리아산 타일', '매립형 수전', '간접 조명', '스마트 미러'],
         details: '자연 채광이 들어오는 넓은 창과 독립형 욕조를 배치하여, 마치 개인 스파에 온 듯한 기분을 느낄 수 있도록 디자인했습니다.',
         citations: [2]
       },
       {
-        title: '부대시설 (레스토랑 & 바)',
+        title: '화장실 디자인',
         images: ['/main images/3-1.jpg', '/main images/3-2.png', '/main images/3-3.jpg', '/main images/3-4.png'],
         description: '고급스러운 레스토랑과 바로, 투숙객에게 특별한 다이닝 경험을 제공합니다. 자연의 모티프를 현대적으로 재해석한 디자인이 특징입니다.',
         materials: ['황동 마감재', '벨벳 가구', '대형 거울', '천연석 바닥'],
@@ -219,7 +219,7 @@ const projectData: Record<string, ProjectData> = {
         citations: [1]
       },
       {
-        title: '외부 공간 및 조경',
+        title: '외부 정원/테라스',
         images: ['/main images/5.jpg', '/main images/5=1.png', '/main images/6.jpg'],
         description: '자연을 만끽할 수 있는 옥상 정원과 산책로입니다. 바이오필릭 디자인을 외부 공간까지 확장했습니다.',
         materials: ['데크 목재', '자연석', '계절별 식물', '수경시설'],
@@ -245,6 +245,20 @@ const projectData: Record<string, ProjectData> = {
         author: 'Burnard, M. D., & Kutnar, A.',
         year: '2015',
         description: '마이클 버나드(Michael D. Burnard)와 안드레이 쿠트나르(Andreja Kutnar)의 이 연구는 실내 환경에서 목재 사용이 인간의 스트레스 반응에 미치는 영향을 과학적으로 검증한 논문입니다. 연구진은 다양한 재료 표면에 대한 인간의 생리적 반응을 측정하여 목재의 스트레스 완화 효과를 실증적으로 입증했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 신경학적 반응\n참나무(white oak) 표면 접촉 시 대리석, 타일, 스테인리스 스틸 대비 전두엽 피질의 스트레스 반응이 유의미하게 감소하는 것으로 관찰되었습니다.\n\n🌿 자율신경계 조절\n목재 접촉 시 교감신경계가 억제되고 부교감신경계가 활성화되어 자연스러운 휴식 상태가 유도되는 것을 확인했습니다.\n\n❤️ 혈압 안정성\n차가운 플라스틱이나 스테인리스 스틸은 혈압 상승을 유발하는 반면, 목재 표면은 혈압 변화 없이 안정적인 생리 상태를 유지시키는 것으로 나타났습니다.\n\n📉 스트레스 호르몬 변화\n목재 가구가 배치된 사무실 환경에서 근무한 참가자들의 타액 내 코르티솜 농도가 대조군 대비 유의미하게 감소하여 전반적인 스트레스 수준 완화 효과가 입증되었습니다.'
+      },
+      {
+        title: 'Perceptual pleasure and the brain: A novel theory of aesthetic perception',
+        author: 'Biederman, I., & Vessel, E. A.',
+        journal: 'Frontiers in Psychology',
+        year: '2006',
+        description: '어빙 비더만(Irving Biederman)과 에드워드 베셀(Edward A. Vessel)의 이 연구는 미적 지각이 뇌에서 어떻게 처리되는지를 탐구한 신경미학 분야의 중요한 연구입니다. 목재와 자연 패브릭 소재가 뇌의 편도체 반응을 진정시키고 스트레스를 감소시키는 신경학적 메커니즘을 제시했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 편도체 반응 완화\n자연적 형태와 질감에 노출될 때 편도체의 활성도가 현저히 감소하며, 이는 스트레스 반응의 직접적인 완화를 의미합니다.\n\n🌿 자연 소재의 신경학적 효과\n목재와 자연 패브릭은 뇌의 감정 처리 중추에 긍정적 영향을 미쳐 심리적 안정감과 편안함을 유도합니다.\n\n🎨 미적 경험의 뇌 활동 패턴\n자연 소재와 유기적 형태는 뇌의 보상 체계를 활성화시켜 즐거움과 만족감을 증진시키는 것으로 확인되었습니다.'
+      },
+      {
+        title: 'Building for life: Designing and understanding the human-nature connection',
+        author: 'Kellert, S. R.',
+        year: '2005',
+        journal: 'Island Press',
+        description: '스티븐 켈러트(Stephen R. Kellert)의 이 저서는 바이오필릭 디자인의 이론적 토대를 제공하는 중요한 문헌입니다. 자연 요소의 지속적 노출이 전전두엽 활동을 증가시켜 명상과 유사한 반응을 유도하며, 바이오필릭 요소들이 심리적 안정과 몰입감을 높이는 메커니즘을 상세히 설명합니다.\n\n📊 핵심 연구 데이터\n\n🧠 전전두엽 활성화\n자연 조망과 자연 요소에 지속적으로 노출될 때 전전두엽 피질의 활동이 증가하며, 이는 집중력과 인지적 명료함을 향상시킵니다.\n\n🧘‍♀️ 명상 상태 유도\n외부 정원과의 연결창을 통한 자연 요소의 지속적 노출은 뇌파 패턴을 명상 상태와 유사하게 변화시켜 깊은 이완을 가져옵니다.\n\n🌱 바이오필릭 요소의 심리적 효과\n식물, 도자기, 곡선 가구 등의 자연적 요소들이 점진적으로 배치될 때 스트레스 감소와 심리적 안정감이 극대화됩니다.\n\n🔗 요소간 상승효과\n다양한 바이오필릭 요소들의 통합적 배치는 개별 요소의 효과를 상승적으로 증대시켜 전체적인 웰빙과 몰입감을 높입니다.'
       }
     ]
   },
@@ -1603,17 +1617,65 @@ export default function ProjectDetail() {
   }, []);
 
   const scrollToReference = useCallback((refIndex: number) => {
-    if (referencesRef.current) {
-      referencesRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setOpenReferences(prev => ({ ...prev, [refIndex]: true }));
-      setHighlightedReference(refIndex);
+    const element = document.getElementById(`reference-${refIndex}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setOpenReferences(prev => ({ ...prev, [refIndex - 1]: true }));
+      setHighlightedReference(refIndex - 1);
       setTimeout(() => setHighlightedReference(null), 2000);
     }
   }, []);
 
   const renderTextWithCitations = useCallback((text: string, citations: number[] = []) => {
-    return text;
-  }, []);
+    // 먼저 문단 나누기 (\n\n을 기준으로)
+    const paragraphs = text.split('\n\n');
+    
+    return (
+      <>
+        {paragraphs.map((paragraph, paragraphIndex) => {
+          // 각 문단에서 (숫자) 패턴을 찾아서 클릭 가능한 링크로 변환
+          const citationPattern = /\((\d+)\)/g;
+          const parts = [];
+          let lastIndex = 0;
+          let match;
+
+          while ((match = citationPattern.exec(paragraph)) !== null) {
+            const citationNumber = parseInt(match[1]);
+            
+            // 매치 이전 텍스트 추가
+            if (match.index > lastIndex) {
+              parts.push(paragraph.slice(lastIndex, match.index));
+            }
+            
+            // 인용 번호를 클릭 가능한 링크로 변환
+            parts.push(
+              <CitationNumber
+                key={`citation-${paragraphIndex}-${match.index}-${citationNumber}`}
+                onClick={() => scrollToReference(citationNumber)}
+                title={`참조문헌 ${citationNumber}번으로 이동`}
+              >
+                {citationNumber}
+              </CitationNumber>
+            );
+            
+            lastIndex = match.index + match[0].length;
+          }
+          
+          // 남은 텍스트 추가
+          if (lastIndex < paragraph.length) {
+            parts.push(paragraph.slice(lastIndex));
+          }
+          
+          // 각 문단을 p 태그로 감싸기
+          return (
+            <p key={paragraphIndex} style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+              {parts.length > 1 ? <>{parts}</> : paragraph}
+            </p>
+          );
+        })}
+      </>
+    );
+  }, [scrollToReference]);
 
   // 재료별 상세 정보 데이터
   const materialData = useMemo(() => ({
@@ -2138,7 +2200,7 @@ export default function ProjectDetail() {
                     <ContentSection>
                 <DetailContent>
                   <h3>{section.title}</h3>
-                  <p>{renderTextWithCitations(section.description, section.citations)}</p>
+                  {renderTextWithCitations(section.description, section.citations)}
                   {sectionIndex !== 0 && (
                     <div>
                       <h4 style={{ marginBottom: '1rem', color: '#2C3E50' }}>주요 재료</h4>
@@ -2171,7 +2233,8 @@ export default function ProjectDetail() {
             <SectionTitle>참조 논문</SectionTitle>
             {project.references.map((ref, index) => (
               <ReferenceItem 
-                key={index} 
+                key={index}
+                id={`reference-${index + 1}`}
                 isOpen={openReferences[index] || false}
                 isHighlighted={highlightedReference === index}
               >
