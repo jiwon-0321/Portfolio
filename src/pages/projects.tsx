@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const projects = [
   {
     id: 1,
-    title: 'The Habi (Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)',
+    title: 'The Habi',
     category: '숙박공간',
     image: '/main images/main.png.png',
     description: '자연과 호흡하는 바이오필릭 디자인 호텔'
@@ -210,13 +210,7 @@ export default function Projects() {
               <ProjectContent>
                 <ProjectCategory>{project.category}</ProjectCategory>
                 <ProjectTitle>
-                  {project.title.includes('The Habi') ? (
-                    <>
-                      The Habi <ProjectTitleSmall>(Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)</ProjectTitleSmall>
-                    </>
-                  ) : (
-                    project.title
-                  )}
+                  {project.title}
                 </ProjectTitle>
                 <ProjectDescription>{project.description}</ProjectDescription>
               </ProjectContent>

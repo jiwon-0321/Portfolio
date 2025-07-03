@@ -86,6 +86,11 @@ interface MaterialModalState {
   animationKey?: number;
 }
 
+interface MapModalState {
+  show: boolean;
+  location: string;
+}
+
 interface ProjectData {
   title: string;
   category: string;
@@ -144,7 +149,7 @@ const shouldSlideChange = (deltaX: number, slideWidth: number): boolean => {
 // 프로젝트 데이터
 const projectData: Record<string, ProjectData> = {
   1: {
-    title: 'The Habi (Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)',
+    title: 'The Habi',
     category: '숙박공간',
     location: '경기도 가평',
     floors: '지상 1층',
@@ -189,7 +194,7 @@ const projectData: Record<string, ProjectData> = {
       {
         title: '공간 계획 및 구성',
         images: ['/main images/평면도 layout.PNG', '/main images/iso.jpg', '/main images/스케치.jpg'],
-        description: '개인화된 휴식 경험을 제공하기 위해 공간의 흐름과 사용자 동선을 중심으로 설계하였고, 채광과 시선 분산 효과를 고려해 구조를 구성했습니다. 이 바이오필릭 호텔 객실은 자연과의 연결을 통해 투숙객에게 깊은 휴식을 제공하는 치유 공간으로 설계되었습니다.\n\n평면도에서 확인되는 공간 구성을 살펴보면, L자형 레이아웃으로 메인 침실 공간과 외부 정원이 서로 다른 방향을 향하도록 배치되어 있으며, 중앙의 연결 공간을 통해 각 영역들이 자연스럽게 이어집니다. 이러한 배치는 인간이 본능적으로 시야가 확보되면서도 보호받는 공간을 선호한다는 특성을 반영하여, 각 공간에서 다른 영역을 조망할 수 있으면서도 개별적인 프라이버시를 확보할 수 있도록 구성되어 심리적 안정감을 제공합니다(1).\n\n아이소메트릭 도면에서 드러나는 대형 천창과 측면 개구부들은 객실 내부로 자연광을 풍부하게 유입시키며, 특히 외부 정원 공간 상부의 대형 천창은 녹음과 빛이 만나는 자연스러운 조합을 연출하여 투숙객의 인지기능 향상과 스트레스 반응 감소에 긍정적 영향을 미칩니다(2).\n\n스케치에서 확인할 수 있는 실내 공간의 유기적 형태와 자연스러운 마감재 사용은 바이오필릭 디자인의 핵심을 보여줍니다. 직선적이지 않은 가구의 부드러운 형태와 천연 소재를 활용한 마감은 자연 환경에서 느낄 수 있는 편안함을 실내로 가져오며, 목재와 석재 등 자연 소재의 적극적 활용은 코르티솔 수치를 감소시켜 도시 생활로 지친 투숙객들에게 실질적인 치유 효과를 제공합니다(3).\n\n이러한 통합적 접근을 통해 자연의 치유력을 체험할 수 있는 바이오필릭 호텔 객실을 완성하고 있습니다.',
+        description: '개인화된 휴식 경험을 제공하기 위해 공간의 흐름과 사용자 동선을 중심으로 설계하였고, 채광과 시선 분산 효과를 고려해 구조를 구성했습니다. 이 바이오필릭 호텔 객실은 자연과의 연결을 통해 투숙객에게 깊은 휴식을 제공하는 치유 공간으로 설계되었습니다.\n\n평면도에서 확인되는 공간 구성을 살펴보면, 메인 침실 공간과 외부 정원이 서로 다른 방향을 향하도록 배치되어 있으며, 중앙의 연결 공간을 통해 각 영역들이 자연스럽게 이어집니다. 이러한 배치는 인간이 본능적으로 시야가 확보되면서도 보호받는 공간을 선호한다는 특성을 반영하여, 각 공간에서 다른 영역을 조망할 수 있으면서도 개별적인 프라이버시를 확보할 수 있도록 구성되어 심리적 안정감을 제공합니다(1).\n\n아이소메트릭 도면에서 드러나는 대형 천창과 측면 개구부들은 객실 내부로 자연광을 풍부하게 유입시키며, 특히 외부 정원 공간 상부의 대형 천창은 녹음과 빛이 만나는 자연스러운 조합을 연출하여 투숙객의 인지기능 향상과 스트레스 반응 감소에 긍정적 영향을 미칩니다(2).\n\n스케치에서 확인할 수 있는 실내 공간의 유기적 형태와 자연스러운 마감재 사용은 바이오필릭 디자인의 핵심을 보여줍니다. 직선적이지 않은 가구의 부드러운 형태와 천연 소재를 활용한 마감은 자연 환경에서 느낄 수 있는 편안함을 실내로 가져오며, 목재와 석재 등 자연 소재의 적극적 활용은 코르티솔 수치를 감소시켜 도시 생활로 지친 투숙객들에게 실질적인 치유 효과를 제공합니다(3).\n\n이러한 통합적 접근을 통해 자연의 치유력을 체험할 수 있는 바이오필릭 호텔 객실을 완성하고 있습니다.',
         materials: ['친환경 마감재', '스마트 조명 시스템', '빌트인 가구'],
         details: '평면도는 공간의 흐름과 기능성을 보여주며, 아이소메트릭 뷰는 전체적인 공간 구조를 입체적으로 이해하는 데 도움을 줍니다.',
         citations: [1, 2, 3]
@@ -232,26 +237,28 @@ const projectData: Record<string, ProjectData> = {
         title: 'The Experience of Landscape',
         author: 'Appleton, J.',
         year: '1975',
-        description: '제이 애플턴(Jay Appleton)의 저서 "The Experience of Landscape"는 조망-피난처 이론(Prospect-Refuge Theory)을 처음으로 제시한 기념비적인 연구입니다. 이 이론은 인간이 생존 본능에 따라 시야가 확보되면서도(조망) 보호받는(피난처) 공간을 동시에 선호한다는 점을 핵심으로 합니다.\n\n📊 핵심 연구 데이터\n\n✨ 웰빙 및 생산성 향상\n최근의 생체친화적 디자인(Biophilic Design) 연구에 따르면, 조망과 피난처 원리가 적용된 자연 친화적 환경에서 근무하는 직원은 웰빙 수준이 15% 더 높고, 생산성은 6%, 창의성은 15% 더 높은 것으로 보고되었습니다.\n\n🏢 업무 환경에서의 효과\n자연광이 풍부하고 외부 조망이 가능한 사무실의 직원은 그렇지 않은 직원에 비해 생산성이 최대 15%까지 향상될 수 있다는 연구 결과도 있습니다.'
+        description: '제이 애플턴(Jay Appleton)의 저서 "The Experience of Landscape"(1975)는 조망-피난처 이론(Prospect-Refuge Theory)을 처음으로 제시한 기념비적인 연구입니다. 이 이론은 인간이 생존 본능에 따라 시야가 확보되면서도(조망) 보호받는(피난처) 공간을 동시에 선호한다는 점을 핵심으로 합니다.\n\n📊 이론의 핵심 원리\n\n✨ 조망-피난처의 심리적 효과\n애플턴은 인간이 진화 과정에서 생존을 위해 발달시킨 본능적 선호가 현대 공간 경험에도 동일하게 적용된다고 주장했습니다. 주변 환경을 관찰할 수 있으면서도 위험으로부터 숨을 수 있는 공간 구성은 심리적 안정감과 만족감을 제공합니다.\n\n🏢 공간 구성 적용\n이론에 따르면, 효과적인 공간 설계는 다음과 같은 특성을 가져야 합니다\n\n 1️⃣ 조망 확보: 다른 영역을 조망할 수 있는 시야 제공\n 2️⃣ 피난처 제공: 개별적인 프라이버시와 보호감 확보\n 3️⃣ 균형적 배치: 노출과 은폐의 적절한 조화\n\n🔍 현대적 검증\n최근 연구들은 애플턴의 이론이 실제 공간 경험에 미치는 긍정적 효과를 실증적으로 뒷받침하고 있으며, 특히 자연 요소가 결합된 환경에서 웰빙과 생산성 향상 효과가 보고되고 있습니다.'
       },
       {
         title: 'Design, productivity and well-being: What are the links?',
         author: 'Heerwagen, J.H.',
         year: '1998',
-        description: '주디스 히어바겐(Judith H. Heerwagen)의 이 연구는 건축 환경이 인간의 생산성과 웰빙에 미치는 영향을 탐구한 중요한 논문입니다. 특히 자연광이 인지기능과 스트레스 반응에 미치는 영향에 대한 생태심리학적 연구를 수행했습니다.\n\n📊 핵심 연구 데이터\n\n📈 업무 및 학습 성과 향상\n자연광에 더 많이 노출되는 환경은 업무 공간에서 성과를 최대 10%까지, 학교에서는 9~18%까지 향상시킬 수 있습니다.\n\n🏥 의료 환경에서의 회복 효과\n병원 환경에서 자연광이 잘 드는 병실의 환자는 그렇지 않은 환자에 비해 회복 속도가 8% 더 빠르고, 진통제 요구량도 더 적었습니다.\n\n🪟 자연 조망의 심리적 효과\n창문을 통해 자연 경관을 볼 수 있는 직원은 그렇지 않은 직원에 비해 좌절감을 덜 느끼고 더 높은 인내심을 보이며, 전반적인 삶의 만족도와 건강 상태가 더 양호하다고 보고했습니다.'
+        description: '주디스 히어바겐(Judith H. Heerwagen)의 연구는 건축 환경이 인간의 생산성과 웰빙에 미치는 영향을 탐구한 중요한 연구입니다. 특히 그녀의 1998년 AIA 컨퍼런스 발표 "Design, Productivity and Well Being: What are the links?"는 자연광과 자연 요소가 인지기능과 스트레스 반응에 미치는 영향에 대한 실증적 연구를 제시했습니다.\n\n📊 핵심 연구 결과\n\n📈 Miller SQA 건물 연구 (1995-1996)\n히어바겐의 대표적 연구는 Herman Miller 계열사인 Miller SQA의 기존 건물과 새로운 친환경 건물을 비교 분석한 "전후 비교 연구"입니다. 이 연구에서 확인된 주요 결과는\n\n1️⃣생산성 향상: 개인 환경 제어 시스템을 통해 2.8%의 생산성 향상 달성\n2️⃣전체 생산성: 새 건물 이전 후 총 16%의 생산성 증가 관찰 (자연광, 조망, 공간 개선 등 복합 요인)\n3️⃣건강 개선: 사무직 근로자의 두통 발생률이 16%에서 7%로 감소\n\n🪟 자연광과 자연 조망의 효과\n연구에서 확인된 자연 접촉의 긍정적 영향\n\n1️⃣인지기능 향상: 자연 조망이 있는 근로자들이 주의집중력과 기억력 테스트에서 더 높은 점수 획득\n2️⃣스트레스 감소: 자연광과 녹색 식물 접촉을 통한 혈압 감소 및 스트레스 호르몬 완화\n3️⃣정서적 안정: 자연 요소 접촉이 긍정적 기분 상태 유지에 기여하여 업무 동기와 조직 몰입도 향상\n\n🌿 생체친화적 디자인의 중요성\n히어바겐은 인간의 진화적 특성에 기반한 "생체친화적 디자인(Biophilic Design)" 개념을 강조\n\n1️⃣진화적 선호: 인간은 사바나 환경과 유사한 특성(자연광, 조망, 식물 등)을 본능적으로 선호\n2️⃣감각적 다양성: 자연환경의 변화하는 빛, 소리, 질감 등이 인간의 각성 수준을 적절히 유지\n3️⃣개인적 통제: 자연환경처럼 개인이 환경을 조절할 수 있는 능력이 웰빙과 성과에 중요\n\n🔍 연구의 현대적 의의\n히어바겐의 연구는 단순히 "문제 요소 제거"를 넘어서 적극적인 웰빙 증진 환경 조성의 중요성을 제시했습니다. 이는 현대 건축 설계에서 자연광과 자연 요소의 통합이 단순한 미적 고려사항이 아닌, 인간의 인지적 성능과 심리적 건강을 위한 필수 요소임을 과학적으로 입증한 것입니다.'
       },
       {
         title: 'Wood and Human Stress in the Built Indoor Environment',
         author: 'Burnard, M. D., & Kutnar, A.',
         year: '2015',
-        description: '마이클 버나드(Michael D. Burnard)와 안드레이 쿠트나르(Andreja Kutnar)의 이 연구는 실내 환경에서 목재 사용이 인간의 스트레스 반응에 미치는 영향을 과학적으로 검증한 논문입니다. 연구진은 다양한 재료 표면에 대한 인간의 생리적 반응을 측정하여 목재의 스트레스 완화 효과를 실증적으로 입증했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 신경학적 반응\n참나무(white oak) 표면 접촉 시 대리석, 타일, 스테인리스 스틸 대비 전두엽 피질의 스트레스 반응이 유의미하게 감소하는 것으로 관찰되었습니다.\n\n🌿 자율신경계 조절\n목재 접촉 시 교감신경계가 억제되고 부교감신경계가 활성화되어 자연스러운 휴식 상태가 유도되는 것을 확인했습니다.\n\n❤️ 혈압 안정성\n차가운 플라스틱이나 스테인리스 스틸은 혈압 상승을 유발하는 반면, 목재 표면은 혈압 변화 없이 안정적인 생리 상태를 유지시키는 것으로 나타났습니다.\n\n📉 스트레스 호르몬 변화\n목재 가구가 배치된 사무실 환경에서 근무한 참가자들의 타액 내 코르티솜 농도가 대조군 대비 유의미하게 감소하여 전반적인 스트레스 수준 완화 효과가 입증되었습니다.'
+        description: '마이클 버나드(Michael D. Burnard)와 안드레이 쿠트나르(Andreja Kutnar)의 연구는 실내 환경에서 목재 사용이 인간의 스트레스 반응에 미치는 영향을 과학적으로 검증한 중요한 연구입니다. 이들의 연구는 목재가 실내 환경에서 스트레스 완화에 미치는 효과를 실증적으로 입증했습니다.\n\n📊 핵심 연구 결과\n\n🏢 오피스 환경 실험 (2020년 연구)\n실험 설계: 참가자들을 서로 다른 가구 배치의 오피스 환경에 노출시켜 스트레스 반응을 비교 측정\n\n주요 결과\n\n1️⃣참나무 가구 오피스: 흰색 가구 대조군 대비 타액 내 코르티솔 농도 유의미하게 감소\n2️⃣호두나무 가구 오피스: 대조군과 유의미한 차이 없음\n3️⃣시각적 요소의 중요성: 밝은 색상의 참나무가 더 밝은 환경을 조성하여 스트레스 감소 효과 증대\n\n🌿 목재의 자연성 인식 (2017년 연구)\n3개국 조사: 핀란드, 노르웨이, 슬로베니아에서 22가지 건축 재료의 자연성 인식 조사\n\n핵심 발견\n\n1️⃣원목: 가장 자연스러운 재료로 인식\n2️⃣가공도와 자연성: 가공 정도가 낮을수록 더 자연스럽게 인식\n3️⃣지역 간 일관성: 문화적 차이에도 불구하고 목재의 자연성 인식에 대한 일치된 견해\n\n📈 문헌 고찰 연구 (2015년)\n종합 분석: 목재와 인간 스트레스 관련 기존 연구들의 체계적 검토\n\n주요 결론\n\n1️⃣자율신경계 반응: 목재가 있는 실내 환경에서 스트레스 관련 자율신경계 반응 감소\n2️⃣회복환경 디자인: 목재 사용이 자연과의 연결감을 높여 스트레스 회복 환경 조성에 효과적\n3️⃣지속가능한 개입: 목재 사용이 비용 효과적이고 지속가능한 스트레스 완화 방법\n\n🔬 연구 방법론\n\n생리학적 측정\n\n1️⃣타액 코르티솔: 스트레스 호르몬 수치 측정을 통한 객관적 스트레스 평가\n2️⃣실험 대조 설계: 동일한 참가자가 서로 다른 환경에 노출되는 within-subjects 실험\n\n환경 요소 고려\n\n1️⃣조명 조건: 동일한 조명 수준에서 목재 색상이 환경 밝기에 미치는 영향 분석\n2️⃣시각적 특성: 목재의 색상, 질감 등 시각적 요소가 스트레스 반응에 미치는 영향\n\n🏗️ 건축 설계 적용점\n\n수동적 환경 개입\n\n목재 가구나 마감재 사용을 통한 수동적 환경 개입으로 오피스 근로자의 스트레스 대처 능력 향상\n\n재료 선택 지침\n\n1️⃣밝은 색상 목재: 더 밝은 환경 조성을 통한 스트레스 감소 효과\n2️⃣적절한 목재 비율: 과도한 목재 사용보다는 적절한 비율의 목재 사용 권장\n3️⃣다른 환경 요소와의 조화: 조명, 색상 등 다른 실내 환경 요소와의 상호작용 고려'
       },
       {
-        title: 'Perceptual pleasure and the brain: A novel theory of aesthetic perception',
-        author: 'Biederman, I., & Vessel, E. A.',
-        journal: 'Frontiers in Psychology',
-        year: '2006',
-        description: '어빙 비더만(Irving Biederman)과 에드워드 베셀(Edward A. Vessel)의 이 연구는 미적 지각이 뇌에서 어떻게 처리되는지를 탐구한 신경미학 분야의 중요한 연구입니다. 목재와 자연 패브릭 소재가 뇌의 편도체 반응을 진정시키고 스트레스를 감소시키는 신경학적 메커니즘을 제시했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 편도체 반응 완화\n자연적 형태와 질감에 노출될 때 편도체의 활성도가 현저히 감소하며, 이는 스트레스 반응의 직접적인 완화를 의미합니다.\n\n🌿 자연 소재의 신경학적 효과\n목재와 자연 패브릭은 뇌의 감정 처리 중추에 긍정적 영향을 미쳐 심리적 안정감과 편안함을 유도합니다.\n\n🎨 미적 경험의 뇌 활동 패턴\n자연 소재와 유기적 형태는 뇌의 보상 체계를 활성화시켜 즐거움과 만족감을 증진시키는 것으로 확인되었습니다.'
+        title: 'The Prefrontal Cortex Activity and Psychological Effects of Viewing Forest Landscapes in Autumn Season',
+        author: 'Joung, D.; Kim, G.; Choi, Y.; Lim, H.; Park, S.; Woo, J.-M.; Park, B.-J.',
+        journal: 'International Journal of Environmental Research and Public Health',
+        year: '2015',
+        volume: '12(7)',
+        pages: '7235-7243',
+        description: '이 연구는 가을철 산림 경관을 조망하는 것이 전전두엽 활동과 심리적 효과에 미치는 영향을 과학적으로 입증한 중요한 연구입니다. 근적외선 분광법(NIRS)을 활용하여 산림 환경이 도시 환경 대비 생리적, 심리적 이완 효과를 가져온다는 것을 객관적으로 측정했습니다. 연구진은 도시 건물 옥상에서 산림 지역과 도시 지역을 각각 15분간 조망하도록 하여 타인의 시선에 의한 스트레스 요인을 배제한 상태에서 실험을 진행했습니다.\n\n📊 핵심 연구 데이터\n\n🧠 전전두엽 활동 감소\n산림 경관을 조망할 때 전전두엽의 총 헤모글로빈 농도와 산소헤모글로빈 농도가 도시 환경 대비 유의하게 감소했습니다. 이는 뇌 활동의 진정 효과를 나타내며, 효과적인 이완 상태를 의미합니다.\n\n🧘‍♀️ 심리적 안정감 증대\n의미분별척도(Semantic Differential) 평가에서 산림 조망 시 "편안함", "자연스러움", "진정됨"의 감정이 도시 환경 대비 유의하게 높게 나타났습니다. 기분상태척도(Profile of Mood States) 측정에서는 부정적 감정이 산림 환경에서 유의하게 낮게 나타났습니다.\n\n🌿 자연 요소의 시각적 효과\n가을철 산림 경관의 시각적 자극만으로도 전전두엽 피질에서 측정 가능한 생리적 변화가 나타나며, 이는 자연 요소의 지속적 노출이 명상과 유사한 뇌 활동 패턴을 유도함을 시사합니다.\n\n🔬 과학적 측정 방법\n근적외선 분광법(NIRS)을 통해 전전두엽 활동을 실시간으로 측정하여 산림 치료 효과를 객관적으로 입증했습니다. 이는 스트레스 상태와 이완 효과의 객관적 평가에 NIRS가 유효함을 보여줍니다.\n\n🏗️ 건축 설계 적용\n외부 정원과의 연결창을 통한 자연 요소의 지속적 노출은 뇌의 전전두엽 활동을 감소시켜 명상 상태와 유사한 반응을 유도하며, 이는 바이오필릭 디자인의 과학적 근거로 활용됩니다.'
       },
       {
         title: 'Building for life: Designing and understanding the human-nature connection',
@@ -368,6 +375,12 @@ const GlassCard = styled.div`
   border-radius: 30px;
   padding: 2.5rem;
   margin-bottom: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   
   @media (max-width: 768px) {
     padding: 2rem;
@@ -937,10 +950,14 @@ const ReferenceItem = styled.div<{ isOpen: boolean; isHighlighted: boolean }>`
   border-radius: 12px;
   margin-bottom: 0.8rem;
   border-left: 3px solid rgba(245, 168, 159, 0.6);
-  overflow: hidden;
+  overflow: ${({ isOpen }) => isOpen ? 'visible' : 'hidden'};
   transition: ${TRANSITION};
   transform: ${({ isHighlighted }) => isHighlighted ? 'scale(1.01)' : 'scale(1)'};
   box-shadow: 0 2px 12px rgba(245, 168, 159, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word;
+  word-wrap: break-word;
   
   &:hover {
     background: rgba(245, 168, 159, 0.12);
@@ -960,6 +977,14 @@ const ReferenceHeader = styled.div`
   background: rgba(255, 255, 255, 0.3);
   border-radius: 10px 10px 0 0;
   
+  @media (max-width: 768px) {
+    padding: 0.9rem 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.8rem 0.75rem;
+  }
+  
   &:hover {
     background: rgba(255, 255, 255, 0.5);
   }
@@ -973,6 +998,18 @@ const ReferenceTitle = styled.div`
   flex: 1;
   line-height: 1.5;
   opacity: 0.9;
+  word-break: break-word;
+  word-wrap: break-word;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
   
   .title {
     font-weight: 700;
@@ -1023,14 +1060,28 @@ const ExpandIcon = styled.div<{ isOpen: boolean }>`
 `;
 
 const ReferenceContent = styled.div<{ isOpen: boolean }>`
-  max-height: ${({ isOpen }) => isOpen ? '1000px' : '0'};
+  max-height: ${({ isOpen }) => isOpen ? 'none' : '0'};
   opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease, background 0.3s ease;
+  overflow: ${({ isOpen }) => isOpen ? 'visible' : 'hidden'};
+  transition: ${({ isOpen }) => isOpen ? 'opacity 0.4s ease, padding 0.3s ease, background 0.3s ease' : 'max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease, background 0.3s ease'};
   padding: ${({ isOpen }) => isOpen ? '1.25rem 1.25rem 1.25rem 1.25rem' : '0 1.25rem'};
   background: ${({ isOpen }) => isOpen ? 'rgba(250, 249, 246, 0.6)' : 'transparent'};
   border-radius: ${({ isOpen }) => isOpen ? '0 0 10px 10px' : '0'};
   border-top: ${({ isOpen }) => isOpen ? '1px solid rgba(245, 168, 159, 0.2)' : 'none'};
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (max-width: 768px) {
+    padding: ${({ isOpen }) => isOpen ? '1rem 1rem 1rem 1rem' : '0 1rem'};
+  }
+  
+  @media (max-width: 480px) {
+    padding: ${({ isOpen }) => isOpen ? '0.75rem 0.75rem 0.75rem 0.75rem' : '0 0.75rem'};
+  }
   
   p {
     color: ${COLORS.primary};
@@ -1038,6 +1089,21 @@ const ReferenceContent = styled.div<{ isOpen: boolean }>`
     opacity: 0.85;
     font-size: 0.9rem;
     line-height: 1.6;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    width: 100%;
+    box-sizing: border-box;
+    
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
     
     &.author { font-weight: 500; opacity: 0.9; }
     &.journal { font-style: italic; opacity: 0.8; }
@@ -1550,6 +1616,7 @@ export default function ProjectDetail() {
   const [isModalTransitioning, setIsModalTransitioning] = useState(false);
   const [modalTransitionDirection, setModalTransitionDirection] = useState<'left' | 'right' | null>(null);
     const [materialModal, setMaterialModal] = useState<MaterialModalState>({ show: false, material: '' });
+  const [mapModal, setMapModal] = useState<MapModalState>({ show: false, location: '' });
 
   const referencesRef = useRef<HTMLDivElement>(null);
   const carousel = useCarousel(project);
@@ -1562,6 +1629,14 @@ export default function ProjectDetail() {
   const closeModal = useCallback(() => {
     setModalImage(null);
     setModalImageIndex(null);
+  }, []);
+
+  const openMapModal = useCallback((location: string) => {
+    setMapModal({ show: true, location });
+  }, []);
+
+  const closeMapModal = useCallback(() => {
+    setMapModal({ show: false, location: '' });
   }, []);
 
   const navigateModalImage = useCallback((direction: 'prev' | 'next') => {
@@ -1943,6 +2018,11 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (mapModal.show && e.key === 'Escape') {
+        closeMapModal();
+        return;
+      }
+      
       if (!modalImage) return;
       
       switch (e.key) {
@@ -1965,7 +2045,7 @@ export default function ProjectDetail() {
       navigateModalImage(e.deltaY > 0 ? 'next' : 'prev');
     };
 
-    if (modalImage) {
+    if (modalImage || mapModal.show) {
       document.addEventListener('keydown', handleKeyDown);
       document.addEventListener('wheel', handleWheel, { passive: false });
     }
@@ -1974,7 +2054,7 @@ export default function ProjectDetail() {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('wheel', handleWheel);
     };
-  }, [modalImage, navigateModalImage, closeModal]);
+  }, [modalImage, mapModal.show, navigateModalImage, closeModal, closeMapModal]);
 
   const overviewCards = useMemo(() => [
     { title: '컨셉', data: project?.overview.concept },
@@ -2092,19 +2172,29 @@ export default function ProjectDetail() {
 
           <GlassCard>
             <ProjectTitle>
-              {project.title.includes('The Habi') ? (
-                <>
-                  The Habi <span style={{ fontSize: '0.9rem', fontWeight: 400, color: '#2C3E50', opacity: 0.6 }}>(Habitat에서 파생된 의미로 자연 속에서 나만의 안식처라는 의미)</span>
-                </>
-              ) : (
-                project.title
-              )}
+              {project.title}
             </ProjectTitle>
             <ProjectInfo>
               {projectInfoItems.map((item, index) => (
                 <InfoItem key={index}>
                   <h4>{item.label}</h4>
-                  <p>{item.value}</p>
+                  {item.label === '위치' ? (
+                    <p 
+                      style={{ 
+                        cursor: 'pointer', 
+                        color: '#F5A89F', 
+                        textDecoration: 'underline',
+                        transition: 'color 0.2s ease'
+                      }}
+                      onClick={() => openMapModal(item.value || '')}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#F2998E'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#F5A89F'}
+                    >
+                      {item.value} 📍
+                    </p>
+                  ) : (
+                    <p>{item.value}</p>
+                  )}
               </InfoItem>
               ))}
             </ProjectInfo>
@@ -2258,30 +2348,54 @@ export default function ProjectDetail() {
                       marginTop: '1rem', 
                       lineHeight: '1.6', 
                       color: '#4A5568',
-                      fontSize: '0.95rem'
+                      fontSize: '0.95rem',
+                      wordBreak: 'break-word',
+                      wordWrap: 'break-word',
+                      overflowWrap: 'break-word',
+                      hyphens: 'auto',
+                      width: '100%',
+                      boxSizing: 'border-box',
+                      maxWidth: '100%'
                     }}>
                       {ref.description.split('\n').map((line, index) => (
                         <React.Fragment key={index}>
-                          {line.includes('📊 핵심 연구 데이터') ? (
+                          {line.includes('📊 핵심 연구 데이터') || line.includes('📊 핵심 연구 결과') ? (
                             <div style={{ 
-                              fontSize: '1.1rem', 
+                              fontSize: '1.1rem',
                               fontWeight: 'bold', 
                               color: '#2D3748',
-                              margin: '1rem 0 0.5rem 0'
+                              margin: '1rem 0 0.5rem 0',
+                              wordBreak: 'break-word',
+                              wordWrap: 'break-word',
+                              overflowWrap: 'break-word',
+                              width: '100%',
+                              boxSizing: 'border-box'
                             }}>
                               {line}
                             </div>
-                          ) : (line.match(/^[✨🏢📈🏥🪟🧠🌿❤️📉]/) ? (
+                          ) : (line.match(/^[✨🏢📈🏥🪟🧠🌿❤️📉🔍]/) ? (
                             <div style={{ 
-                              fontSize: '1rem', 
+                              fontSize: '1rem',
                               fontWeight: '600', 
                               color: '#2D3748',
-                              margin: '0.8rem 0 0.3rem 0'
+                              margin: '0.8rem 0 0.3rem 0',
+                              wordBreak: 'break-word',
+                              wordWrap: 'break-word',
+                              overflowWrap: 'break-word',
+                              width: '100%',
+                              boxSizing: 'border-box'
                             }}>
                               {line}
                             </div>
                           ) : (
-                            <span>{line}</span>
+                            <span style={{ 
+                              wordBreak: 'break-word', 
+                              wordWrap: 'break-word',
+                              overflowWrap: 'break-word',
+                              maxWidth: '100%',
+                              display: 'inline-block',
+                              boxSizing: 'border-box'
+                            }}>{line}</span>
                           ))}
                           {index < ref.description!.split('\n').length - 1 && <br />}
                         </React.Fragment>
@@ -2368,6 +2482,62 @@ export default function ProjectDetail() {
           </div>
         </MaterialModalContent>
       </MaterialModal>
+
+      <Modal show={mapModal.show} onClick={closeMapModal}>
+        <CloseButton onClick={closeMapModal} />
+        <div
+          style={{
+            background: '#fff',
+            borderRadius: '20px',
+            padding: '1rem',
+            maxWidth: '90vw',
+            width: '600px',
+            height: '450px',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem'
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            paddingBottom: '1rem',
+            borderBottom: '1px solid #eee'
+          }}>
+            <h3 style={{ margin: 0, color: '#2C3E50' }}>📍 {mapModal.location}</h3>
+            <button 
+              style={{
+                background: 'none',
+                border: 'none',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                color: '#666'
+              }}
+              onClick={closeMapModal}
+            >
+              ×
+            </button>
+          </div>
+          <div style={{ flex: 1 }}>
+            {mapModal.location === '경기도 가평' && (
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101534.32623928457!2d127.31163825!3d37.830815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ce1f3a5a8d4b3%3A0x2ae7b4c5b953a0!2z6rK96riw64-E6rCA7J2J6rWw!5e0!3m2!1sko!2skr!4v1647503456789!5m2!1sko!2skr"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: '10px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            )}
+          </div>
+        </div>
+      </Modal>
     </>
   );
 } 
